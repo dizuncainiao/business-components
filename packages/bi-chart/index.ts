@@ -1,4 +1,3 @@
-import './_plugins/vue-echarts'
 import './style/index.css'
 // 引入BlocksNext样式
 import 'blocks-next/theme-default/index.css'
