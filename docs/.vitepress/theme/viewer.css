@@ -1,0 +1,446 @@
+/*!
+ * Viewer.js v1.11.3
+ * https://fengyuanchen.github.io/viewerjs
+ *
+ * Copyright 2015-present Chen Fengyuan
+ * Released under the MIT license
+ *
+ * Date: 2023-03-05T07:01:15.525Z
+ */
+
+.viewer-zoom-in::before,
+.viewer-zoom-out::before,
+.viewer-one-to-one::before,
+.viewer-reset::before,
+.viewer-prev::before,
+.viewer-play::before,
+.viewer-next::before,
+.viewer-rotate-left::before,
+.viewer-rotate-right::before,
+.viewer-flip-horizontal::before,
+.viewer-flip-vertical::before,
+.viewer-fullscreen::before,
+.viewer-fullscreen-exit::before,
+.viewer-close::before {
+  display: block;
+  width: 20px;
+  height: 20px;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  background-image: url('data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAARgAAAAUCAYAAABWOyJDAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAABx0RVh0U29mdHdhcmUAQWRvYmUgRmlyZXdvcmtzIENTNui8sowAAAQPSURBVHic7Zs/iFxVFMa/0U2UaJGksUgnIVhYxVhpjDbZCBmLdAYECxsRFBTUamcXUiSNncgKQbSxsxH8gzAP3FU2jY0kKKJNiiiIghFlccnP4p3nPCdv3p9778vsLOcHB2bfveeb7955c3jvvNkBIMdxnD64a94GHMfZu3iBcRynN7zAOI7TG15gHCeeNUkr8zaxG2lbYDYsdgMbktBsP03jdQwljSXdtBhLOmtjowC9Mg9L+knSlcD8TNKpSA9lBpK2JF2VdDSR5n5J64m0qli399hNFMUlpshQii5jbXTbHGviB0nLNeNDSd9VO4A2UdB2fp+x0eCnaXxWXGA2X0au/3HgN9P4LFCjIANOJdrLr0zzZ+BEpNYDwKbpnQMeAw4m8HjQtM6Z9qa917zPQwFr3M5KgA6J5rTJCdFZJj9/lyvGhsDvwFNVuV2MhhjrK6b9bFiE+j1r87eBl4HDwCF7/U/k+ofAX5b/EXBv5JoLMuILzf3Ap6Z3EzgdqHMCuF7hcQf4HDgeoHnccncqdK/TvSDWffFXI/exICY/xZyqc6XLWF1UFZna4gJ7q8BsRvgd2/xXpo6P+D9dfT7PpECtA3cnWPM0GXGFZh/wgWltA+cDNC7X+AP4GzjZQe+k5dRxuYPeiuXU7e1qwLpDz7dFjXKRaSwuMLvAlG8zZlG+YmiK1HoFqT7wP2z+4Q45TfEGcMt01xLoNZEBTwRqD4BLpnMLeC1A41UmVxsXgXeBayV/Wx20rpTyrpnWRft7p6O/FdqzGrDukPNtkaMoMo3FBdBSQMOnYBCReyf05s126fU9ytfX98+mY54Kxnp7S9K3kj6U9KYdG0h6UdLbkh7poFXMfUnSOyVvL0h6VtIXHbS6nOP+s/Zm9mvyXW1uuC9ohZ72E9uDmXWLJOB1GxsH+DxPftsB8B6wlGDN02TAkxG6+4D3TWsbeC5CS8CDFce+AW500LhhOW2020TRjK3b21HEmgti9m0RonxbdMZeVzV+/4tF3cBpP7E9mKHNL5q8h5g0eYsCMQz0epq8gQrwMXAgcs0FGXGFRcB9wCemF9PkbYqM/Bas7fxLwNeJPdTdpo4itQti8lPMqTpXuozVRVXPpbHI3KkNTB1NfkL81j2mvhDp91HgV9MKuRIqrykj3WPq4rHyL+axj8/qGPmTqi6F9YDlHOvJU6oYcTsh/TYSzWmTE6JT19CtLTJt32D6CmHe0eQn1O8z5AXgT4sx4Vcu0/EQecMydB8z0hUWkTd2t4CrwNEePqMBcAR4mrBbwyXLPWJa8zrXmmLEhNBmfpkuY2102xxrih+pb+ieAb6vGhuA97UcJ5KR8gZ77K+99xxeYBzH6Q3/Z0fHcXrDC4zjOL3hBcZxnN74F+zlvXFWXF9PAAAAAElFTkSuQmCC');
+  background-repeat: no-repeat;
+  background-size: 280px;
+}
+
+.viewer-zoom-in::before {
+  content: 'Zoom In';
+  background-position: 0 0;
+}
+
+.viewer-zoom-out::before {
+  content: 'Zoom Out';
+  background-position: -20px 0;
+}
+
+.viewer-one-to-one::before {
+  content: 'One to One';
+  background-position: -40px 0;
+}
+
+.viewer-reset::before {
+  content: 'Reset';
+  background-position: -60px 0;
+}
+
+.viewer-prev::before {
+  content: 'Previous';
+  background-position: -80px 0;
+}
+
+.viewer-play::before {
+  content: 'Play';
+  background-position: -100px 0;
+}
+
+.viewer-next::before {
+  content: 'Next';
+  background-position: -120px 0;
+}
+
+.viewer-rotate-left::before {
+  content: 'Rotate Left';
+  background-position: -140px 0;
+}
+
+.viewer-rotate-right::before {
+  content: 'Rotate Right';
+  background-position: -160px 0;
+}
+
+.viewer-flip-horizontal::before {
+  content: 'Flip Horizontal';
+  background-position: -180px 0;
+}
+
+.viewer-flip-vertical::before {
+  content: 'Flip Vertical';
+  background-position: -200px 0;
+}
+
+.viewer-fullscreen::before {
+  content: 'Enter Full Screen';
+  background-position: -220px 0;
+}
+
+.viewer-fullscreen-exit::before {
+  content: 'Exit Full Screen';
+  background-position: -240px 0;
+}
+
+.viewer-close::before {
+  content: 'Close';
+  background-position: -260px 0;
+}
+
+.viewer-container {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  touch-action: none;
+  user-select: none;
+  direction: ltr;
+  -webkit-tap-highlight-color: transparent;
+  -webkit-touch-callout: none;
+}
+
+.viewer-container::selection,
+.viewer-container *::selection {
+  background-color: transparent;
+}
+
+.viewer-container::selection,
+.viewer-container *::selection {
+  background-color: transparent;
+}
+
+.viewer-container:focus {
+  outline: 0;
+}
+
+.viewer-container img {
+  display: block;
+  width: 100%;
+  min-width: 0 !important;
+  max-width: none !important;
+  height: auto;
+  min-height: 0 !important;
+  max-height: none !important;
+}
+
+.viewer-canvas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+}
+
+.viewer-canvas > img {
+  width: auto;
+  max-width: 90% !important;
+  height: auto;
+  margin: 15px auto;
+}
+
+.viewer-footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  overflow: hidden;
+  text-align: center;
+}
+
+.viewer-navbar {
+  overflow: hidden;
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.viewer-list {
+  box-sizing: content-box;
+  height: 50px;
+  padding: 1px 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+.viewer-list > li {
+  float: left;
+  width: 30px;
+  height: 50px;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  color: transparent;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: opacity 0.15s;
+}
+
+.viewer-list > li:focus,
+.viewer-list > li:hover {
+  opacity: 0.75;
+}
+
+.viewer-list > li:focus {
+  outline: 0;
+}
+
+.viewer-list > li + li {
+  margin-left: 1px;
+}
+
+.viewer-list > .viewer-loading {
+  position: relative;
+}
+
+.viewer-list > .viewer-loading::after {
+  width: 20px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -10px;
+  border-width: 2px;
+}
+
+.viewer-list > .viewer-active,
+.viewer-list > .viewer-active:focus,
+.viewer-list > .viewer-active:hover {
+  opacity: 1;
+}
+
+.viewer-player {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  display: none;
+  cursor: none;
+  background-color: #000;
+}
+
+.viewer-player > img {
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.viewer-toolbar > ul {
+  display: inline-block;
+  padding: 6px 3px;
+  margin: 0 auto 5px;
+  overflow: hidden;
+}
+
+.viewer-toolbar > ul > li {
+  float: left;
+  width: 24px;
+  height: 24px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: rgb(0 0 0 / 50%);
+  border-radius: 50%;
+  transition: background-color 0.15s;
+}
+
+.viewer-toolbar > ul > li:focus,
+.viewer-toolbar > ul > li:hover {
+  background-color: rgb(0 0 0 / 80%);
+}
+
+.viewer-toolbar > ul > li:focus {
+  position: relative;
+  z-index: 1;
+  outline: 0;
+  box-shadow: 0 0 3px #fff;
+}
+
+.viewer-toolbar > ul > li::before {
+  margin: 2px;
+}
+
+.viewer-toolbar > ul > li + li {
+  margin-left: 1px;
+}
+
+.viewer-toolbar > ul > .viewer-small {
+  width: 18px;
+  height: 18px;
+  margin-top: 3px;
+  margin-bottom: 3px;
+}
+
+.viewer-toolbar > ul > .viewer-small::before {
+  margin: -1px;
+}
+
+.viewer-toolbar > ul > .viewer-large {
+  width: 30px;
+  height: 30px;
+  margin-top: -3px;
+  margin-bottom: -3px;
+}
+
+.viewer-toolbar > ul > .viewer-large::before {
+  margin: 5px;
+}
+
+.viewer-tooltip {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  display: none;
+  width: 50px;
+  height: 20px;
+  margin-top: -10px;
+  margin-left: -25px;
+  font-size: 12px;
+  line-height: 20px;
+  color: #fff;
+  text-align: center;
+  background-color: rgb(0 0 0 / 80%);
+  border-radius: 10px;
+}
+
+.viewer-title {
+  display: inline-block;
+  max-width: 90%;
+  min-height: 14px;
+  margin: 5px 5%;
+  overflow: hidden;
+  font-size: 12px;
+  line-height: 1.2;
+  color: #ccc;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  opacity: 0.8;
+  transition: opacity 0.15s;
+}
+
+.viewer-title:hover {
+  opacity: 1;
+}
+
+.viewer-button {
+  position: absolute;
+  top: -40px;
+  right: -40px;
+  width: 80px;
+  height: 80px;
+  overflow: hidden;
+  cursor: pointer;
+  background-color: rgb(0 0 0 / 50%);
+  border-radius: 50%;
+  transition: background-color 0.15s;
+  -webkit-app-region: no-drag;
+}
+
+.viewer-button:focus,
+.viewer-button:hover {
+  background-color: rgb(0 0 0 / 80%);
+}
+
+.viewer-button:focus {
+  outline: 0;
+  box-shadow: 0 0 3px #fff;
+}
+
+.viewer-button::before {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+}
+
+.viewer-fixed {
+  position: fixed;
+}
+
+.viewer-open {
+  overflow: hidden;
+}
+
+.viewer-show {
+  display: block;
+}
+
+.viewer-hide {
+  display: none;
+}
+
+.viewer-backdrop {
+  background-color: rgb(0 0 0 / 50%);
+}
+
+.viewer-invisible {
+  visibility: hidden;
+}
+
+.viewer-move {
+  cursor: grab;
+}
+
+.viewer-fade {
+  opacity: 0;
+}
+
+.viewer-in {
+  opacity: 1;
+}
+
+.viewer-transition {
+  transition: all 0.3s;
+}
+
+@keyframes viewer-spinner {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.viewer-loading::after {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  z-index: 1;
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  margin-top: -20px;
+  margin-left: -20px;
+  content: '';
+  border: 4px solid rgb(255 255 255 / 10%);
+  border-left-color: rgb(255 255 255 / 50%);
+  border-radius: 50%;
+  animation: viewer-spinner 1s linear infinite;
+}
+
+@media (max-width: 767px) {
+  .viewer-hide-xs-down {
+    display: none;
+  }
+}
+
+@media (max-width: 991px) {
+  .viewer-hide-sm-down {
+    display: none;
+  }
+}
+
+@media (max-width: 1199px) {
+  .viewer-hide-md-down {
+    display: none;
+  }
+}

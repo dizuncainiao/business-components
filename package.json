@@ -1,0 +1,82 @@
+{
+  "name": "business-components-monorepo",
+  "version": "0.0.20",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "preinstall": "npx only-allow pnpm",
+    "lint-fix:script": "eslint . --ext .js,.ts,.vue --fix",
+    "prettier:w": "prettier -c -w .",
+    "lint-fix:style": "stylelint \"**/*.{vue,less,css}\" --fix",
+    "lint-fix": "pnpm run lint-fix:script && pnpm run prettier:w && pnpm run lint-fix:style",
+    "prepare": "husky install",
+    "git-commit": "git add . && git cz",
+    "pre:publish": "cd ./packages/bi-chart/scripts && release.sh",
+    "go-publish": "cd ./packages/bi-chart && pnpm run build:dist && pnpm run start:publishing",
+    "go-deploy": "cd ./docs && pnpm run docs:build",
+    "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-option.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "config": {
+    "commitizen": {
+      "path": "git-cz"
+    }
+  },
+  "lint-staged": {
+    "*.{js,jsx,ts,tsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ],
+    "package.json": [
+      "prettier --write"
+    ],
+    "*.vue": [
+      "eslint --fix",
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.{css,less,html}": [
+      "prettier --write",
+      "stylelint --fix"
+    ],
+    "*.md": [
+      "prettier --write"
+    ]
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^17.6.1",
+    "@commitlint/config-conventional": "^17.6.1",
+    "@types/lodash-es": "^4.17.7",
+    "@types/node": "^18.15.13",
+    "@typescript-eslint/eslint-plugin": "^5.59.0",
+    "@typescript-eslint/parser": "^5.59.0",
+    "compare-func": "^2.0.0",
+    "conventional-changelog": "^3.1.25",
+    "conventional-changelog-cli": "^2.2.2",
+    "conventional-changelog-conventionalcommits": "^5.0.0",
+    "conventional-changelog-custom-config": "^0.3.1",
+    "cross-env": "^7.0.3",
+    "cz-conventional-changelog": "^3.3.0",
+    "eslint": "^8.38.0",
+    "eslint-plugin-vue": "^9.11.0",
+    "husky": "^8.0.3",
+    "less": "^4.1.3",
+    "lint-staged": "^13.2.1",
+    "postcss": "^8.4.23",
+    "postcss-html": "^1.5.0",
+    "postcss-less": "^6.0.0",
+    "prettier": "^2.8.7",
+    "stylelint": "^15.5.0",
+    "stylelint-config-html": "^1.1.0",
+    "stylelint-config-prettier": "^9.0.5",
+    "stylelint-config-recess-order": "^3.1.0",
+    "stylelint-config-recommended-less": "^1.0.4",
+    "stylelint-config-standard": "^26.0.0",
+    "stylelint-config-standard-vue": "^1.0.0",
+    "stylelint-less": "^1.0.6",
+    "typescript": "^5.0.4",
+    "vue-eslint-parser": "^9.1.1"
+  }
+}
