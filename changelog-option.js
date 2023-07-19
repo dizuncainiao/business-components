@@ -20,12 +20,6 @@ module.exports = {
         commit.type = '🚀 Performance Improvements'
       } else if (commit.type === 'release') {
         commit.type = '🏹 Release'
-      } else if (commit.type === 'docs') {
-        commit.type = '📝 Documentation'
-      } else if (commit.type === 'test') {
-        commit.type = '🚨 Tests'
-      } else if (commit.type === 'ci') {
-        commit.type = '🎡 Continuous Integration'
       } else {
         return
       }
