@@ -18,7 +18,6 @@
   },
   "keywords": [],
   "author": "",
-  "license": "ISC",
   "config": {
     "commitizen": {
       "path": "git-cz"
