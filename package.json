@@ -11,8 +11,8 @@
     "lint-fix": "pnpm run lint-fix:script && pnpm run prettier:w && pnpm run lint-fix:style",
     "prepare": "husky install",
     "git-commit": "git add . && git cz",
-    "pre:publish": "cd ./packages/bi-chart/scripts && release.sh",
-    "go-publish": "cd ./packages/bi-chart && pnpm run build:dist && pnpm run start:publishing",
+    "pre:publish": "cd packages/bdsaas-bc/scripts && release.sh",
+    "go-publish": "cd packages/bdsaas-bc && pnpm run build:dist && pnpm run start:publishing",
     "go-deploy": "cd ./docs && pnpm run docs:build",
     "changelog": "conventional-changelog -p custom-config -i CHANGELOG.md -s -r 0  -n ./changelog-option.js"
   },

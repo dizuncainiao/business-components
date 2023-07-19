@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BcSideMenu } from 'dz-bi-chart'
+import { BcSideMenu } from '../../packages/bdsaas-bc'
 </script>
 
 <template>

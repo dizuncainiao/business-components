@@ -2,7 +2,7 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/bi-chart/',
+  base: '/bdsaas-bc/',
   title: 'BI Chart',
   description: 'BI-Chart 图表组件库',
   themeConfig: {

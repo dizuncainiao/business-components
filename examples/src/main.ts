@@ -1,8 +1,8 @@
 import { createApp } from 'vue'
 import './style.css'
 import App from './App.vue'
-import 'dz-bi-chart/style/index.css'
-import { initRequestInterceptors } from 'dz-bi-chart'
+import 'bdsaas-bc/style/index.css'
+import { initRequestInterceptors } from 'bdsaas-bc'
 
 function getToken() {
   return 'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiIyNzk3IiwiZXhwIjoxNjg2MTI3ODU0fQ.DbYuEoiihanktkxiL9WzvMYt0Vm8IkddTzPr5MHZa44J-tRjbqAsRKZEo6G0QIGwpoyxs7ZiASkVEVUg7szwKw'

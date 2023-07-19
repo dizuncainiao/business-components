@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "dz-bi-chart": "workspace:^0.0.0",
+    "bdsaas-bc": "workspace:^",
     "vue": "^3.2.47"
   },
   "devDependencies": {

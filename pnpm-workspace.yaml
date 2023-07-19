@@ -1,4 +1,4 @@
 packages:
   - 'examples'
-  - 'packages/bi-chart'
+  - 'packages/bdsaas-bc'
   - 'docs'
