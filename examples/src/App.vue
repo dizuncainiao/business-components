@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BcSideMenu } from '../../packages/bdsaas-bc'
+import { BcSideMenu } from 'bdsaas-bc'
 </script>
 
 <template>
