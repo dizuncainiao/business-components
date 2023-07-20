@@ -15,7 +15,8 @@
   "style": "style/index.css",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && pnpm run build:style",
+    "build:style": "gulp -f scripts/build-style.mjs",
     "preview": "vite preview",
     "move:dist": "cd scripts && sh move.sh",
     "build:dist": "pnpm run build && pnpm run move:dist",

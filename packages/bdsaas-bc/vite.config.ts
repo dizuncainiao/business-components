@@ -3,8 +3,13 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 
+const cssPath =
+  '../../../packages/bdsaas-bc/components/bc-side-menu/style/index.less'
+const cssPath2 = '../style/index.css'
+
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: './',
   plugins: [
     vue(),
     dts({
@@ -26,7 +31,7 @@ export default defineConfig({
           this.emitFile({
             type: 'asset',
             fileName: key,
-            source: bundler.code.replace(/\.less/g, '.css')
+            source: bundler.code.replace(cssPath, cssPath2) // todo 需要优化！！！
           })
         }
       }
@@ -59,7 +64,7 @@ export default defineConfig({
     },
     lib: {
       entry: './index.ts',
-      name: 'BiChart'
+      name: 'BdsaasBc'
     }
   },
   resolve: {
