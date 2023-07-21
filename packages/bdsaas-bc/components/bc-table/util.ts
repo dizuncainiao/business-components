@@ -27,7 +27,7 @@
  *  @returns {function} handleNextPage 下一页函数
  */
 
-import { reactive } from 'vue'
+import { reactive, toRefs } from 'vue'
 import http from '../../_plugins/axios-http'
 
 enum Method {
@@ -167,7 +167,7 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
   }
 
   return {
-    ...state,
+    ...toRefs(state),
     search,
     handleSizeChange,
     handlePageChange,
