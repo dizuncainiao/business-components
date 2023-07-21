@@ -31,7 +31,7 @@ export default defineConfig({
           this.emitFile({
             type: 'asset',
             fileName: key,
-            source: bundler.code.replace(cssPath, cssPath2) // todo 需要优化！！！
+            source: bundler.code.replace(cssPath, cssPath2) // todo 需要优化！！！（可能是 vite 版本导致，后期排查 rollup 配置）
           })
         }
       }
