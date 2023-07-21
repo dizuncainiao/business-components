@@ -24,7 +24,7 @@ jobs:
       # 使用特定版本的 node.js 设置 GitHub Actions 工作流程
       - uses: actions/setup-node@v3
         with:
-          node-version: 14
+          node-version: 16
           cache: 'pnpm'
       - run: pnpm i --frozen-lockfile
       - name: Build
