@@ -2,14 +2,14 @@ import { defineConfig } from 'vitepress'
 
 // https://vitepress.dev/reference/site-config
 export default defineConfig({
-  base: '/bdsaas-bc/',
+  base: '/business-components/',
   title: 'BDSaas-bc',
   description: 'BDSaas 业务组件库',
   themeConfig: {
     // https://vitepress.dev/reference/default-theme-config
     nav: [
       { text: '首页', link: '/' },
-      { text: '更新日志', link: '/change-log/' },
+      { text: '更新日志', link: '/change-log/' }
     ],
 
     sidebar: [],
