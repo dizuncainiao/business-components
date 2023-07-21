@@ -14,6 +14,7 @@
     "vitepress": "1.0.0-alpha.75"
   },
   "dependencies": {
-    "v-viewer": "^3.0.11"
+    "v-viewer": "^3.0.11",
+    "bdsaas-bc": "latest"
   }
 }
