@@ -4,7 +4,7 @@ import { h } from 'vue'
 import Theme from 'vitepress/theme'
 import './style.css'
 import './viewer.css'
-// import 'dz-bi-chart/dist/es/style.css'
+import 'bdsaas-bc/dist/es/style.css'
 
 export default {
   ...Theme,
