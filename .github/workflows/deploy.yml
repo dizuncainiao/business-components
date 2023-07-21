@@ -1,37 +1,38 @@
-#name: Deploy
-#on:
-#  workflow_dispatch: {}
-#  push:
-#    branches:
-#      - main
-#jobs:
-#  deploy:
-#    runs-on: ubuntu-latest
-#    permissions:
-#      pages: write
-#      id-token: write
-#    environment:
-#      name: github-pages
-#      url: ${{ steps.deployment.outputs.page_url }}
-#    steps:
-#      # 签出您的存储库$GITHUB_WORKSPACE，以便您的工作流可以访问它。
-#      - uses: actions/checkout@v3
-#      # 安装 pnpm 包管理器
-#      - uses: pnpm/action-setup@v2
-#        with:
-#          version: 7
-#      # 使用特定版本的 node.js 设置 GitHub Actions 工作流程
-#      - uses: actions/setup-node@v3
-#        with:
-#          node-version: 14
-#          cache: 'pnpm'
-#      - run: pnpm i --frozen-lockfile
-#      - name: Build
-#        run: pnpm run go-deploy
-#      - uses: actions/configure-pages@v2
-#      - uses: actions/upload-pages-artifact@v1
-#        with:
-#          path: docs/.vitepress/dist
-#      - name: Deploy
-#        id: deployment
-#        uses: actions/deploy-pages@v1
+name: Deploy
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      # 签出您的存储库$GITHUB_WORKSPACE，以便您的工作流可以访问它。
+      - uses: actions/checkout@v3
+      # 安装 pnpm 包管理器
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 7
+      # 使用特定版本的 node.js 设置 GitHub Actions 工作流程
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 14
+          cache: 'pnpm'
+      - run: pnpm i --frozen-lockfile
+      - name: Build
+        run: pnpm run go-deploy
+      - uses: actions/configure-pages@v2
+      - uses: actions/upload-pages-artifact@v1
+        with:
+          path: docs/.vitepress/dist
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@v1
