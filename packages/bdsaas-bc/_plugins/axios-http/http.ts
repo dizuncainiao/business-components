@@ -72,10 +72,10 @@ export default class AxiosHttp {
     config: AxiosRequestConfig = {}
   ) {
     config = {
-      ...config,
       url,
       params,
-      method: 'GET'
+      method: 'GET',
+      ...config
     }
     return this.request<T>(config)
   }
@@ -143,10 +143,10 @@ export default class AxiosHttp {
     config?: AxiosRequestConfig
   ) {
     config = {
-      ...config,
       headers: {
         'Content-Type': 'multipart/form-data'
-      }
+      },
+      ...config
     }
 
     const data = { [fieldName]: file }
