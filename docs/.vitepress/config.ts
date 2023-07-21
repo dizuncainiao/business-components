@@ -20,7 +20,7 @@ export default defineConfig({
       },
       {
         text: '布局组件',
-        items: [{ text: '左侧菜单', link: '/side-menu/' }]
+        items: [{ text: 'SideMenu 导航菜单', link: '/side-menu/' }]
       }
     ],
 

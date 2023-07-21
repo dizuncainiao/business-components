@@ -84,3 +84,12 @@
 .DocSearch {
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
+
+/** VitePress 主题样式更改 **/
+.group + .group {
+  border-top: none !important;
+}
+
+.VPSidebarItem.level-0 {
+  padding-bottom: 0 !important;
+}
