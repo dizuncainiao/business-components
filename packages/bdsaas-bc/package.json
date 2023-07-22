@@ -37,6 +37,7 @@
     "lodash-es": "^4.17.21",
     "qs": "^6.11.1",
     "vue": "^3.2.47",
+    "vue-router": "^4.1.6",
     "dayjs": "^1.11.5"
   },
   "devDependencies": {
