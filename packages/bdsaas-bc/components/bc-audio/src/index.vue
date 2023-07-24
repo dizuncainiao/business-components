@@ -42,10 +42,6 @@ export default defineComponent({
       type: String,
       default: '资源播放失败，请稍后重试'
     },
-    styleType: { // 样式风格
-      type: String,
-      default: 'light' // light: 浅色风格，dark: 深色风格
-    },
     showBtn: { // 是否显示按钮
       type: Boolean,
       default: true
@@ -64,6 +60,7 @@ export default defineComponent({
   setup(props, { emit }) {
     let audioPlayer: any = null
 
+    // 播放
     const play = () => {
       destroy()
       if (!props.src) {
@@ -112,6 +109,7 @@ export default defineComponent({
       })
     }
 
+    // 销毁
     const destroy = () => {
       if (audioPlayer) {
         audioPlayer.destroy()

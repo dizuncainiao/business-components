@@ -5,7 +5,7 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
 import { BcAudio } from 'bdsaas-bc'
 
 defineComponent({
