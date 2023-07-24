@@ -35,7 +35,6 @@ import '../style/index.less'
 
 import type { PropType } from 'vue'
 import { computed, defineComponent, toRefs, unref } from 'vue'
-import { navigation } from '../../../_plugins/inhub'
 import { badgeConfig, jumpHandler } from './hooks'
 import { useRoute } from 'vue-router'
 import { Badge } from 'blocks-next'
@@ -44,7 +43,6 @@ import type { BeforeJump, Menu, MenuItem, JumpMethod } from './types'
 
 export default defineComponent({
   name: 'BcSideMenu',
-  methods: { navigation },
   components: {
     Badge
   },
