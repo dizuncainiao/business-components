@@ -29,3 +29,10 @@ export type BeforeJump = (
 
 // fixme: item 类型改为交叉类型
 export type JumpMethod = (item?: MenuItem) => void
+
+export interface SideMenuProps {
+  menuData: Menu
+  authKeys: string[]
+  beforeJump: BeforeJump
+  jumpMethod: JumpMethod
+}
