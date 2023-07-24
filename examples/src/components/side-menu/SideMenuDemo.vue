@@ -1,6 +1,10 @@
 <template>
   <div style="height: 350px; overflow: hidden; box-shadow: 0 0 8px #eee;">
-    <BcSideMenu :menuData="menuData" />
+    <BcSideMenu
+      :menuData="menuData"
+      :jumpMethod="jumpMethod"
+      :beforeJump="beforeJump"
+    />
   </div>
 </template>
 
@@ -68,4 +72,14 @@ const menuData = [
     ]
   }
 ]
+
+function jumpMethod(data) {
+  console.log('自定义的跳转方法', data)
+}
+
+function beforeJump(to, from, next) {
+  console.log(to, 'to to')
+  console.log(from, 'from from')
+  next({ name: 'NumberManagement' })
+}
 </script>

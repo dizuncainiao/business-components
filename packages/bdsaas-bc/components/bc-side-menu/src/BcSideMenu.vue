@@ -4,13 +4,17 @@
       <dl v-if="item.showGroup">
         <dt>{{ item.groupName }}</dt>
         <template v-for="child of item.children" :key="child.title">
+          <!--fixme: as any，后期需增加为 undefined 的判断-->
           <dd
             v-if="child.showItem"
             :class="currentRouteName === child.routeName && 'active'"
             @click="
-              navigation({
-                name: child.routeName,
-                mainQuery: { routeName: child.title }
+              jumpHandler({
+                to: child,
+                from: currentMenuItem,
+                beforeJump: $props.beforeJump as any,
+                jumpMethod: $props.jumpMethod as any,
+                menuData: $props.menuData
               })
             "
           >
@@ -29,15 +33,14 @@
 <script lang="ts">
 import '../style/index.less'
 
-import { defineComponent, toRefs, unref, computed } from 'vue'
+import type { PropType } from 'vue'
+import { computed, defineComponent, toRefs, unref } from 'vue'
 import { navigation } from '../../../_plugins/inhub'
-import { badgeConfig } from './hooks'
+import { badgeConfig, jumpHandler } from './hooks'
 import { useRoute } from 'vue-router'
 import { Badge } from 'blocks-next'
-import type { BeforeJump, Menu, MenuItem } from './types'
-import type { PropType } from 'vue'
-import { JumpMethod } from './types'
 import { isFunction } from 'lodash-es'
+import type { BeforeJump, Menu, MenuItem, JumpMethod } from './types'
 
 export default defineComponent({
   name: 'BcSideMenu',
@@ -68,25 +71,19 @@ export default defineComponent({
     const { jumpMethod, beforeJump } = toRefs(props)
     const currentRouteName = computed(() => useRoute()?.name ?? 'OverviewBi')
     // 当前的 MenuItem
-    const currentMenuItem = null
-
-    function jump(item: MenuItem) {
-      const params = {
-        name: item.routeName,
-        mainQuery: { routeName: item.title }
-      }
-
-      if (isFunction(unref(jumpMethod))) {
-        unref(jumpMethod)?.(item)
-      } else {
-        navigation(params)
-      }
-    }
+    const currentMenuItem = computed(() => {
+      const { menuData } = toRefs(props)
+      return unref(menuData)
+        .map(item => item.children)
+        .flat()
+        .find(item => item.routeName === unref(currentRouteName))
+    })
 
     return {
+      currentMenuItem,
       currentRouteName,
       badgeConfig,
-      jump
+      jumpHandler
     }
   }
 })

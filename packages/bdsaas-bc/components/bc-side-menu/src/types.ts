@@ -15,9 +15,10 @@ export interface MenuGroup {
 
 export type Menu = MenuGroup[]
 
-interface NavigationGuardNext {
+export interface NavigationGuardNext {
   (location: { name: string }): void
   (valid: boolean | undefined): void
+  (): void
 }
 
 export type BeforeJump = (
@@ -27,4 +28,4 @@ export type BeforeJump = (
 ) => void
 
 // fixme: item 类型改为交叉类型
-export type JumpMethod = (item: MenuItem) => void
+export type JumpMethod = (item?: MenuItem) => void
