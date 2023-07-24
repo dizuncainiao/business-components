@@ -28,7 +28,7 @@
  */
 
 import { reactive, toRefs } from 'vue'
-import http from '../../_plugins/axios-http'
+import http from '../../../_plugins/axios-http'
 
 enum Method {
   GET = 'get',
