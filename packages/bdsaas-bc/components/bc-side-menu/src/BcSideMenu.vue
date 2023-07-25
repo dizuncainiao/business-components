@@ -35,40 +35,36 @@ import '../style/index.less'
 
 import type { PropType } from 'vue'
 import { computed, defineComponent, toRefs, unref } from 'vue'
-import { navigation } from '../../../_plugins/inhub'
 import { badgeConfig, jumpHandler } from './hooks'
 import { useRoute } from 'vue-router'
 import { Badge } from 'blocks-next'
-import { isFunction } from 'lodash-es'
-import type { BeforeJump, Menu, MenuItem, JumpMethod } from './types'
+import type { SideMenuProps } from './types'
 
 export default defineComponent({
   name: 'BcSideMenu',
-  methods: { navigation },
   components: {
     Badge
   },
   props: {
     // 菜单数据
     menuData: {
-      type: Array as PropType<Menu>,
+      type: Array as PropType<SideMenuProps['menuData']>,
       required: true
     },
     // 权限数据
     authKeys: {
-      type: Array as PropType<string[]>
+      type: Array as PropType<SideMenuProps['authKeys']>
     },
     // 路由守卫-跳转之前
     beforeJump: {
-      type: Function as PropType<BeforeJump>
+      type: Function as PropType<SideMenuProps['beforeJump']>
     },
     // 导航跳转方法
     jumpMethod: {
-      type: Function as PropType<JumpMethod>
+      type: Function as PropType<SideMenuProps['jumpMethod']>
     }
   },
   setup(props) {
-    const { jumpMethod, beforeJump } = toRefs(props)
     const currentRouteName = computed(() => useRoute()?.name ?? 'OverviewBi')
     // 当前的 MenuItem
     const currentMenuItem = computed(() => {
