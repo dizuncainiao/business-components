@@ -2,6 +2,7 @@ import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
+import vueJsx from '@vitejs/plugin-vue-jsx'
 
 const cssPath =
   '../../../packages/bdsaas-bc/components/bc-side-menu/style/index.less'
@@ -12,6 +13,7 @@ export default defineConfig({
   base: './',
   plugins: [
     vue(),
+    vueJsx(),
     dts({
       outputDir: resolve(__dirname, './dist/es'),
       tsConfigFilePath: './tsconfig.json'
@@ -31,7 +33,8 @@ export default defineConfig({
           this.emitFile({
             type: 'asset',
             fileName: key,
-            source: bundler.code.replace(cssPath, cssPath2) // todo 需要优化！！！（可能是 vite 版本导致，后期排查 rollup 配置）
+            source: bundler.code.replace(/\.less/g, '.css') // fixme 有问题，需要优化！！！
+            // source: bundler.code.replace(cssPath, cssPath2) // todo 需要优化！！！（可能是 vite 版本导致，后期排查 rollup 配置）
           })
         }
       }
