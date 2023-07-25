@@ -4,6 +4,7 @@ import 'blocks-next/theme-default/index.css'
 
 // 业务组件
 export { BcSideMenu } from './components/bc-side-menu'
+export { BcLayout } from './components/bc-layout'
 
 // 通用表格工具类
 export { default as BcTableUtil } from './components/bc-table/src/util'
