@@ -3,10 +3,7 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import dts from 'vite-plugin-dts'
 import vueJsx from '@vitejs/plugin-vue-jsx'
-
-const cssPath =
-  '../../../packages/bdsaas-bc/components/bc-side-menu/style/index.less'
-const cssPath2 = '../style/index.css'
+import { replaceBundle } from './_utils'
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -32,7 +29,7 @@ export default defineConfig({
           this.emitFile({
             type: 'asset',
             fileName: key,
-            source: bundler.code.replace(/\.less/g, '.css')
+            source: replaceBundle(bundler.code)
           })
         }
       }
