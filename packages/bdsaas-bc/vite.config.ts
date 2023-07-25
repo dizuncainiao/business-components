@@ -20,24 +20,23 @@ export default defineConfig({
     dts({
       outDir: resolve(__dirname, './dist/lib'),
       tsconfigPath: './tsconfig.json'
-    })
-    // {
-    //   name: 'style',
-    //   generateBundle(config, bundle) {
-    //     const keys = Object.keys(bundle)
-    //
-    //     for (const key of keys) {
-    //       const bundler: any = bundle[key as string]
-    //
-    //       this.emitFile({
-    //         type: 'asset',
-    //         fileName: key,
-    //         source: bundler.code.replace(/\.less/g, '.css') // fixme 有问题，需要优化！！！
-    //         // source: bundler.code.replace(cssPath, cssPath2) // todo 需要优化！！！（可能是 vite 版本导致，后期排查 rollup 配置）
-    //       })
-    //     }
-    //   }
-    // }
+    }),
+    {
+      name: 'handle-style',
+      generateBundle(config, bundle) {
+        const keys = Object.keys(bundle)
+
+        for (const key of keys) {
+          const bundler = bundle[key] as any
+
+          this.emitFile({
+            type: 'asset',
+            fileName: key,
+            source: bundler.code.replace(/\.less/g, '.css')
+          })
+        }
+      }
+    }
   ],
   build: {
     target: 'modules',
