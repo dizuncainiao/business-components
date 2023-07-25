@@ -5,4 +5,5 @@ const BcSideMenu = Object.assign(bcSideMenu, {
   install: (app: App) => app.component(bcSideMenu.name, bcSideMenu)
 })
 
-export { BcSideMenu }
+// export { BcSideMenu }
+export default BcSideMenu

@@ -5,4 +5,4 @@ const BcLayout = Object.assign(bcLayout, {
   install: (app: App) => app.component(bcLayout.name, bcLayout)
 })
 
-export { BcLayout }
+export default BcLayout
