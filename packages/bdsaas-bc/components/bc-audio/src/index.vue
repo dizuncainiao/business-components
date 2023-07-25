@@ -13,6 +13,7 @@ import { defineComponent } from 'vue'
 import { Button, Message } from 'blocks-next'
 import AudioPlayer from 'aplayer'
 import 'aplayer/dist/APlayer.min.css'
+import '../style/index.less'
 
 export default defineComponent({
   name: 'BcAudio',
@@ -124,7 +125,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="less">
-@import "../style/index.less";
-</style>
