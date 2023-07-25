@@ -11,5 +11,8 @@ export { default as BcTableUtil } from './components/bc-table/src/util'
 // 录音播放组件
 export { BcAudio } from './components/bc-audio'
 
+// 下载组件
+export { BcDownload } from './components/bc-download'
+
 // 请求拦截器
 export { initRequestInterceptors } from './_plugins/axios-http'
