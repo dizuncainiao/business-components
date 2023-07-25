@@ -1,7 +1,7 @@
 <template>
   <div class="bc-layout">
     <BcSideMenu v-if="$props.options.showMenu" v-bind="$props.options" />
-    <div class="{classList.value}">
+    <div :class="classList">
       <slot></slot>
     </div>
   </div>
