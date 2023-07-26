@@ -7,6 +7,7 @@ import 'blocks-next/theme-default/index.css'
 import BcSideMenu from './components/bc-side-menu'
 import BcLayout from './components/bc-layout'
 import BcAudio from './components/bc-audio'
+import BcDownload from './components/bc-download'
 
 // 通用表格工具类
 import BcTableUtil from './components/bc-table/src/util'
@@ -14,7 +15,7 @@ import BcTableUtil from './components/bc-table/src/util'
 // 请求拦截器
 import { initRequestInterceptors } from './_plugins/axios-http'
 
-export { BcSideMenu, BcLayout, BcAudio, BcTableUtil, initRequestInterceptors }
+export { BcSideMenu, BcLayout, BcAudio, BcDownload, BcTableUtil, initRequestInterceptors }
 
 const components = [BcSideMenu, BcLayout, BcAudio]
 
