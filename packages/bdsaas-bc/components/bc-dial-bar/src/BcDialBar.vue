@@ -10,7 +10,6 @@
     <transition name="fade-out-up">
       <div v-show="visible" class="bc-dial-bar">
         <!--开始页面-->
-
         <!--todo:如果需要隐藏的话，在计算属性里延迟 500ms 返回布尔值，让蓝色背景移入完毕再隐藏
          v-if="!['DIALING', 'CALLING'].includes($props.status)"-->
         <div class="bc-dial-bar-start">
@@ -25,7 +24,7 @@
             <img :src="imgTodo" alt="待办" />
             代办
           </div>
-          <div class="call" @click="$emit('call')">
+          <div class="call" @click="callHandler">
             <img :src="imgCall" alt="拨打" />拨打
           </div>
         </div>
@@ -45,7 +44,7 @@
               <div class="status-label">
                 {{ currentStatus.label }}<span class="dot">...</span>
               </div>
-              <div class="tip">{{ currentStatus.tip }}</div>
+              <div class="tip">{{ currentStatus.tip }}{{ timeText }}</div>
             </div>
             <div class="action" @click="closeHandler">
               <template v-if="$props.callType === 'CALLBACK'">
@@ -66,9 +65,10 @@
 import '../style/index.less'
 
 import type { PropType } from 'vue'
-import { computed, toRaw, defineComponent, reactive, ref } from 'vue'
+import { computed, toRaw, defineComponent, reactive, ref, watch } from 'vue'
 import { CallType, MouseEventType, Options, Status } from './types'
 import { imgCall, imgClose, imgTodo } from './base64'
+import { addZeros, secondsToHms } from '../../../_utils'
 
 export default defineComponent({
   name: 'BcDialBar',
@@ -96,11 +96,10 @@ export default defineComponent({
       {
         label: '拨打中', // 打电话状态，拨号条上显示的文字
         status: 'DIALING', // 打电话状态，用于业务方操作逻辑
-        time: 0, // 状态持续的时间（秒）
         startTime: 0, // 状态开始时间（时间戳）
         endTime: 0 // 状态结束时间（时间戳）
       },
-      { label: '通话中', status: 'CALLING', time: 0, startTime: 0, endTime: 0 }
+      { label: '通话中', status: 'CALLING', startTime: 0, endTime: 0 }
     ])
 
     const tipConfig = {
@@ -108,8 +107,8 @@ export default defineComponent({
         DIALING: '您的号码已经呼出，请注意接听'
       },
       FS: {
-        DIALING: '拨号时长',
-        CALLING: '通话时长'
+        DIALING: '拨号时长: ',
+        CALLING: '通话时长: '
       }
     }
 
@@ -147,13 +146,60 @@ export default defineComponent({
     }
 
     function closeHandler() {
-      emit('hang-up')
+      clearTimer()
+      emit('hang-up', props.callType)
       toggle(false)
     }
 
     function todoHandler() {
       emit('todo', props.options.todo)
       toggle(false)
+    }
+
+    const timer = ref()
+    const statusTimeCount = ref(0)
+    const timeText = computed(() => {
+      const { h, m, s } = secondsToHms(statusTimeCount.value)
+      return `${addZeros(h)}:${addZeros(m)}:${addZeros(s)}`
+    })
+
+    function clearTimer() {
+      clearInterval(timer.value)
+      statusTimeCount.value = 0
+    }
+
+    function initTimer() {
+      clearTimer()
+      timer.value = setInterval(() => {
+        statusTimeCount.value++
+      }, 1000)
+    }
+
+    watch(
+      () => props.status,
+      (val, oldVal) => {
+        console.log(val, oldVal, 'status change')
+        if (val === 'DIALING') {
+          // 拨号开始（FS、回拨状态）
+          statusConfig[0].startTime = Date.now()
+        } else if (val === 'CALLING') {
+          // 通话开始 & 拨号结束（FS状态）
+          statusConfig[1].startTime = Date.now()
+          statusConfig[0].endTime = Date.now()
+          initTimer()
+        } else if (oldVal === 'CALLING') {
+          // 通话结束（FS状态）
+          statusConfig[1].endTime = Date.now()
+        } else if (oldVal === 'DIALING') {
+          // 拨号结束（回拨状态）
+          statusConfig[0].endTime = Date.now()
+        }
+      }
+    )
+
+    function callHandler() {
+      emit('call')
+      initTimer()
     }
 
     expose({
@@ -175,9 +221,11 @@ export default defineComponent({
       hoverHandler,
       closeHandler,
       todoHandler,
+      callHandler,
       visible,
       currentStatus,
-      classList
+      classList,
+      timeText
     }
   }
 })
