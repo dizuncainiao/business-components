@@ -69,7 +69,13 @@ import '../style/index.less'
 
 import type { PropType } from 'vue'
 import { computed, toRaw, defineComponent, ref, watch } from 'vue'
-import { CallType, MouseEventType, Options, Status } from './types'
+import {
+  CallType,
+  MouseEventType,
+  Options,
+  Status,
+  StatusConfig
+} from './types'
 import { imgCall, imgClose, imgTodo } from './base64'
 import { addZeros, secondsToHms } from '../../../_utils'
 import { cloneDeep } from 'lodash-es'
@@ -97,7 +103,7 @@ export default defineComponent({
   emits: ['todo', 'call', 'hang-up', 'update:status'],
   setup(props, { expose, emit }) {
     const visible = ref(false)
-    const statusConfig = ref(cloneDeep(initStatusConfig))
+    const statusConfig = ref<StatusConfig[]>(cloneDeep(initStatusConfig))
 
     const tipConfig = {
       CALLBACK: {

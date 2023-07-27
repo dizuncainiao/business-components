@@ -9,3 +9,10 @@ export interface Options {
 }
 
 export type MouseEventType = 'mouseover' | 'mouseout'
+
+export type StatusConfig = {
+  label: string
+  status: string
+  startTime: number
+  endTime: number
+}
