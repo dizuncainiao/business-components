@@ -36,7 +36,10 @@
             class="bc-dial-bar-in-progress"
           >
             <div class="call-img">
-              <div class="img-box">
+              <div
+                class="img-box"
+                :class="$props.status === 'CALLING' && 'is-calling'"
+              >
                 <img :src="imgCall" alt="拨打" />
               </div>
             </div>
@@ -65,10 +68,12 @@
 import '../style/index.less'
 
 import type { PropType } from 'vue'
-import { computed, toRaw, defineComponent, reactive, ref, watch } from 'vue'
+import { computed, toRaw, defineComponent, ref, watch } from 'vue'
 import { CallType, MouseEventType, Options, Status } from './types'
 import { imgCall, imgClose, imgTodo } from './base64'
 import { addZeros, secondsToHms } from '../../../_utils'
+import { cloneDeep } from 'lodash-es'
+import { initStatusConfig } from './hooks'
 
 export default defineComponent({
   name: 'BcDialBar',
@@ -92,15 +97,7 @@ export default defineComponent({
   emits: ['todo', 'call', 'hang-up', 'update:status'],
   setup(props, { expose, emit }) {
     const visible = ref(false)
-    const statusConfig = reactive([
-      {
-        label: '拨打中', // 打电话状态，拨号条上显示的文字
-        status: 'DIALING', // 打电话状态，用于业务方操作逻辑
-        startTime: 0, // 状态开始时间（时间戳）
-        endTime: 0 // 状态结束时间（时间戳）
-      },
-      { label: '通话中', status: 'CALLING', startTime: 0, endTime: 0 }
-    ])
+    const statusConfig = ref(cloneDeep(initStatusConfig))
 
     const tipConfig = {
       CALLBACK: {
@@ -114,7 +111,7 @@ export default defineComponent({
 
     const currentStatus = computed(() => {
       const currentStatus =
-        statusConfig.find(item => item.status === props.status) ?? {}
+        statusConfig.value.find(item => item.status === props.status) ?? {}
       const tip = tipConfig[props.callType][props.status]
 
       return {
@@ -181,18 +178,18 @@ export default defineComponent({
         console.log(val, oldVal, 'status change')
         if (val === 'DIALING') {
           // 拨号开始（FS、回拨状态）
-          statusConfig[0].startTime = Date.now()
+          statusConfig.value[0].startTime = Date.now()
         } else if (val === 'CALLING') {
           // 通话开始 & 拨号结束（FS状态）
-          statusConfig[1].startTime = Date.now()
-          statusConfig[0].endTime = Date.now()
+          statusConfig.value[1].startTime = Date.now()
+          statusConfig.value[0].endTime = Date.now()
           initTimer()
         } else if (oldVal === 'CALLING') {
           // 通话结束（FS状态）
-          statusConfig[1].endTime = Date.now()
+          statusConfig.value[1].endTime = Date.now()
         } else if (oldVal === 'DIALING') {
-          // 拨号结束（回拨状态）
-          statusConfig[0].endTime = Date.now()
+          // 拨号结束（回拨状态、FS拨号中挂断）
+          statusConfig.value[0].endTime = Date.now()
         }
       }
     )
@@ -210,7 +207,10 @@ export default defineComponent({
         toggle(false)
       },
       getConfig() {
-        return toRaw(statusConfig)
+        return toRaw(statusConfig.value)
+      },
+      resetConfig() {
+        statusConfig.value = cloneDeep(initStatusConfig)
       }
     })
 

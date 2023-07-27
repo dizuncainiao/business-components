@@ -29,6 +29,10 @@ const configText = ref('')
 function getConfigText() {
   configText.value = JSON.stringify(dialBar.value.getConfig(), null, 2)
 }
+
+function reset() {
+  dialBar.value.resetConfig()
+}
 </script>
 
 <template>
@@ -38,8 +42,9 @@ function getConfigText() {
     </button>
     <br />
     <button @click="getConfigText">获取 config 数据</button>
+    <button @click="reset">重置 config</button>
     <pre v-html="configText"></pre>
-    <button @click="status = 'CALLING'">接通中{{ status }}</button>
+    <button @click="status = 'CALLING'">通话中{{ status }}</button>
     <BcDialBar
       ref="dialBar"
       :callType="callType"

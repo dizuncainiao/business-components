@@ -106,7 +106,60 @@
       height: 100%;
 
       .img-box {
+        position: relative;
         margin-left: 24px;
+
+        // 通话中开启涟漪动效
+        &.is-calling {
+          &::before,
+          &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            content: "";
+            border: white 1px solid;
+            border-radius: 100%;
+            transform: translate(-50%, -50%);
+          }
+
+          &::before {
+            opacity: 0.1;
+            animation: wave1 0.8s linear infinite;
+          }
+
+          &::after {
+            opacity: 0.2;
+            animation: wave2 0.8s linear infinite;
+          }
+        }
+
+        @keyframes wave2 {
+          from {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+          }
+
+          to {
+            width: 104px;
+            height: 104px;
+            border-radius: 100%;
+          }
+        }
+
+        @keyframes wave1 {
+          from {
+            width: 104px;
+            height: 104px;
+            border-radius: 100%;
+          }
+
+          to {
+            width: 160px;
+            height: 160px;
+            border-radius: 100%;
+          }
+        }
 
         img {
           width: 44px;
