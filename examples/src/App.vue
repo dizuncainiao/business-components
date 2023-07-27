@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import LayoutDemo from './components/layout-demo/LayoutDemo.vue'
+import DialBarDemo from './components/dial-bar-demo/DialBarDemo.vue'
 </script>
 
 <template>
-  <LayoutDemo />
+  <DialBarDemo />
 </template>
 
 <style>
