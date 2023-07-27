@@ -1,0 +1,87 @@
+.bc-list-search-container {
+  padding: 20px 40px;
+  background: #fff;
+  border-radius: 12px;
+
+  .bls-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #edf1f6;
+
+    .bls-title {
+      font-size: 18px;
+      font-weight: 500;
+      color: #242934;
+    }
+
+    .bls-header-operate {
+      display: flex;
+      align-items: center;
+      font-size: 14px;
+      color: #0056ff;
+      cursor: pointer;
+
+      img {
+        width: 14px;
+        height: 14px;
+        margin-right: 2px;
+      }
+    }
+  }
+
+  .bls-content {
+    .bls-item {
+      display: flex;
+      align-items: center;
+      width: 100%;
+      margin-top: 30px;
+      font-size: 14px;
+
+      .bls-item-name {
+        width: 100px;
+        color: #646b7a;
+      }
+
+      .bls-item-values {
+        display: flex;
+
+        .bls-value-item {
+          color: #242934;
+          cursor: pointer;
+        }
+
+        .bls-value-item + .bls-value-item {
+          margin-left: 48px;
+        }
+
+        .bls-value-item.active {
+          color: #0056ff;
+        }
+      }
+    }
+  }
+}
+
+.bls-header-popup {
+  .bls-checkbox-group {
+    padding: 20px;
+  }
+
+  .bls-checkbox-item + .bls-checkbox-item {
+    margin-top: 20px;
+  }
+
+  .bls-checkbox-operate {
+    display: flex;
+    justify-content: center;
+    min-width: 320px;
+    padding-top: 20px;
+    border-top: 1px solid #edf1f6;
+
+    .bn-button + .bn-button {
+      margin-left: 20px;
+    }
+  }
+}
