@@ -1,0 +1,286 @@
+.hover-wrapper {
+  max-width: 520px;
+}
+
+.bc-dial-bar {
+  position: relative;
+  width: 520px;
+  height: 86px;
+  margin-top: 8px;
+  overflow: hidden;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 20px 60px 0 rgb(100 107 122 / 30%);
+
+  .bc-dial-bar-start {
+    display: flex;
+    height: 100%;
+
+    .call-info {
+      flex: 1;
+      padding: 24px;
+
+      .phone {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px;
+        color: #242934;
+      }
+
+      .number {
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 14px;
+        color: #9ca6b9;
+
+        > span {
+          color: #242934;
+        }
+      }
+    }
+
+    .todo {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 89px;
+      height: 100%;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 14px;
+      color: #9ca6b9;
+      cursor: pointer;
+      border-left: 1px solid #edf1f6;
+
+      img {
+        width: 24px;
+        height: 24px;
+        margin-bottom: 12px;
+      }
+    }
+
+    .call {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      width: 90px;
+      height: 100%;
+      font-size: 14px;
+      font-weight: 500;
+      line-height: 14px;
+      color: #fff;
+      cursor: pointer;
+      background: #0056ff;
+
+      img {
+        width: 24px;
+        height: 24px;
+        //width: 18px;
+        //height: 18px;
+        margin-bottom: 15px;
+      }
+    }
+  }
+
+  .bc-dial-bar-in-progress {
+    position: absolute;
+    top: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    background: #0056ff;
+
+    //&.show {
+    //  transform: translateX(0);
+    //}
+
+    .call-img {
+      position: absolute;
+      display: flex;
+      align-items: center;
+      width: 147px;
+      height: 100%;
+
+      .img-box {
+        position: relative;
+        margin-left: 24px;
+
+        // 通话中开启涟漪动效
+        &.is-calling {
+          &::before,
+          &::after {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            content: "";
+            border: white 1px solid;
+            border-radius: 100%;
+            transform: translate(-50%, -50%);
+          }
+
+          &::before {
+            opacity: 0.1;
+            animation: wave1 0.8s linear infinite;
+          }
+
+          &::after {
+            opacity: 0.2;
+            animation: wave2 0.8s linear infinite;
+          }
+        }
+
+        @keyframes wave2 {
+          from {
+            width: 40px;
+            height: 40px;
+            border-radius: 100%;
+          }
+
+          to {
+            width: 104px;
+            height: 104px;
+            border-radius: 100%;
+          }
+        }
+
+        @keyframes wave1 {
+          from {
+            width: 104px;
+            height: 104px;
+            border-radius: 100%;
+          }
+
+          to {
+            width: 160px;
+            height: 160px;
+            border-radius: 100%;
+          }
+        }
+
+        img {
+          width: 44px;
+          height: 44px;
+        }
+      }
+    }
+
+    .call-info {
+      flex: 1;
+      margin-left: 92px;
+
+      .status-label {
+        font-size: 16px;
+        font-weight: 600;
+        line-height: 16px;
+        color: #fff;
+
+        .dot {
+          display: inline-block;
+          height: 1em;
+          overflow: hidden;
+          line-height: 1;
+          vertical-align: -0.25em;
+        }
+
+        .dot::before {
+          display: block;
+          white-space: pre-wrap;
+          content: "...\A..\A.";
+          animation: dot 1.5s infinite step-start both;
+        }
+
+        @keyframes dot {
+          33% {
+            transform: translateY(-2em);
+          }
+
+          66% {
+            transform: translateY(-1em);
+          }
+        }
+      }
+
+      .tip {
+        display: flex;
+        align-items: center;
+        margin-top: 8px;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 14px;
+        color: rgb(255 255 255 / 60%);
+      }
+    }
+
+    .action {
+      padding: 24px;
+      cursor: pointer;
+
+      .close {
+        width: 14px;
+        height: 14px;
+        opacity: 0.4;
+      }
+
+      .hang-up {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 80px;
+        height: 40px;
+        font-weight: 500;
+        color: #f12525;
+        background: #fff;
+        border-radius: 20px;
+      }
+    }
+  }
+}
+
+// 移入动画
+.slide-move-enter-active {
+  animation: slide-move-in 0.5s;
+}
+
+.slide-move-leave-active {
+  // 延迟 0.2s 执行，体验更好
+  animation: slide-move-in 0.2s 0.5s reverse;
+}
+
+@keyframes slide-move-in {
+  0% {
+    transform: translateX(100%);
+  }
+
+  60% {
+    transform: translateX(-5%);
+  }
+
+  100% {
+    transform: translateX(0);
+  }
+}
+
+// 移入动画-2
+.fade-out-up-enter-active {
+  animation: fade-out-up 0.5s;
+}
+
+.fade-out-up-leave-active {
+  animation: fade-out-up 0.2s reverse;
+}
+
+@keyframes fade-out-up {
+  0% {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
