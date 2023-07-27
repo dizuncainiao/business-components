@@ -8,6 +8,7 @@ import BcSideMenu from './components/bc-side-menu'
 import BcLayout from './components/bc-layout'
 import BcAudio from './components/bc-audio'
 import BcDownload from './components/bc-download'
+import BcListSearch from './components/bc-list-search'
 import BcDialBar from './components/bc-dial-bar'
 
 // 通用表格工具类
@@ -21,12 +22,13 @@ export {
   BcLayout,
   BcAudio,
   BcDownload,
+  BcListSearch,
   BcDialBar,
   BcTableUtil,
   initRequestInterceptors
 }
 
-const components = [BcSideMenu, BcLayout, BcAudio, BcDownload, BcDialBar]
+const components = [BcSideMenu, BcLayout, BcAudio, BcDownload, BcListSearch, BcDialBar]
 
 export default function (app: App) {
   components.forEach(component => component.install(app))
