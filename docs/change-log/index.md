@@ -1,3 +1,11 @@
+## [0.0.3](https://github.com/dizuncainiao/business-components/compare/v0.0.2...v0.0.3) (2023-07-27)
+
+### ✨ Features
+
+- ✨ 新增拨号条组件 ([6212368](https://github.com/dizuncainiao/business-components/commit/6212368))
+- ✨ 新增检索组件,后续按需继续实现多余功能 ([824b62a](https://github.com/dizuncainiao/business-components/commit/824b62a))
+- ✨ 新增下载组件及其文档 ([644ba4b](https://github.com/dizuncainiao/business-components/commit/644ba4b))
+
 ## [0.0.2](https://github.com/dizuncainiao/business-components/compare/v0.0.1...v0.0.2) (2023-07-25)
 
 ### ✨ Features
