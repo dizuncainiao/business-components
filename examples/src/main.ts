@@ -1,6 +1,6 @@
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'bdsaas-bc/style/index.css'
+import '../../packages/bdsaas-bc/style/index.less'
 import { initRequestInterceptors } from 'bdsaas-bc'
 import router from './router'
 
