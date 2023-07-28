@@ -51,9 +51,6 @@ export function internalJump(
 // 默认跳转方法
 export function defaultJump(params: MenuItem, router: Router) {
   const { routeName } = params
-  // navigation 太乱，报错！！！
-  // return navigation({ name: routeName, mainQuery: { routeName: title } })
-  // 徐总：子应用内部跳转直接用 router.push()
   router.push({ name: routeName })
 }
 
