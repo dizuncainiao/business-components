@@ -6,7 +6,7 @@ const matchingList = [
   'import "../../../packages/bdsaas-bc/components/bc-dial-bar/style/index.less";'
 ]
 
-const replaceVal = 'import "../style/index.css";'
+const replaceVal = 'import "../style/index.less";'
 
 export function replaceBundle(code: string) {
   matchingList.forEach(searchVal => {

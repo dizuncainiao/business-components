@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import LayoutDemo from '@/components/layout-demo/LayoutDemo.vue'
+import BcChartConfigModalDemo from '@/components/chart-config-modal-demo/BcChartConfigModalDemo.vue'
 </script>
 
 <template>
-  <layout-demo />
+  <bc-chart-config-modal-demo />
 </template>
 
 <style>

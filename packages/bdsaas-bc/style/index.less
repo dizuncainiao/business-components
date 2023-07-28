@@ -1,0 +1,19 @@
+/* 修复 BnMessage 组件层级比 element-plus dialog 低 */
+.z-index-3000 {
+  z-index: 3000 !important;
+}
+
+/* bc-chart-config-modal 全局样式 */
+.bc-chart-config-modal {
+  overflow: hidden;
+  border-radius: 12px !important;
+
+  .el-dialog__header {
+    padding: 0;
+    margin: 0;
+  }
+
+  .el-dialog__body {
+    padding: 0;
+  }
+}
