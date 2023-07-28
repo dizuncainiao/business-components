@@ -14,7 +14,8 @@
                 from: currentMenuItem,
                 beforeJump: $props.beforeJump as any,
                 jumpMethod: $props.jumpMethod as any,
-                menuData: $props.menuData
+                menuData: $props.menuData,
+                router: $router
               })
             "
           >

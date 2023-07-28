@@ -2,6 +2,7 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import 'bdsaas-bc/style/index.css'
 import { initRequestInterceptors } from 'bdsaas-bc'
+import router from './router'
 
 function getToken() {
   return 'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiIyNzk3IiwiZXhwIjoxNjg2MTI3ODU0fQ.DbYuEoiihanktkxiL9WzvMYt0Vm8IkddTzPr5MHZa44J-tRjbqAsRKZEo6G0QIGwpoyxs7ZiASkVEVUg7szwKw'
@@ -18,4 +19,4 @@ initRequestInterceptors(config => {
   return config
 })
 
-createApp(App).mount('#app')
+createApp(App).use(router).mount('#app')

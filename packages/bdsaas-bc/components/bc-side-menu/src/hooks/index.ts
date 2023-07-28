@@ -6,7 +6,7 @@ import {
   NavigationGuardNext
 } from '../types'
 import { isBoolean, isFunction, isNaN, isNumber } from 'lodash-es'
-import { navigation } from '../../../../_plugins/inhub'
+import type { Router } from 'vue-router'
 
 // 角标配置
 export function badgeConfig(item: MenuItem) {
@@ -26,7 +26,8 @@ export function badgeConfig(item: MenuItem) {
 // 内部跳转方法（组件内部调用的跳转方法）
 export function internalJump(
   jumpMethod: JumpMethod,
-  menuData: Menu
+  menuData: Menu,
+  router: Router
 ): JumpMethod {
   return (params: any) => {
     let menuItem: unknown
@@ -43,14 +44,17 @@ export function internalJump(
     }
     return isFunction(jumpMethod)
       ? jumpMethod(menuItem as MenuItem)
-      : defaultJump(menuItem as MenuItem)
+      : defaultJump(menuItem as MenuItem, router)
   }
 }
 
 // 默认跳转方法
-export function defaultJump(params: MenuItem) {
-  const { routeName, title } = params
-  return navigation({ name: routeName, mainQuery: { routeName: title } })
+export function defaultJump(params: MenuItem, router: Router) {
+  const { routeName } = params
+  // navigation 太乱，报错！！！
+  // return navigation({ name: routeName, mainQuery: { routeName: title } })
+  // 徐总：子应用内部跳转直接用 router.push()
+  router.push({ name: routeName })
 }
 
 // 跳转方法 todo: 考虑 next 参数是否可以直接传 internalJump 简化
@@ -76,6 +80,7 @@ type Params = {
   beforeJump: BeforeJump // 跳转前的钩子函数
   jumpMethod: JumpMethod // 外部配置的跳转方法
   menuData: Menu // 菜单数据
+  router: Router
 }
 
 /**
@@ -91,17 +96,18 @@ export function jumpHandler({
   from,
   beforeJump,
   jumpMethod,
-  menuData
+  menuData,
+  router
 }: Params) {
   // 判断 beforeJump 是否为存在
   if (isFunction(beforeJump)) {
     const navigationNext = () => {
       return (params: any) => {
         if (params) {
-          internalJump(jumpMethod, menuData)(params)
+          internalJump(jumpMethod, menuData, router)(params)
         } else {
           // 当调用 next()，也就是调用 next 不传参时
-          internalJump(jumpMethod, menuData)(to)
+          internalJump(jumpMethod, menuData, router)(to)
         }
       }
     }
@@ -113,6 +119,6 @@ export function jumpHandler({
     )
   } else {
     // 不存在则直接跳转，执行默认跳转（走 默认跳转方法 或 传入的 jumpMethod）
-    internalJump(jumpMethod, menuData)(to)
+    internalJump(jumpMethod, menuData, router)(to)
   }
 }

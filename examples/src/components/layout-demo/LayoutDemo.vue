@@ -1,11 +1,13 @@
 <script setup lang="ts">
 import { BcLayout } from 'bdsaas-bc'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
 
 defineOptions({
   name: 'LayoutDemo'
 })
 
+const router = useRouter()
 const menuData = [
   {
     groupName: '概况',
@@ -15,6 +17,20 @@ const menuData = [
         icon: 'icon-things-icon-2',
         title: '概况',
         routeName: 'OverviewBi',
+        showItem: true,
+        authKeys: []
+      },
+      {
+        icon: 'icon-things-icon-2',
+        title: 'TestOne',
+        routeName: 'TestOne',
+        showItem: true,
+        authKeys: []
+      },
+      {
+        icon: 'icon-things-icon-2',
+        title: 'TestTwo',
+        routeName: 'TestTwo',
         showItem: true,
         authKeys: []
       }
@@ -65,9 +81,10 @@ const menuData = [
 ]
 const options = ref({
   menuData,
-  jumpMethod: (routeName: string) => {
-    console.log(routeName)
-  },
+  // jumpMethod: (route: any) => {
+  //   console.log(route, 'route')
+  //   router.push({ name: route.routeName })
+  // },
   showMenu: true
 })
 
@@ -79,9 +96,10 @@ setTimeout(() => {
 <template>
   <div style="width: 100%; height: 100%;">
     <BcLayout :options="options">
+      <router-view />
       <div style="width: 600px; height: 600px; background: #646cff;">
         <button @click="options.showMenu = !options.showMenu">
-          click {{ options.showMenu }}
+          showMenu: {{ options.showMenu }}
         </button>
       </div>
     </BcLayout>
