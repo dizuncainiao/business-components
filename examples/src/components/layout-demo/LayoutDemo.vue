@@ -7,7 +7,6 @@ defineOptions({
   name: 'LayoutDemo'
 })
 
-const router = useRouter()
 const menuData = [
   {
     groupName: '概况',
