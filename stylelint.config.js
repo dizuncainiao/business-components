@@ -19,8 +19,8 @@ module.exports = {
     }
   ],
   rules: {
-    'no-duplicate-selectors': null,
-    'selector-class-pattern': null,
-    'no-descending-specificity': null
+    'no-duplicate-selectors': null, // 禁止重复选择器
+    'selector-class-pattern': null, // 类名格式
+    'no-descending-specificity': null // 禁止低优先级的选择器出现在高优先级的选择器之后
   }
 }

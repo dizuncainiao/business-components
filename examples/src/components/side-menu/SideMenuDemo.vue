@@ -73,11 +73,11 @@ const menuData = [
   }
 ]
 
-function jumpMethod(data) {
+function jumpMethod(data: any) {
   console.log('自定义的跳转方法', data)
 }
 
-function beforeJump(to, from, next) {
+function beforeJump(to: any, from: any, next: (args: any) => void) {
   console.log(to, 'to to')
   console.log(from, 'from from')
   next({ name: 'NumberManagement' })
