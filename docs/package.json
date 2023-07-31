@@ -11,10 +11,11 @@
   "keywords": [],
   "author": "",
   "devDependencies": {
-    "vitepress": "1.0.0-beta.6"
+    "vitepress": "1.0.0-beta.6",
+    "jsdom": "^22.1.0"
   },
   "dependencies": {
-    "bdsaas-bc": "^0.0.6",
+    "bdsaas-bc": "^0.0.7",
     "v-viewer": "^3.0.11"
   }
 }

@@ -7,11 +7,10 @@
   </div>
 </template>
 
-
 <script lang="ts">
 import { defineComponent } from 'vue'
 import { Button, Message } from 'blocks-next'
-import AudioPlayer from 'aplayer'
+import { AudioPlayer } from '../../../_plugins/a-player'
 import 'aplayer/dist/APlayer.min.css'
 import '../style/index.less'
 
@@ -21,37 +20,45 @@ export default defineComponent({
     BnButton: Button
   },
   props: {
-    src: { // 音频地址
+    src: {
+      // 音频地址
       type: String,
       default: '',
       required: true
     },
-    name: { // 音频名称
+    name: {
+      // 音频名称
       type: String,
       default: '',
       required: true
     },
-    artist: { // 音频作者
+    artist: {
+      // 音频作者
       type: String,
       default: '数企'
     },
-    successMsg: { // 播放成功提示
+    successMsg: {
+      // 播放成功提示
       type: String,
       default: ''
     },
-    errorMsg: { // 播放失败提示
+    errorMsg: {
+      // 播放失败提示
       type: String,
       default: '资源播放失败，请稍后重试'
     },
-    showBtn: { // 是否显示按钮
+    showBtn: {
+      // 是否显示按钮
       type: Boolean,
       default: true
     },
-    btnName: { // 按钮名称
+    btnName: {
+      // 按钮名称
       type: String,
       default: '播放'
     },
-    showErrorMsg: { // 是否显示错误提示
+    showErrorMsg: {
+      // 是否显示错误提示
       type: Boolean,
       default: false
     }
@@ -83,7 +90,7 @@ export default defineComponent({
             {
               name: props.name,
               url: props.src,
-              artist: props.artist,
+              artist: props.artist
             }
           ]
         })
@@ -101,7 +108,7 @@ export default defineComponent({
       })
 
       // TODO: 播放失败情况暂不提示，不确定是否是本地跨域访问音频资源报错导致每次播放完毕都会报错
-      audioPlayer.on('error', (e) => {
+      audioPlayer.on('error', e => {
         emit('afterError')
         if (props.showErrorMsg) {
           Message.error(props.errorMsg)
@@ -117,7 +124,7 @@ export default defineComponent({
       }
       audioPlayer = null
     }
-    
+
     return {
       play,
       destroy

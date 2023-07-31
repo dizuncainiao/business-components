@@ -29,7 +29,7 @@ export default defineConfig({
           { text: '音频播放', link: '/audio-player/' },
           { text: '表格工具方法', link: '/table/utils' }
         ]
-      },
+      }
     ],
 
     socialLinks: [
@@ -42,7 +42,6 @@ export default defineConfig({
   lastUpdated: true,
   vite: {
     server: {
-      open: true,
       port: 8888
     },
     ssr: {

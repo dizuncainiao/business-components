@@ -5,4 +5,4 @@
 3. BcSideMenu 在事儿电话中进行细测
 4. jsx 插件安装（完成）
 5. css 打包问题
-6. menuIcon 功能及测试
+6. menuIcon 功能及测试（blocks-next Icon 不支持按需加载）

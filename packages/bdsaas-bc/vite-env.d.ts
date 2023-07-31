@@ -6,3 +6,9 @@ declare module '*.vue' {
   const component: DefineComponent<{}, {}, any>
   export default component
 }
+
+// 解决：无法解析模块 'aplayer' 的定义 问题
+declare module 'aplayer' {
+  const APlayer: any
+  export default APlayer
+}

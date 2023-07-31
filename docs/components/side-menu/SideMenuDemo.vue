@@ -1,29 +1,7 @@
----
-BI Chart Small Chart Demo
----
-
-# 子应用导航菜单
-
-微服务子应用通用的左侧导航菜单
-
-<script setup lang="ts">
-import SideMenuDemo from '../components/side-menu/SideMenuDemo.vue'
-</script>
-
-<style>
-.special-small-chart .l-box h3 { margin-top: 0; }
-</style>
-
-## 预览
-
-<SideMenuDemo/>
-
-## 示例
-
-```vue
 <template>
   <div style="height: 350px; overflow: hidden; box-shadow: 0 0 8px #eee;">
-    <BcSideMenu
+    <component
+      :is="component"
       :menuData="menuData"
       :jumpMethod="jumpMethod"
       :beforeJump="beforeJump"
@@ -32,7 +10,15 @@ import SideMenuDemo from '../components/side-menu/SideMenuDemo.vue'
 </template>
 
 <script setup lang="ts">
-import { BcSideMenu } from 'bdsaas-bc'
+import { ref } from 'vue'
+
+const component = ref()
+
+if (!import.meta.env.SSR) {
+  import('bdsaas-bc').then(module => {
+    component.value = module.BcSideMenu
+  })
+}
 
 defineOptions({
   name: 'SideMenuDemo'
@@ -106,4 +92,3 @@ function beforeJump(to: any, from: any, next: (args: any) => void) {
   next({ name: 'NumberManagement' })
 }
 </script>
-```
