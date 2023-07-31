@@ -3,10 +3,11 @@ const matchingList = [
   'import "../../../packages/bdsaas-bc/components/bc-layout/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-side-menu/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-list-search/style/index.less";',
-  'import "../../../packages/bdsaas-bc/components/bc-dial-bar/style/index.less";'
+  'import "../../../packages/bdsaas-bc/components/bc-dial-bar/style/index.less";',
+  'import "../../../packages/bdsaas-bc/components/bc-chart-config-modal/style/index.less";'
 ]
 
-const replaceVal = 'import "../style/index.less";'
+const replaceVal = 'import "../style/index.css";'
 
 export function replaceBundle(code: string) {
   matchingList.forEach(searchVal => {
