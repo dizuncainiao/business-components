@@ -48,6 +48,7 @@ export default defineConfig({
         'qs',
         'vue',
         'vue-router',
+        'vue-draggable-next',
         /\.less/
       ],
       input: 'index.ts',

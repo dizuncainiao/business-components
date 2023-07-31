@@ -1,5 +1,5 @@
 import type { App } from 'vue'
-import './style/index.less'
+import './style/index.css'
 // 引入BlocksNext样式
 import 'blocks-next/theme-default/index.css'
 // 按需引入 element-plus 样式

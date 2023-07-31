@@ -61,14 +61,13 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
 import { ElIcon, ElTooltip } from 'element-plus'
 import { ArrowDown, QuestionFilled } from '@element-plus/icons-vue'
 import CollapseTransition from '../collapse-transition/CollapseTransition.vue'
-import { computed, unref } from 'vue'
+import { computed, unref, defineComponent } from 'vue'
 import { groupBy } from './hooks'
-import type { ChildItem, SubItem } from './types'
-import { Menu } from './types'
+import type { PropType } from 'vue'
+import type { ChildItem, SubItem, Menu } from './types'
 
 export default defineComponent({
   name: 'BasicMenu',
