@@ -1,3 +1,10 @@
+## [0.0.6](https://github.com/dizuncainiao/business-components/compare/v0.0.5...v0.0.6) (2023-07-31)
+
+### ✨ Features
+
+- ✨ 图表配置框样式抽离 ([902f903](https://github.com/dizuncainiao/business-components/commit/902f903))
+- ✨ 新增图表配置框 ([fe86fcd](https://github.com/dizuncainiao/business-components/commit/fe86fcd))
+
 ## [0.0.5](https://github.com/dizuncainiao/business-components/compare/v0.0.4...v0.0.5) (2023-07-28)
 
 ### 🐛 Bug Fixes
