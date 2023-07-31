@@ -70,3 +70,366 @@
   background-color: rgb(244 237 237 / 20%);
   border-radius: 1em;
 }
+
+// 数据报表组件
+.data-report-page-wrapper {
+  display: flex;
+  height: 671px;
+}
+
+.data-report-page-left-aside {
+  width: 280px;
+  height: 100%;
+  overflow-y: auto;
+  background: rgb(245 247 251 / 60%);
+}
+
+.data-report-page-left-aside {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.small-big-chart-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 200px;
+  height: 40px;
+  // 结合 el-tabs 组件高度，计算得出 10px
+  margin: 20px 0 10px;
+  background: #fff;
+  border-radius: 25px;
+
+  .chart-item {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 92px;
+    height: 32px;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    border-radius: 25px;
+    transition: 0.3s;
+
+    &:hover,
+    &.active {
+      color: #0056ff;
+      background: rgb(0 86 255 / 6%);
+    }
+  }
+}
+
+.data-report-page-tags {
+  width: 100%;
+
+  .el-tabs__nav-scroll {
+    display: flex;
+    justify-content: center;
+    padding: 0 46px;
+  }
+
+  .el-tabs__nav-wrap::after {
+    display: block !important;
+    height: 1px;
+    background-color: #edf1f6;
+  }
+
+  .el-tabs__active-bar {
+    height: 1px;
+    background-color: #0056ff;
+  }
+
+  .el-tabs__item {
+    font-size: 14px !important;
+  }
+}
+
+// 报表选择结果区域
+.data-report-selected-content-small {
+  flex: 1;
+  height: 100%;
+  padding: 32px 40px 80px;
+  overflow-y: auto;
+  user-select: none;
+
+  .tips-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    line-height: 1;
+  }
+
+  .selected-list {
+    display: grid;
+    grid-template-rows: repeat(1, 80px);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 12px;
+    height: 272px;
+    margin-top: 32px;
+    overflow: hidden;
+
+    .list-item {
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: 80px;
+      overflow: hidden;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+
+      &:hover {
+        .mask-box {
+          z-index: 2;
+          opacity: 1;
+        }
+      }
+
+      .mask-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0 0 0 / 60%);
+        opacity: 0;
+        transition: 0.3s;
+
+        .action-icon {
+          font-size: 24px;
+          color: #fff;
+          cursor: pointer;
+        }
+
+        .move {
+          cursor: move;
+        }
+      }
+    }
+
+    .empty-list-item {
+      border: 1px dashed #e1e4e8;
+    }
+  }
+}
+
+.data-report-selected-content-big {
+  flex: 1;
+  height: 100%;
+  padding: 32px 40px 80px;
+  overflow-y: auto;
+  user-select: none;
+
+  .tips-box {
+    line-height: 1;
+  }
+
+  .selected-list {
+    display: grid;
+    grid-template-rows: repeat(1, 80px);
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 12px;
+    margin-top: 32px;
+
+    .list-item {
+      position: relative;
+      display: grid;
+      place-items: center;
+      height: 80px;
+      overflow: hidden;
+      border: 1px solid #e1e4e8;
+      border-radius: 8px;
+
+      .mask-box {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: -1;
+        display: flex;
+        gap: 20px;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+        height: 100%;
+        background-color: rgb(0 0 0 / 60%);
+        opacity: 0;
+        transition: 0.3s;
+
+        .action-icon {
+          font-size: 24px;
+          color: #fff;
+          cursor: pointer;
+        }
+
+        .move {
+          cursor: move;
+        }
+      }
+
+      &:hover {
+        .mask-box {
+          z-index: 2;
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+.gray {
+  color: #9ca6b9;
+}
+
+/* 1. 声明过渡效果 */
+.fade-move,
+.fade-enter-active,
+.fade-leave-active {
+  transition: all 0.5s cubic-bezier(0.55, 0, 0.1, 1);
+}
+
+/* 2. 声明进入和离开的状态 */
+.fade-enter-from,
+.fade-leave-to {
+  opacity: 0;
+  transform: scaleY(0.01) translate(30px, 0);
+}
+
+/* 3. 确保离开的项目被移除出了布局流
+      以便正确地计算移动时的动画效果。 */
+.fade-leave-active {
+  position: absolute;
+}
+
+/* basic-menu 样式 */
+.basic-menu {
+  height: 522px;
+  padding: 0 40px 0 48px;
+  margin-top: 15px;
+  overflow-y: auto;
+  line-height: 1;
+  user-select: none;
+
+  .menu-item {
+    position: relative;
+    cursor: pointer;
+
+    &:not(:last-child) {
+      margin-bottom: 30px;
+    }
+
+    .title {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      font-size: 14px;
+      font-weight: 500;
+      color: #242934;
+    }
+
+    .children {
+      overflow: hidden;
+
+      .children-item {
+        &:first-child {
+          margin-top: 22px;
+        }
+
+        &:not(:last-child) {
+          margin-bottom: 6px;
+        }
+
+        // dot 代表有子数据
+        &.has-dot {
+          .children-item-title {
+            &::before {
+              display: inline-block;
+              width: 4px;
+              height: 4px;
+              content: "";
+              background: #646b7a;
+              border-radius: 100%;
+              transform: translateX(-6px);
+            }
+          }
+
+          &.active {
+            box-shadow: 0 2px 30px 0 rgb(50 94 181 / 8%);
+
+            .children-item-title {
+              background: rgb(252 253 254);
+              border-radius: 8px 8px 0 0;
+
+              &::before {
+                visibility: hidden;
+              }
+            }
+          }
+        }
+
+        .children-item-title {
+          display: flex;
+          align-items: center;
+          height: 28px;
+          padding-left: 16px;
+          font-size: 14px;
+          font-weight: 400;
+          color: #9ca6b9;
+          cursor: pointer;
+        }
+
+        .item-ol {
+          position: absolute;
+          z-index: 2;
+          width: 100%;
+          padding: 0 20px;
+          background: #fff;
+          border-radius: 0 0 8px 8px;
+          opacity: 1;
+
+          > li {
+            display: flex;
+            gap: 4px;
+            align-items: center;
+            justify-content: space-between;
+            width: 100%;
+            cursor: pointer;
+
+            &:first-child {
+              padding-top: 24px;
+            }
+
+            &:last-child {
+              padding-bottom: 24px;
+            }
+
+            &:hover,
+            &.active {
+              color: #0056ff;
+            }
+
+            &:not(:last-child) {
+              margin-bottom: 20px;
+            }
+
+            .tips-question {
+              color: #9ca6b9;
+              cursor: help;
+            }
+
+            span {
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+          }
+        }
+      }
+    }
+  }
+}
