@@ -75,7 +75,7 @@ const _DEFAULT_OPTIONS = {
 export default function BcTableUtil(url: string, queryForm: TypeQueryForm, options: TypeOptions) {
 
   const funcOptions: TypeOptions = Object.assign({}, _DEFAULT_OPTIONS, options) // 合并默认参数
-  
+
   const paramPageKey = funcOptions.paramPageKey || 'pageNo' // 请求参数中的页码key
 
   const paramPageSizeKey = funcOptions.paramPageSizeKey || 'pageSize'  // 请求参数中的每页条数key
@@ -84,7 +84,7 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
     [paramPageKey]: 1,
     [paramPageSizeKey]: 10
   })
-  
+
   const state = reactive({
     tableData: [], // 表格数据
     pageConfig: { // 分页数据
@@ -100,7 +100,7 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
     let form = queryForm
     // 如果有表单处理函数
     if (funcOptions.formHandler) {
-      form = funcOptions.formHandler(queryForm)
+      form = Object.assign({}, queryForm, funcOptions.formHandler(queryForm))
     }
 
     // 请求参数
