@@ -17,19 +17,7 @@
             <el-icon class="action-icon" @click="cancelActive(item)"
               ><Delete
             /></el-icon>
-            <!--            <b-icon-->
-            <!--              name="delete"-->
-            <!--              class="delete"-->
-            <!--              :style="{ fontSize: '24px' }"-->
-            <!--              style="margin-right: 16px"-->
-            <!--              @click="cancelActive(item)"-->
-            <!--            ></b-icon>-->
             <el-icon class="action-icon move"><Sort /></el-icon>
-            <!--            <b-icon-->
-            <!--              name="move"-->
-            <!--              class="move"-->
-            <!--              :style="{ fontSize: '24px' }"-->
-            <!--            ></b-icon>-->
           </div>
         </div>
       </transition-group>
@@ -37,62 +25,67 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts">
 import { ElIcon } from 'element-plus'
 import { Delete, Sort } from '@element-plus/icons-vue'
 import { VueDraggableNext } from 'vue-draggable-next'
-import { reactive, toRaw, watch } from 'vue'
+import { reactive, toRaw, watch, defineComponent } from 'vue'
 import { cloneDeep } from 'lodash-es'
+import type { PropType } from 'vue'
 
-const props = withDefaults(
-  defineProps<{
-    bigSelectedList: any
-    onSelected: (type: 'small' | 'big', data: any) => void
-  }>(),
-  {
-    bigSelectedList: []
+export default defineComponent({
+  name: 'DataReportBig',
+  components: { ElIcon, Delete, Sort, VueDraggableNext },
+  props: {
+    bigSelectedList: {
+      type: Array,
+      default: () => []
+    },
+    onSelected: {
+      type: Function as PropType<(type: 'small' | 'big', data: any) => void>,
+      required: true
+    }
+  },
+  setup(props) {
+    const state = reactive({
+      selectedList: []
+    })
+
+    watch(
+      () => props.bigSelectedList,
+      val => {
+        state.selectedList = val
+      },
+      {
+        deep: true,
+        immediate: true
+      }
+    )
+
+    watch(
+      () => state.selectedList,
+      val => {
+        props.onSelected('big', cloneDeep(toRaw(val)))
+      },
+      {
+        deep: true,
+        immediate: true
+      }
+    )
+
+    function cancelActive(item: any) {
+      item.active = false
+    }
+
+    function draggableChange(val: any) {
+      console.log(val)
+    }
+
+    return {
+      state,
+      cancelActive,
+      draggableChange
+    }
   }
-)
-
-const state = reactive({
-  selectedList: []
 })
-
-watch(
-  () => props.bigSelectedList,
-  val => {
-    state.selectedList = val
-    console.log(val, 'bigSelectedList bigSelectedList bigSelectedList')
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-watch(
-  () => state.selectedList,
-  val => {
-    props.onSelected('big', cloneDeep(toRaw(val)))
-    console.log(val, 'line 45 45 45 45 45 big big big big')
-  },
-  {
-    deep: true,
-    immediate: true
-  }
-)
-
-function cancelActive(item: any) {
-  item.active = false
-}
-
-function draggableChange(val: any) {
-  console.log(val)
-}
-</script>
-
-<script lang="ts">
-export default {
-  name: 'DataReportBig'
-}
 </script>

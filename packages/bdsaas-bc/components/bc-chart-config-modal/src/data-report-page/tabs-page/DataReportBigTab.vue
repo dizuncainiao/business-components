@@ -1,40 +1,43 @@
 <template>
   <el-tabs v-model="state.activeName">
     <el-tab-pane label="我的" name="my">
-      <BasicMenu :menu-data="props.data.big.my" @change="getData" />
+      <BasicMenu :menu-data="$props.data.big.my" @change="getData" />
     </el-tab-pane>
     <el-tab-pane label="团队" name="team">
-      <BasicMenu :menu-data="props.data.big.team" @change="getData" />
+      <BasicMenu :menu-data="$props.data.big.team" @change="getData" />
     </el-tab-pane>
   </el-tabs>
 </template>
 
-<script lang="ts" setup>
-import { ElTabs, ElTabPane } from 'element-plus'
-import { reactive } from 'vue'
+<script lang="ts">
+import { ElTabPane, ElTabs } from 'element-plus'
 import BasicMenu from '../../components/basic-menu/BasicMenu.vue'
-import type { Menu } from '../../components/basic-menu/types'
+import { defineComponent, reactive } from 'vue'
+import type { BigTagData } from '../type'
+import type { PropType } from 'vue'
 
-const props = defineProps<{
-  data: {
-    big: {
-      my: Menu
-      team: Menu
+export default defineComponent({
+  name: 'DataReportBigTag',
+  components: { BasicMenu, ElTabs, ElTabPane },
+  props: {
+    data: {
+      type: Object as PropType<BigTagData>,
+      required: true
+    }
+  },
+  setup() {
+    const state = reactive({
+      activeName: 'my'
+    })
+
+    function getData(info: any) {
+      info.active && (info.item.active = info.active)
+    }
+
+    return {
+      state,
+      getData
     }
   }
-}>()
-
-const state = reactive({
-  activeName: 'my'
 })
-
-function getData(info: any) {
-  info.active && (info.item.active = info.active)
-}
-</script>
-
-<script lang="ts">
-export default {
-  name: 'DataReportBigTag'
-}
 </script>
