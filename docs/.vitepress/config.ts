@@ -21,7 +21,15 @@ export default defineConfig({
       {
         text: '布局组件',
         items: [{ text: 'SideMenu 导航菜单', link: '/side-menu/' }]
-      }
+      },
+      {
+        text: '功能组件',
+        items: [
+          { text: '下载按钮', link: '/download/' },
+          { text: '音频播放', link: '/audio-player/' },
+          { text: '表格工具方法', link: '/table/utils' }
+        ]
+      },
     ],
 
     socialLinks: [
