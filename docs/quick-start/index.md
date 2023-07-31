@@ -23,7 +23,7 @@ $ yarn add bdsaas-bc
 // main.ts
 import { createApp } from 'vue'
 import App from './App.vue'
-import 'bdsaas-bc/style/index.css'
+import 'bdsaas-bc/dist/es/style.css'
 
 createApp(App).mount('#app')
 ```
