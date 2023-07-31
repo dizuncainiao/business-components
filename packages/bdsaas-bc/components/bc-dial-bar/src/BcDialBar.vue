@@ -47,7 +47,7 @@
               <div class="status-label">
                 {{ currentStatus.label }}<span class="dot">...</span>
               </div>
-              <div class="tip">{{ currentStatus.tip }}{{ timeText }}</div>
+              <div class="tip">{{ currentStatus.tip }} {{ timeText }}</div>
             </div>
             <div class="action" @click="closeHandler">
               <template v-if="$props.callType === 'CALLBACK'">
