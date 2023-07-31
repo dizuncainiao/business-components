@@ -43,15 +43,28 @@
 import '../style/index.less'
 
 import { MessageBox, Button as BnButton } from 'blocks-next'
-import { computed, reactive, provide, defineComponent } from 'vue'
+import { computed, reactive, provide, defineComponent, PropType } from 'vue'
 import { Close } from '@element-plus/icons-vue'
 import { ElDialog, ElButton, ElIcon } from 'element-plus'
 import DataReportPage from './data-report-page/DataReportPage.vue'
+import { MenuConfig, MenuSourceData } from './types'
+import { useMenuData } from './hooks'
 
 export default defineComponent({
   name: 'BcChartConfigModal',
   components: { Close, ElDialog, ElButton, ElIcon, BnButton },
-  props: {},
+  props: {
+    // 接口获取的菜单数据
+    menuSourceData: {
+      type: Object as PropType<MenuSourceData>,
+      required: true
+    },
+    // 接口获取的已配置的菜单数据
+    menuConfig: {
+      type: Object as PropType<MenuConfig>,
+      required: true
+    }
+  },
   emits: ['configured'],
   setup(props, { expose, emit }) {
     const state = reactive({
@@ -123,6 +136,9 @@ export default defineComponent({
 
     provide('getDataReportConfigData', getDataReportConfigData)
     provide('getPurchaseConfigData', getPurchaseConfigData)
+    provide('useMenuData', () =>
+      useMenuData(props.menuSourceData, props.menuConfig)
+    )
 
     expose({
       toggle

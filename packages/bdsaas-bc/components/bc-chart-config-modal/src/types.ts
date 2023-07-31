@@ -7,5 +7,17 @@ export interface Item {
   id: number
   type: 1 | 2 // 报表类型1小 2大
   url: string // 数据链接
-  description: string
+  description?: string
 }
+
+export type MenuSourceData = {
+  parentAuth: string
+  auth: string
+  parentAuthName: string
+  authName: string
+  icon: string
+  formList: Item[]
+  routeName?: null
+}
+
+export type MenuConfig = Item[]

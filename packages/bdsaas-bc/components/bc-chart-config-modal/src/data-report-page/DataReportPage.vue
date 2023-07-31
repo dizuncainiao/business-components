@@ -47,26 +47,29 @@ import DataReportBig from './added-page/DataReportBig.vue'
 import DataReportSmallTab from './tabs-page/DataReportSmallTab.vue'
 import DataReportBigTab from './tabs-page/DataReportBigTab.vue'
 import { cloneDeep } from 'lodash-es'
-import { mockMenuData2 } from './mock'
+// import { mockMenuData2 } from './mock'
 
 export default defineComponent({
   name: 'DataReportPage',
   setup() {
+    const initMenuData = {
+      small: {
+        my: [],
+        team: []
+      },
+      big: {
+        my: [],
+        team: []
+      }
+    }
+
+    const useMenuData = inject('useMenuData') as any
     const getDataReportConfigData = inject('getDataReportConfigData') as any
     const state = reactive({
       currentIndex: 0,
       smallBigChartText: ['小报表', '大报表'],
-      menuData: mockMenuData2
-      // menuData: {
-      //   small: {
-      //     my: [],
-      //     team: []
-      //   },
-      //   big: {
-      //     my: [],
-      //     team: []
-      //   }
-      // }
+      // menuData: mockMenuData2
+      menuData: useMenuData() ?? initMenuData
     })
     // 在子组件中收集选中的项
     const selectedList = reactive({
