@@ -11,14 +11,11 @@
 
 <script setup lang="ts">
 import { ref } from 'vue'
+import { useBDSaasBC } from '../../utils'
 
 const component = ref()
 
-if (!import.meta.env.SSR) {
-  import('bdsaas-bc').then(module => {
-    component.value = module.BcSideMenu
-  })
-}
+useBDSaasBC(component, 'BcSideMenu')
 
 defineOptions({
   name: 'SideMenuDemo'
@@ -83,7 +80,7 @@ const menuData = [
 ]
 
 function jumpMethod(data: any) {
-  console.log('自定义的跳转方法', data)
+  console.log('自定义的跳转方法 啦啦啦', data)
 }
 
 function beforeJump(to: any, from: any, next: (args: any) => void) {
