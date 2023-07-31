@@ -1,3 +1,10 @@
+## [0.0.7](https://github.com/dizuncainiao/business-components/compare/v0.0.6...v0.0.7) (2023-07-31)
+
+### 🚀 Performance Improvements
+
+- 🚀 BcChartConfigModal 组件优化 ([91b29f3](https://github.com/dizuncainiao/business-components/commit/91b29f3))
+- 🚀 ConfigModal changes props visible to false ([015f2f8](https://github.com/dizuncainiao/business-components/commit/015f2f8))
+
 ## [0.0.6](https://github.com/dizuncainiao/business-components/compare/v0.0.5...v0.0.6) (2023-07-31)
 
 ### ✨ Features
