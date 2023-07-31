@@ -1,6 +1,6 @@
 <template>
   <div class="basic-menu">
-    <div v-for="item of props.menuData" :key="item.title" class="menu-item">
+    <div v-for="item of $props.menuData" :key="item.title" class="menu-item">
       <h3 class="title" @click="item.open = !item.open">
         {{ item.title }}
         <el-icon v-if="item?.children?.length">
@@ -37,7 +37,7 @@
                   :class="subItem.active && 'active'"
                   @click="selectHandler(subItem)"
                 >
-                  <span style="width: 125px;">
+                  <span class="w125">
                     {{ `${index + 1}.${subItem.title}` }}
                   </span>
                   <el-tooltip
@@ -60,57 +60,73 @@
   </div>
 </template>
 
-<script lang="ts" setup>
+<script lang="ts">
+import { defineComponent, PropType } from 'vue'
 import { ElIcon, ElTooltip } from 'element-plus'
 import { ArrowDown, QuestionFilled } from '@element-plus/icons-vue'
 import CollapseTransition from '../collapse-transition/CollapseTransition.vue'
 import { computed, unref } from 'vue'
 import { groupBy } from './hooks'
-import type { ChildItem, Props, SubItem } from './types'
+import type { ChildItem, SubItem } from './types'
+import { Menu } from './types'
 
-const props = withDefaults(defineProps<Props>(), {
-  trigger: 'hover'
-})
+export default defineComponent({
+  name: 'BasicMenu',
+  components: {
+    ElIcon,
+    ElTooltip,
+    ArrowDown,
+    QuestionFilled,
+    CollapseTransition
+  },
+  props: {
+    menuData: {
+      type: Array as PropType<Menu>,
+      required: true
+    },
+    trigger: {
+      type: String as () => 'hover' | 'click',
+      default: 'hover'
+    }
+  },
+  setup(props, { emit, expose }) {
+    const activeList = computed(() => groupBy(props.menuData, 'desc'))
 
-const emit = defineEmits<{
-  (e: 'change', data: any): void
-}>()
+    function clickOpenHandler(childItem: ChildItem) {
+      if (props.trigger === 'click') {
+        childItem.open = !childItem.open
+      }
+    }
 
-// 包含 active 属性（最底级的数据项）的扁平化数组
-const activeList = computed(() => groupBy(props.menuData, 'desc'))
+    function hoverOpenHandler(childItem: ChildItem, val: boolean) {
+      if (props.trigger === 'hover') {
+        childItem.open = val as boolean
+      }
+    }
 
-function clickOpenHandler(childItem: ChildItem) {
-  if (props.trigger === 'click') {
-    childItem.open = !childItem.open
+    function selectHandler(subItem: SubItem) {
+      emit('change', {
+        menuData: props.menuData,
+        item: subItem,
+        active: !subItem.active
+      })
+    }
+
+    // 获取选中的项，输出一个扁平化的数组
+    function getSelectedItems() {
+      return unref(activeList).filter((item: any) => item.active)
+    }
+
+    expose({
+      getSelectedItems
+    })
+
+    return {
+      clickOpenHandler,
+      hoverOpenHandler,
+      selectHandler,
+      getSelectedItems
+    }
   }
-}
-
-function hoverOpenHandler(childItem: ChildItem, val: boolean) {
-  if (props.trigger === 'hover') {
-    childItem.open = val as boolean
-  }
-}
-
-function selectHandler(subItem: SubItem) {
-  emit('change', {
-    menuData: props.menuData,
-    item: subItem,
-    active: !subItem.active
-  })
-}
-
-// 获取选中的项，输出一个扁平化的数组
-function getSelectedItems() {
-  return unref(activeList).filter((item: any) => item.active)
-}
-
-defineExpose({
-  getSelectedItems
 })
-</script>
-
-<script lang="ts">
-export default {
-  name: 'BasicMenu'
-}
 </script>

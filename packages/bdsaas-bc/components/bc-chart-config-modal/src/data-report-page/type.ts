@@ -1,4 +1,6 @@
 // 查询菜单关联报表接口
+import { Menu } from '../components/basic-menu/types'
+
 export interface FormList {
   formProperty: number
   formType: number
@@ -46,7 +48,7 @@ export interface MyTeam {
   my: MenuDataHasChild[]
   team: MenuDataHasChild[]
 }
-// ts真好， 给我整吐了
+
 export interface State {
   small: MyTeam
   big: MyTeam
@@ -67,4 +69,18 @@ export interface MenuDataState {
   currentIndex: number
   smallBigChartText: string[]
   menuData: State
+}
+
+export interface SmallTagData {
+  small: {
+    my: Menu
+    team: Menu
+  }
+}
+
+export interface BigTagData {
+  big: {
+    my: Menu
+    team: Menu
+  }
 }
