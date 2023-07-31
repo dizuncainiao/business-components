@@ -32,8 +32,8 @@
     <div class="customize-dialog-content">
       <component :is="currentComponent" />
       <div class="customize-dialog-footer">
-        <el-button @click="toggle(false)">取消</el-button>
-        <el-button type="primary" @click="saveHandler">确认</el-button>
+        <bn-button @click="toggle(false)">取消</bn-button>
+        <bn-button type="primary" @click="saveHandler">确认</bn-button>
       </div>
     </div>
   </el-dialog>
@@ -42,7 +42,7 @@
 <script lang="ts">
 import '../style/index.less'
 
-import { MessageBox } from 'blocks-next'
+import { MessageBox, Button as BnButton } from 'blocks-next'
 import { computed, reactive, provide, defineComponent } from 'vue'
 import { Close } from '@element-plus/icons-vue'
 import { ElDialog, ElButton, ElIcon } from 'element-plus'
@@ -50,14 +50,14 @@ import DataReportPage from './data-report-page/DataReportPage.vue'
 
 export default defineComponent({
   name: 'BcChartConfigModal',
-  components: { Close, ElDialog, ElButton, ElIcon },
+  components: { Close, ElDialog, ElButton, ElIcon, BnButton },
   props: {},
   emits: ['configured'],
   setup(props, { expose, emit }) {
     const state = reactive({
       visible: true,
       currentIndex: 0,
-      tabs: [/*'购买情况',*/ '数据报表'],
+      tabs: ['数据报表'],
       // 选择后的配置数据
       selectedConfigData: {
         dataReport: {},
@@ -65,22 +65,23 @@ export default defineComponent({
       }
     })
 
-    const comps = [/*PurchasePage,*/ DataReportPage]
+    // 主内容区组件（左侧菜单+右侧已选择内容区）
+    const mainComponents = [DataReportPage]
 
-    const currentComponent = computed(() => comps[state.currentIndex])
+    const currentComponent = computed(() => mainComponents[state.currentIndex])
 
-    function tabChange(i: number) {
-      state.currentIndex = i
+    function tabChange(index: number) {
+      state.currentIndex = index
     }
 
-    function toggle(val: boolean) {
-      state.visible = val
+    function toggle(visible: boolean) {
+      state.visible = visible
     }
 
     /**
      * 获取数据报表的配置数据（核心注释！！！）
      * CustomizeDialog.vue 组件作为数据收集的最顶级父级
-     * 该数据会从 CustomizeDialog.vue -----> DataReportPage.vue -----> DataReportBig.vue、DataReportSmall.vue 从父到子层层传递（废弃，改为 provide/inject 依赖注入方式直接传递）
+     * 该数据会从 CustomizeDialog.vue -----> DataReportPage.vue -----> DataReportBig.vue、DataReportSmall.vue 从父到子层层传递（左边废弃，改为 provide/inject 依赖注入方式直接传递）
      * @param data
      */
     function getDataReportConfigData(data: any) {

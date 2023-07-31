@@ -4,7 +4,6 @@
   </transition>
 </template>
 <script lang="ts">
-import './index.less'
 import type { RendererElement } from 'vue'
 import { defineComponent } from 'vue'
 

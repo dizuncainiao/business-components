@@ -1,7 +1,7 @@
-<!-- todo 数据报表组件 -->
+<!-- 数据报表组件 -->
 <template>
   <div class="data-report-page-wrapper">
-    <aside class="left-aside">
+    <aside class="data-report-page-left-aside">
       <!-- 大小报表切换 -->
       <div class="small-big-chart-wrapper">
         <span
@@ -101,81 +101,3 @@ export default {
   name: 'DataReportPage'
 }
 </script>
-
-<style scoped lang="less">
-.data-report-page-wrapper {
-  display: flex;
-  height: 671px;
-}
-
-.left-aside {
-  width: 280px;
-  height: 100%;
-  overflow-y: auto;
-  background: rgb(245 247 251 / 60%);
-}
-</style>
-
-<style lang="less">
-.left-aside {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
-
-.small-big-chart-wrapper {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 200px;
-  height: 40px;
-  // 结合 el-tabs 组件高度，计算得出 10px
-  margin: 20px 0 10px;
-  background: #fff;
-  border-radius: 25px;
-
-  .chart-item {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 92px;
-    height: 32px;
-    font-size: 14px;
-    font-weight: 500;
-    cursor: pointer;
-    border-radius: 25px;
-    transition: 0.3s;
-
-    &:hover,
-    &.active {
-      color: #0056ff;
-      background: rgb(0 86 255 / 6%);
-    }
-  }
-}
-
-.data-report-page-tags {
-  width: 100%;
-
-  .el-tabs__nav-scroll {
-    display: flex;
-    justify-content: center;
-    padding: 0 46px;
-  }
-
-  .el-tabs__nav-wrap::after {
-    display: block !important;
-    height: 1px;
-    background-color: #edf1f6;
-  }
-
-  .el-tabs__active-bar {
-    height: 1px;
-    background-color: #0056ff;
-  }
-
-  .el-tabs__item {
-    font-size: 14px !important;
-  }
-}
-</style>
