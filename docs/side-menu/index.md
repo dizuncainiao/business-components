@@ -12,9 +12,9 @@ import { BcSideMenu } from 'bdsaas-bc';
 .special-small-chart .l-box h3 { margin-top: 0; }
 </style>
 
-## 预览
-
-<BcSideMenu/>
+[//]: # '## 预览'
+[//]: #
+[//]: # '<BcSideMenu/>'
 
 ## 示例
 
