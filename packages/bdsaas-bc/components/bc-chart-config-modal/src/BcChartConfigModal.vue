@@ -68,7 +68,7 @@ export default defineComponent({
   emits: ['configured'],
   setup(props, { expose, emit }) {
     const state = reactive({
-      visible: true,
+      visible: false,
       currentIndex: 0,
       tabs: ['数据报表'],
       // 选择后的配置数据
