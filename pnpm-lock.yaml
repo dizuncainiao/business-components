@@ -126,8 +126,8 @@ importers:
   docs:
     dependencies:
       bdsaas-bc:
-        specifier: ^0.0.10
-        version: 0.0.10(aplayer@1.10.1)(axios@1.4.0)(lodash-es@4.17.21)(qs@6.11.2)(vue-draggable-next@2.2.1)(vue-router@4.1.6)(vue@3.3.4)
+        specifier: ^0.0.11
+        version: 0.0.11(aplayer@1.10.1)(axios@1.4.0)(lodash-es@4.17.21)(qs@6.11.2)(vue-draggable-next@2.2.1)(vue-router@4.1.6)(vue@3.3.4)
       v-viewer:
         specifier: ^3.0.11
         version: 3.0.11(vue@3.3.4)
@@ -2564,8 +2564,8 @@ packages:
       pascalcase: 0.1.1
     dev: true
 
-  /bdsaas-bc@0.0.10(aplayer@1.10.1)(axios@1.4.0)(lodash-es@4.17.21)(qs@6.11.2)(vue-draggable-next@2.2.1)(vue-router@4.1.6)(vue@3.3.4):
-    resolution: {integrity: sha512-LANddxASmyyF1BHl/ebVmWBBWFo8Cyf9QDmZjfnN6OR7f3CItbjftQht6pyL9fmTBCiT0k8/9+7jmu7vTJoG/A==}
+  /bdsaas-bc@0.0.11(aplayer@1.10.1)(axios@1.4.0)(lodash-es@4.17.21)(qs@6.11.2)(vue-draggable-next@2.2.1)(vue-router@4.1.6)(vue@3.3.4):
+    resolution: {integrity: sha512-Vkrn0QU8XiQYqwrjMM1Ux5cIYxEpjPR+uAX4npFnezxzHZ/mNYCjgxYIUKuB8hT/oeePN1XR7gcUcHOE5uXVCQ==}
     peerDependencies:
       aplayer: ^1.10.1
       axios: ^1.4.0
