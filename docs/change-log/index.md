@@ -1,3 +1,9 @@
+## [0.0.9](https://github.com/dizuncainiao/business-components/compare/v0.0.8...v0.0.9) (2023-08-01)
+
+### ✨ Features
+
+- ✨ 拨号条布局改为定位，函数式打开时居中 ([9283761](https://github.com/dizuncainiao/business-components/commit/9283761))
+
 ## [0.0.8](https://github.com/dizuncainiao/business-components/compare/v0.0.7...v0.0.8) (2023-08-01)
 
 ### 🐛 Bug Fixes
