@@ -1,5 +1,5 @@
 ---
-BI Chart Quick Start
+Quick Start
 ---
 
 # 快速上手

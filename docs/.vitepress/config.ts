@@ -20,7 +20,12 @@ export default defineConfig({
       },
       {
         text: '布局组件',
-        items: [{ text: 'SideMenu 导航菜单', link: '/side-menu/' }]
+        items: [
+          { text: 'SideMenu 导航菜单', link: '/side-menu/' },
+          { text: 'Layout 整体布局', link: '/layout/' },
+          { text: 'DialBar 拨号条', link: '/dial-bar/' },
+          { text: 'ChartConfigModal 图表配置框', link: '/chart-config-modal/' }
+        ]
       },
       {
         text: '功能组件',

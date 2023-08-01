@@ -208,3 +208,28 @@
     line-height: 1.7;
   }
 }
+
+button.beautify {
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  color: var(--vp-c-white);
+  cursor: pointer;
+  background-color: var(--vp-c-brand);
+  border: 1px solid var(--vp-c-brand-light);
+  border-radius: 4px;
+  transition: all 0.3s ease-in-out;
+
+  & + & {
+    margin-left: 1rem;
+  }
+
+  &:hover {
+    background-color: var(--vp-c-brand-light);
+    border: 1px solid var(--vp-c-brand-light);
+  }
+
+  &:active {
+    background-color: var(--vp-c-brand-lighter);
+    border: 1px solid var(--vp-c-brand-lighter);
+  }
+}

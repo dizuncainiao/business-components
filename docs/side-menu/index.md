@@ -1,24 +1,20 @@
 ---
-BI Chart Small Chart Demo
+Small Chart Demo
 ---
 
 # 子应用导航菜单
 
-微服务子应用通用的左侧导航菜单
+微服务子应用通用的左侧导航菜单，可以自定义跳转方法，也可以自定义跳转前的钩子函数。
 
 <script setup lang="ts">
 import SideMenuDemo from '../components/side-menu/SideMenuDemo.vue'
 </script>
 
-<style>
-.special-small-chart .l-box h3 { margin-top: 0; }
-</style>
-
-## 预览
+## 效果预览
 
 <SideMenuDemo/>
 
-## 示例
+## 示例代码
 
 ```vue
 <template>
@@ -40,15 +36,16 @@ defineOptions({
 
 const menuData = [
   {
-    groupName: '概况',
-    showGroup: true,
+    groupName: '概况', // 组名称
+    showGroup: true, // 是否显示组
     children: [
       {
-        icon: 'icon-things-icon-2',
-        title: '概况',
-        routeName: 'OverviewBi',
-        showItem: true,
-        authKeys: []
+        icon: 'icon-things-icon-2', // blocks-next Icon 图标名称
+        title: '概况', // 菜单子项名称
+        routeName: 'OverviewBi', // 跳转页面的 routeName
+        showItem: true, // 是否显示组下面的菜单子项
+        authKeys: ['a', 'b'], // 控制菜单展示的权限 key
+        notice: true // boolean | number，true 则显示红点，数值则显示红点数字。默认值：false
       }
     ]
   },
@@ -65,34 +62,6 @@ const menuData = [
         notice: true
       }
     ]
-  },
-  {
-    groupName: '管理',
-    showGroup: true,
-    children: [
-      {
-        icon: 'icon-things-icon-4',
-        title: '质检管理',
-        routeName: 'QualityInspection',
-        showItem: true,
-        authKeys: [],
-        notice: 9
-      },
-      {
-        icon: 'icon-things-icon-6',
-        title: '人员管理',
-        routeName: 'PersonnelManagement',
-        showItem: true,
-        authKeys: []
-      },
-      {
-        icon: 'icon-things-icon-3',
-        title: '号码管理',
-        routeName: 'NumberManagement',
-        showItem: true,
-        authKeys: []
-      }
-    ]
   }
 ]
 
@@ -107,3 +76,12 @@ function beforeJump(to: any, from: any, next: (args: any) => void) {
 }
 </script>
 ```
+
+## 属性
+
+| 属性名     | 说明           | 类型                     | 可选值 | 默认值 |
+| ---------- | -------------- | ------------------------ | ------ | ------ |
+| menuData   | 菜单数据       | Array                    | —      | —      |
+| authKeys   | 权限数据       | Array                    | —      | —      |
+| beforeJump | 跳转之前的钩子 | (to, from, next) => void | —      | —      |
+| jumpMethod | 自定义跳转方法 | (menuItem) => void       | —      | —      |
