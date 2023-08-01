@@ -1,3 +1,9 @@
+## [0.0.10](https://github.com/dizuncainiao/business-components/compare/v0.0.9...v0.0.10) (2023-08-01)
+
+### 🐛 Bug Fixes
+
+- 🐛 bc-download 样式引入报错 ([ab5d7a1](https://github.com/dizuncainiao/business-components/commit/ab5d7a1))
+
 ## [0.0.9](https://github.com/dizuncainiao/business-components/compare/v0.0.8...v0.0.9) (2023-08-01)
 
 ### ✨ Features
