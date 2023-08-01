@@ -1,6 +1,7 @@
 <template>
-  <div class="bc-audio-btn" @click="play">
-    <bn-button type="primary" link>{{ btnName }}</bn-button>
+  <div class="bc-audio-btn" :class="{ inline }" @click="play">
+    <bn-button type="primary" v-if="showBtn && !isSlot" link>{{ btnName }}</bn-button>
+    <slot name="default"></slot>
     <div class="audio-player-wrap">
       <div id="audioPlayer"></div>
     </div>
@@ -8,7 +9,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, useSlots } from 'vue'
 import { Button, Message } from 'blocks-next'
 import { AudioPlayer } from '../../../_plugins/a-player'
 import 'aplayer/dist/APlayer.min.css'
@@ -61,11 +62,19 @@ export default defineComponent({
       // 是否显示错误提示
       type: Boolean,
       default: false
+    },
+    inline: {
+      // 是否行内展示
+      type: Boolean,
+      default: false
     }
   },
   emits: ['afterPlay', 'afterError'],
   expose: ['play', 'destroy'],
   setup(props, { emit }) {
+
+    const isSlot = !!useSlots().default
+
     let audioPlayer: any = null
 
     // 播放
@@ -127,7 +136,8 @@ export default defineComponent({
 
     return {
       play,
-      destroy
+      destroy,
+      isSlot
     }
   }
 })

@@ -14,6 +14,7 @@
 | showBtn | Boolean | 非必传 | true | 是否显示按钮 |
 | btnName | String | 非必传 | '播放' | 按钮名称 |
 | showErrorMsg | Boolean | 非必传 | false | 是否显示错误提示 |
+| inline  | Boolean | 非必传 | false | 是否行内块 |
 
 ### Methods
 
@@ -28,6 +29,12 @@
 | --- | --- |
 | afterPlay | 播放完成后回调 |
 | afterError | 播放错误后回调 |
+
+### Slots
+
+| 插槽名称 | 插槽描述 |
+| --- | --- |
+| default | 自定义按钮 |
 
 ## 使用示例
 
