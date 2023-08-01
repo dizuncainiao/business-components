@@ -53,24 +53,6 @@
   }
 }
 
-// 滚动条
-::-webkit-scrollbar {
-  width: 2px;
-  height: 8px;
-}
-
-// 滚动条头
-::-webkit-scrollbar-thumb {
-  background-color: rgb(184 198 211 / 20%);
-  border-radius: 1em;
-}
-
-// 滚动条轨道
-::-webkit-scrollbar-track {
-  background-color: rgb(244 237 237 / 20%);
-  border-radius: 1em;
-}
-
 // 数据报表组件
 .data-report-page-wrapper {
   display: flex;
@@ -314,6 +296,24 @@
   overflow-y: auto;
   line-height: 1;
   user-select: none;
+
+  // 滚动条
+  &::-webkit-scrollbar {
+    width: 2px;
+    height: 8px;
+  }
+
+  // 滚动条头
+  &::-webkit-scrollbar-thumb {
+    background-color: rgb(184 198 211 / 20%);
+    border-radius: 1em;
+  }
+
+  // 滚动条轨道
+  &::-webkit-scrollbar-track {
+    background-color: rgb(244 237 237 / 20%);
+    border-radius: 1em;
+  }
 
   .menu-item {
     position: relative;
