@@ -61,7 +61,7 @@ export default defineComponent({
     },
     // 接口获取的已配置的菜单数据
     menuConfig: {
-      type: Object as PropType<MenuConfig>,
+      type: Array as PropType<MenuConfig>,
       required: true
     }
   },
