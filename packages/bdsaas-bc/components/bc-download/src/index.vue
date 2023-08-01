@@ -1,12 +1,12 @@
 <template>
-  <div class="bc-audio-btn" @click="download">
-    <bn-button v-if="showBtn" type="primary" link>{{ btnName }}</bn-button>
+  <div class="bc-download-btn" :class="{ inline }" @click="download">
+    <BnButton v-if="showBtn && !isSlot" type="primary" link>{{ btnName }}</BnButton>
+    <slot name="default"></slot>
   </div>
 </template>
 
-
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, useSlots } from 'vue'
 import { Button, Message } from 'blocks-next'
 import { last } from 'lodash-es'
 
@@ -16,42 +16,58 @@ export default defineComponent({
     BnButton: Button
   },
   props: {
-    action: { // 下载地址
+    action: {
+      // 下载地址
       type: String,
       default: '',
       required: true
     },
-    fileName: { // 下载文件名称
+    fileName: {
+      // 下载文件名称
       type: String,
       default: ''
     },
-    isBlob: { // 是否是二进制流
+    isBlob: {
+      // 是否是二进制流
       type: Boolean,
       default: false
     },
-    params: { // 下载参数
+    params: {
+      // 下载参数
       type: Object,
       default: () => ({})
     },
-    headers: { // 下载请求头
+    headers: {
+      // 下载请求头
       type: Object,
       default: () => ({})
     },
-    showBtn: { // 是否显示按钮
+    showBtn: {
+      // 是否显示按钮
       type: Boolean,
       default: true
     },
-    btnName: { // 按钮名称
+    btnName: {
+      // 按钮名称
       type: String,
       default: '下载'
+    },
+    inline: {
+      // 是否行内元素
+      type: Boolean,
+      default: false
     }
   },
   emits: ['afterDownload'], // 下载完成后触发
   expose: ['download'], // 暴露方法
   setup(props, { emit }) {
+    const isSlot = !!useSlots().default
+
     // 下载
     const download = () => {
-      const params = Object.keys(props.params).map(key => `${key}=${props.params[key]}`).join('&')
+      const params = Object.keys(props.params)
+        .map((key) => `${key}=${props.params[key]}`)
+        .join('&')
       const url = `${props.action}${params ? `?${params}` : ''}`
       if (props.isBlob) {
         // 二进制流下载
@@ -59,7 +75,7 @@ export default defineComponent({
         xhr.open('GET', url, true)
         xhr.responseType = 'blob'
         if (Object.keys(props.headers).length) {
-          Object.keys(props.headers).forEach(key => {
+          Object.keys(props.headers).forEach((key) => {
             xhr.setRequestHeader(key, props.headers[key])
           })
         }
@@ -87,6 +103,7 @@ export default defineComponent({
             Message.error('下载失败，请稍后重试')
           }
         }
+        xhr.send()
       } else {
         // 普通下载
         const a = document.createElement('a')
@@ -98,10 +115,19 @@ export default defineComponent({
         emit('afterDownload')
       }
     }
-    
+
     return {
-      download
+      download,
+      isSlot
     }
   }
 })
 </script>
+
+<style lang="scss" scoped>
+.bc-download-btn {
+  &.inline {
+    display: inline-block;
+  }
+}
+</style>
