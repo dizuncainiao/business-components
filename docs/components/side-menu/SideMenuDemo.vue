@@ -1,5 +1,5 @@
 <template>
-  <div style="height: 350px; overflow: hidden; box-shadow: 0 0 8px #eee;">
+  <div style="overflow: hidden; box-shadow: 0 0 8px #eee;">
     <component
       :is="component"
       :menuData="menuData"

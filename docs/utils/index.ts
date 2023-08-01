@@ -14,7 +14,7 @@ export async function useBDSaasBC(
   component: any,
   componentName: ComponentName
 ) {
-  if (!import.meta.env.SSR) {
+  if (!(import.meta as any).env.SSR) {
     import('bdsaas-bc').then((module: any) => {
       component.value = module[componentName]
     })

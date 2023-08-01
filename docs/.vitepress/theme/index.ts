@@ -2,7 +2,7 @@
 // @ts-ignore
 import { h } from 'vue'
 import Theme from 'vitepress/theme'
-import './style.css'
+import './style.less'
 import './viewer.css'
 import 'bdsaas-bc/dist/es/style.css'
 

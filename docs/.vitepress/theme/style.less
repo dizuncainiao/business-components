@@ -85,6 +85,24 @@
   --docsearch-primary-color: var(--vp-c-brand) !important;
 }
 
+// 滚动条
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+// 滚动条头
+::-webkit-scrollbar-thumb {
+  background-color: rgb(184 198 211 / 20%);
+  border-radius: 1em;
+}
+
+// 滚动条轨道
+::-webkit-scrollbar-track {
+  background-color: rgb(244 237 237 / 20%);
+  border-radius: 1em;
+}
+
 /** VitePress 主题样式更改 **/
 .group + .group {
   border-top: none !important;
@@ -92,4 +110,101 @@
 
 .VPSidebarItem.level-0 {
   padding-bottom: 0 !important;
+}
+
+.text {
+  line-height: 26px !important;
+}
+
+.vp-doc table {
+  display: table;
+  width: 100%;
+  font-family:
+    SFMono-Regular,
+    Consolas,
+    "Liberation Mono",
+    Menlo,
+    Courier,
+    monospace;
+  font-size: 14px;
+  line-height: 1.5em;
+  border-collapse: collapse;
+  background-color: var(--bg-color);
+
+  tr {
+    td:nth-child(2) {
+      font-family:
+        "Helvetica Neue",
+        Helvetica,
+        "PingFang SC",
+        "Hiragino Sans GB",
+        "Microsoft YaHei",
+        "微软雅黑",
+        Arial,
+        sans-serif;
+    }
+  }
+
+  th,
+  td {
+    max-width: 250px;
+    padding: 0.6em 1em;
+    text-align: left;
+    white-space: pre-wrap;
+    border-top: 1px solid #dcdfe6;
+    border-bottom: 1px solid #dcdfe6;
+  }
+
+  thead tr:first-child th {
+    border-top: none;
+  }
+
+  tbody tr td:first-child {
+    font-family:
+      "JetBrains Mono",
+      source-code-pro,
+      Menlo,
+      Monaco,
+      Consolas,
+      "Courier New",
+      monospace;
+  }
+}
+
+.vp-doc {
+  h1 {
+    margin-top: 1.5rem;
+    margin-bottom: 2rem;
+    font-size: 1.9rem;
+  }
+
+  h2 {
+    padding-top: 0;
+    padding-bottom: 0.3rem;
+    margin-top: 2.25rem;
+    margin-bottom: 1.25rem;
+    font-size: 1.65rem;
+    line-height: 1.25;
+    border-top: none !important;
+  }
+
+  h2 + h3 {
+    margin-top: 1.5rem;
+  }
+
+  h3 {
+    margin-top: 2rem;
+    font-size: 1.35rem;
+  }
+
+  h4 {
+    font-size: 1.15rem;
+  }
+
+  p,
+  ol,
+  ul {
+    margin: 1rem 0;
+    line-height: 1.7;
+  }
 }
