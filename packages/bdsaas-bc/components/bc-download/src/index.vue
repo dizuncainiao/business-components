@@ -124,7 +124,7 @@ export default defineComponent({
 })
 </script>
 
-<style lang="scss" scoped>
+<style lang="less" scoped>
 .bc-download-btn {
   &.inline {
     display: inline-block;
