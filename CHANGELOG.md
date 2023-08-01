@@ -1,3 +1,14 @@
+## [0.0.8](https://github.com/dizuncainiao/business-components/compare/v0.0.7...v0.0.8) (2023-08-01)
+
+### 🐛 Bug Fixes
+
+- 🐛 修复 audio 组件问题，增加 slot&修复下载组件的 scss 为 less ([77d646c](https://github.com/dizuncainiao/business-components/commit/77d646c))
+- 🐛 修复 download 的二进制下载异常问题&增加 slot ([2e5c788](https://github.com/dizuncainiao/business-components/commit/2e5c788))
+
+### 🚀 Performance Improvements
+
+- 🚀 DialBar add spaces ([ffb01f5](https://github.com/dizuncainiao/business-components/commit/ffb01f5))
+
 ## [0.0.7](https://github.com/dizuncainiao/business-components/compare/v0.0.6...v0.0.7) (2023-07-31)
 
 ### 🚀 Performance Improvements
