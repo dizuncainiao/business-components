@@ -1,11 +1,14 @@
 <template>
   <div class="bc-download-btn" :class="{ inline }" @click="download">
-    <BnButton v-if="showBtn && !isSlot" type="primary" link>{{ btnName }}</BnButton>
+    <BnButton v-if="showBtn && !isSlot" type="primary" link>{{
+      btnName
+    }}</BnButton>
     <slot name="default"></slot>
   </div>
 </template>
 
 <script lang="ts">
+import '../style/index.less'
 import { defineComponent, useSlots } from 'vue'
 import { Button, Message } from 'blocks-next'
 import { last } from 'lodash-es'
@@ -66,7 +69,7 @@ export default defineComponent({
     // 下载
     const download = () => {
       const params = Object.keys(props.params)
-        .map((key) => `${key}=${props.params[key]}`)
+        .map(key => `${key}=${props.params[key]}`)
         .join('&')
       const url = `${props.action}${params ? `?${params}` : ''}`
       if (props.isBlob) {
@@ -75,7 +78,7 @@ export default defineComponent({
         xhr.open('GET', url, true)
         xhr.responseType = 'blob'
         if (Object.keys(props.headers).length) {
-          Object.keys(props.headers).forEach((key) => {
+          Object.keys(props.headers).forEach(key => {
             xhr.setRequestHeader(key, props.headers[key])
           })
         }
@@ -84,7 +87,14 @@ export default defineComponent({
             if (xhr.status === 200 && xhr.readyState === 4) {
               // 下载成功
               const blob = xhr.response
-              const fileName = props.fileName || last(xhr.getResponseHeader('Content-Disposition')?.split('filename=')) || 'template.xlsx'
+              const fileName =
+                props.fileName ||
+                last(
+                  xhr
+                    .getResponseHeader('Content-Disposition')
+                    ?.split('filename=')
+                ) ||
+                'template.xlsx'
               const a = document.createElement('a')
               a.href = window.URL.createObjectURL(blob)
               a.href = url
@@ -123,11 +133,3 @@ export default defineComponent({
   }
 })
 </script>
-
-<style lang="less" scoped>
-.bc-download-btn {
-  &.inline {
-    display: inline-block;
-  }
-}
-</style>
