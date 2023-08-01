@@ -1,16 +1,13 @@
 <script setup lang="ts">
+import { BcDialBar } from 'bdsaas-bc'
 import { ref } from 'vue'
-import { useBDSaasBC } from '../../utils'
-
-const component = ref()
-
-useBDSaasBC(component, 'BcDialBar')
 
 defineOptions({
   name: 'DialBarDemo'
 })
 
 const dialBar = ref()
+const dialBar2 = ref()
 const callType = ref('FS')
 const status = ref('NOT_STARTED')
 
@@ -37,10 +34,17 @@ function getConfigText() {
 function reset() {
   dialBar.value.resetConfig()
 }
+
+function openHandler() {
+  dialBar2.value.open()
+}
+function closeHandler() {
+  dialBar2.value.close()
+}
 </script>
 
 <template>
-  <div style="padding: 20px;">
+  <div style="padding: 200px;">
     <button
       class="beautify"
       @click="callType = callType === 'FS' ? 'CALLBACK' : 'FS'"
@@ -54,9 +58,7 @@ function reset() {
     <button class="beautify" @click="status = 'CALLING'">
       通话中{{ status }}
     </button>
-
-    <component
-      :is="component"
+    <BcDialBar
       ref="dialBar"
       :callType="callType"
       v-model:status="status"
@@ -70,6 +72,29 @@ function reset() {
       @hang-up="hangUpHandler"
     >
       <button class="beautify">拨打电话{{ status }}</button>
-    </component>
+    </BcDialBar>
+    <div style="height: 200px;">
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+    </div>
+    <BcDialBar
+      ref="dialBar2"
+      :callType="callType"
+      v-model:status="status"
+      :options="{
+        phone: 18156224704,
+        number: 2,
+        todo: 'todo-id-001'
+      }"
+      @todo="todoHandler"
+      @call="callHandler"
+      @hang-up="hangUpHandler"
+    />
+    <button class="beautify" @click="openHandler">手动打开</button>
+    <button class="beautify" @click="closeHandler">手动关闭</button>
   </div>
 </template>

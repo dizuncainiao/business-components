@@ -26,6 +26,7 @@ defineOptions({
 })
 
 const dialBar = ref()
+const dialBar2 = ref()
 const callType = ref('FS')
 const status = ref('NOT_STARTED')
 
@@ -52,18 +53,30 @@ function getConfigText() {
 function reset() {
   dialBar.value.resetConfig()
 }
+
+function openHandler() {
+  dialBar2.value.open()
+}
+function closeHandler() {
+  dialBar2.value.close()
+}
 </script>
 
 <template>
-  <div style="padding: 20px;">
-    <button @click="callType = callType === 'FS' ? 'CALLBACK' : 'FS'">
+  <div style="padding: 200px;">
+    <button
+      class="beautify"
+      @click="callType = callType === 'FS' ? 'CALLBACK' : 'FS'"
+    >
       当前 {{ callType }} 切换为{{ callType === 'FS' ? 'CALLBACK' : 'FS' }}
     </button>
     <br />
-    <button @click="getConfigText">获取 config 数据</button>
-    <button @click="reset">重置 config</button>
+    <button class="beautify" @click="getConfigText">获取 config 数据</button>
+    <button class="beautify" @click="reset">重置 config</button>
     <pre v-html="configText"></pre>
-    <button @click="status = 'CALLING'">通话中{{ status }}</button>
+    <button class="beautify" @click="status = 'CALLING'">
+      通话中{{ status }}
+    </button>
     <BcDialBar
       ref="dialBar"
       :callType="callType"
@@ -77,35 +90,78 @@ function reset() {
       @call="callHandler"
       @hang-up="hangUpHandler"
     >
-      <button>拨打电话{{ status }}</button>
+      <button class="beautify">拨打电话{{ status }}</button>
     </BcDialBar>
+    <div style="height: 200px;">
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+    </div>
+    <BcDialBar
+      ref="dialBar2"
+      :callType="callType"
+      v-model:status="status"
+      :options="{
+        phone: 18156224704,
+        number: 2,
+        todo: 'todo-id-001'
+      }"
+      @todo="todoHandler"
+      @call="callHandler"
+      @hang-up="hangUpHandler"
+    />
+    <button class="beautify" @click="openHandler">手动打开</button>
+    <button class="beautify" @click="closeHandler">手动关闭</button>
   </div>
 </template>
 ```
 
-## 属性
+## Props
 
-| 属性名     | 说明           | 类型                     | 可选值 | 默认值 |
-| ---------- | -------------- | ------------------------ | ------ | ------ |
-| menuData   | 菜单数据       | Array                    | —      | —      |
-| authKeys   | 权限数据       | Array                    | —      | —      |
-| beforeJump | 跳转之前的钩子 | (to, from, next) => void | —      | —      |
-| jumpMethod | 自定义跳转方法 | (menuItem) => void       | —      | —      |
+| 属性名   | 说明       | 类型                | 可选值                                  | 默认值        |
+| -------- | ---------- | ------------------- | --------------------------------------- | ------------- |
+| options  | 菜单数据   | [Options](#options) | —                                       | —             |
+| status   | 打电话状态 | `string`            | 'NOT_STARTED' \| 'DIALING' \| 'CALLING' | 'NOT_STARTED' |
+| callType | 拨号类型   | `string`            | 'CALLBACK' \| 'FS'                      | —             |
+
+### Options
+
+| 属性名 | 说明                   | 类型                              | 可选值 | 默认值 |
+| ------ | ---------------------- | --------------------------------- | ------ | ------ |
+| phone  | 电话号码               | `string` <font>꒐</font> `number` | —      | —      |
+| number | 拨打次数               | `number`                          | —      | —      |
+| todo   | 点击进行代办操作的数据 | `any`                             | —      | —      |
 
 ## 事件
 
-| 事件名 | 说明 | 回调参数 |
-| ------ | ---- | -------- |
-|        |      |          |
-|        |      |          |
-|        |      |          |
-|        |      |          |
+| 事件名  | 说明         | 回调参数       |
+| ------- | ------------ | -------------- |
+| todo    | 点击待办触发 | options.todo   |
+| call    | 点击拨打触发 | —              |
+| hang-up | 点击挂断触发 | props.callType |
 
 ## 方法
 
-| 方法名 | 说明 | 参数 |
-| ------ | ---- | ---- |
-|        |      |      |
-|        |      |      |
-|        |      |      |
-|        |      |      |
+| 方法名      | 说明                                                   | 参数                          |
+| ----------- | ------------------------------------------------------ | ----------------------------- |
+| open        | 打开拨号条                                             | —                             |
+| close       | 关闭拨号条                                             | —                             |
+| getConfig   | 获取当前打电话的配置数据                               | [statusConfig](#statusconfig) |
+| resetConfig | 重置打电话的配置数据为初始值（进行下一通电话时很有用） | —                             |
+
+### statusConfig
+
+```typescript
+const initStatusConfig = [
+  {
+    label: '拨打中', // 打电话状态，拨号条上显示的文字
+    status: 'DIALING', // 打电话状态，用于业务方操作逻辑
+    startTime: 0, // 状态开始时间（时间戳）
+    endTime: 0 // 状态结束时间（时间戳）
+  },
+  { label: '通话中', status: 'CALLING', startTime: 0, endTime: 0 }
+]
+```
