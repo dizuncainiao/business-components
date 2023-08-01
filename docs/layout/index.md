@@ -12,7 +12,7 @@ import LayoutDemo from '../components/layout-demo/LayoutDemo.vue'
 
 ## 效果预览
 
-<LayoutDemo/>
+[//]: # '<LayoutDemo/>'
 
 ## 示例代码
 

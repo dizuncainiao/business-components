@@ -12,7 +12,7 @@ import DialBarDemo from '../components/dial-bar-demo/DialBarDemo.vue'
 
 ## 效果预览
 
-<DialBarDemo/>
+[//]: # '<DialBarDemo/>'
 
 ## 示例代码
 
