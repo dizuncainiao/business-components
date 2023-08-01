@@ -1,3 +1,14 @@
+## [0.0.12](https://github.com/dizuncainiao/business-components/compare/v0.0.11...v0.0.12) (2023-08-01)
+
+### 🐛 Bug Fixes
+
+- 🐛 BcChartConfigModal menuConfig 类型修复 ([f5c4a45](https://github.com/dizuncainiao/business-components/commit/f5c4a45))
+- 🐛 dial-bar 定位、层级 ([08ff0c1](https://github.com/dizuncainiao/business-components/commit/08ff0c1))
+
+### 🚀 Performance Improvements
+
+- 🚀 滚动条样式放在 .basic-menu 内部 ([af08aa9](https://github.com/dizuncainiao/business-components/commit/af08aa9))
+
 ## [0.0.11](https://github.com/dizuncainiao/business-components/compare/v0.0.10...v0.0.11) (2023-08-01)
 
 ## [0.0.10](https://github.com/dizuncainiao/business-components/compare/v0.0.9...v0.0.10) (2023-08-01)
