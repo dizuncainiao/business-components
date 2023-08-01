@@ -7,6 +7,7 @@ defineOptions({
 })
 
 const dialBar = ref()
+const dialBar2 = ref()
 const callType = ref('FS')
 const status = ref('NOT_STARTED')
 
@@ -32,6 +33,10 @@ function getConfigText() {
 
 function reset() {
   dialBar.value.resetConfig()
+}
+
+function openHandler() {
+  dialBar2.value.open()
 }
 </script>
 
@@ -60,5 +65,27 @@ function reset() {
     >
       <button>拨打电话{{ status }}</button>
     </BcDialBar>
+    <div style="height: 200px;">
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+      <p>DiaBar 组件测试</p>
+    </div>
+    <BcDialBar
+      ref="dialBar2"
+      :callType="callType"
+      v-model:status="status"
+      :options="{
+        phone: 18156224704,
+        number: 2,
+        todo: 'todo-id-001'
+      }"
+      @todo="todoHandler"
+      @call="callHandler"
+      @hang-up="hangUpHandler"
+    />
+    <button @click="openHandler">手动打开</button>
   </div>
 </template>
