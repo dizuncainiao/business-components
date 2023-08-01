@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { BcChartConfigModal } from 'bdsaas-bc'
 import { ref } from 'vue'
+import { useBDSaasBC } from '../../utils'
+
+const component = ref()
+
+useBDSaasBC(component, 'BcChartConfigModal')
 
 const modal = ref()
 function save(val: any) {
@@ -253,7 +257,8 @@ const config = [
 
 <template>
   <button class="beautify" @click="modal.toggle(true)">打开配置框</button>
-  <BcChartConfigModal
+  <component
+    :is="component"
     ref="modal"
     :menuSourceData="data"
     :menuConfig="config"
