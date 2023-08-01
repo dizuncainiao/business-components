@@ -4,6 +4,7 @@ const matchingList = [
   'import "../../../packages/bdsaas-bc/components/bc-side-menu/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-list-search/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-dial-bar/style/index.less";',
+  'import "../../../packages/bdsaas-bc/components/bc-download/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-chart-config-modal/style/index.less";'
 ]
 

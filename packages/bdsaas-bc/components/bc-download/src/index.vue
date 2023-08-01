@@ -9,6 +9,7 @@
 
 <script lang="ts">
 import '../style/index.less'
+
 import { defineComponent, useSlots } from 'vue'
 import { Button, Message } from 'blocks-next'
 import { last } from 'lodash-es'
