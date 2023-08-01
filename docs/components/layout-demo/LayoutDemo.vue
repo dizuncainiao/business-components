@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { BcLayout } from 'bdsaas-bc'
 import { ref } from 'vue'
+import { useBDSaasBC } from '../../utils'
+
+const component = ref()
+
+useBDSaasBC(component, 'BcLayout')
 
 defineOptions({
   name: 'LayoutDemo'
@@ -85,7 +89,7 @@ const options = ref({
 
 <template>
   <div style="width: 100%; height: 100%;">
-    <BcLayout :options="options">
+    <component :is="component" :options="options">
       <div style="height: 600px; background: #646cff;">
         内容区
         <br />
@@ -93,6 +97,6 @@ const options = ref({
           showMenu: {{ options.showMenu }}
         </button>
       </div>
-    </BcLayout>
+    </component>
   </div>
 </template>

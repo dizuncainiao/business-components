@@ -1,6 +1,10 @@
 <script setup lang="ts">
-import { BcDialBar } from 'bdsaas-bc'
 import { ref } from 'vue'
+import { useBDSaasBC } from '../../utils'
+
+const component = ref()
+
+useBDSaasBC(component, 'BcDialBar')
 
 defineOptions({
   name: 'DialBarDemo'
@@ -50,7 +54,9 @@ function reset() {
     <button class="beautify" @click="status = 'CALLING'">
       通话中{{ status }}
     </button>
-    <BcDialBar
+
+    <component
+      :is="component"
       ref="dialBar"
       :callType="callType"
       v-model:status="status"
@@ -64,6 +70,6 @@ function reset() {
       @hang-up="hangUpHandler"
     >
       <button class="beautify">拨打电话{{ status }}</button>
-    </BcDialBar>
+    </component>
   </div>
 </template>
