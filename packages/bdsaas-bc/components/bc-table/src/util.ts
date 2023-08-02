@@ -30,18 +30,12 @@
 import { reactive, toRefs } from 'vue'
 import http from '../../../_plugins/axios-http'
 
-enum Method {
-  GET = 'get',
-  POSTFORM = 'postForm',
-  POSTJSON = 'postJson'
-}
-
 type TypeQueryForm = {
   [key: string]: any
 }
 
 type TypeOptions = {
-  method?: Method
+  method?: 'get' | 'postForm' | 'postJson'
   params?: object
   headers?: object
   recordsKey?: string
@@ -114,12 +108,12 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
 
     // 请求
     state.tableLoading = true
-    http[method](url, params, { headers }).then((res: { [x: string]: any }) => {
-      state.tableData = funcOptions.dataFilter ? funcOptions.dataFilter(res[funcOptions.recordsKey || 'records']) : res[funcOptions.recordsKey || 'records']
+    http[method](url, params, { headers }).then(({data}) => {
+      state.tableData = funcOptions.dataFilter ? funcOptions.dataFilter(data[funcOptions.recordsKey || 'records']) : data[funcOptions.recordsKey || 'records']
       state.pageConfig = {
-        page: res[funcOptions.pageNumKey || 'pages'],
-        pageSize: res[funcOptions.pageSizeKey || 'size'],
-        total: res[funcOptions.totalKey || 'total']
+        page: data[funcOptions.pageNumKey || 'pages'],
+        pageSize: data[funcOptions.pageSizeKey || 'size'],
+        total: data[funcOptions.totalKey || 'total']
       }
       state.tableLoading = false
       if (funcOptions.afterSearch) {
@@ -165,6 +159,8 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
     pageParams[paramPageKey] = pageParams[paramPageKey] + 1
     apiHandle()
   }
+
+  funcOptions.autoSearch && search()
 
   return {
     ...toRefs(state),
