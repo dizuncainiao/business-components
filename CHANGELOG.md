@@ -1,3 +1,9 @@
+## [0.0.17](https://github.com/dizuncainiao/business-components/compare/v0.0.16...v0.0.17) (2023-08-02)
+
+### ✨ Features
+
+- ✨ SideMenu 增加 Icon ([3bd136b](https://github.com/dizuncainiao/business-components/commit/3bd136b))
+
 ## [0.0.16](https://github.com/dizuncainiao/business-components/compare/v0.0.15...v0.0.16) (2023-08-02)
 
 ### ✨ Features
