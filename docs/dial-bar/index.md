@@ -137,11 +137,13 @@ function closeHandler() {
 
 ## 事件
 
-| 事件名  | 说明         | 回调参数       |
-| ------- | ------------ | -------------- |
-| todo    | 点击待办触发 | options.todo   |
-| call    | 点击拨打触发 | —              |
-| hang-up | 点击挂断触发 | props.callType |
+| 事件名      | 说明             | 回调参数       |
+| ----------- | ---------------- | -------------- |
+| todo        | 点击待办触发     | options.todo   |
+| call        | 点击拨打触发     | —              |
+| hang-up     | 点击挂断触发     | props.callType |
+| beforeOpen  | 拨号条打开前触发 | —              |
+| beforeClose | 拨号条关闭前触发 | —              |
 
 ## 方法
 

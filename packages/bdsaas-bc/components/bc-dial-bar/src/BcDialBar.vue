@@ -4,7 +4,7 @@
   <div class="relative-box" :class="!hasDefaultSlot && 'no-slot'">
     <div
       class="hover-wrapper"
-      @mouseover="hoverHandler('mouseover')"
+      @mouseenter="hoverHandler('mouseover')"
       @mouseleave="hoverHandler('mouseout')"
     >
       <slot></slot>
@@ -21,7 +21,7 @@
                 <span>{{ $props.options.number }}</span> 次，继续拨打吗？
               </div>
             </div>
-            <div class="todo" @click="todoHandler">
+            <div v-if="showTodo" class="todo" @click="todoHandler">
               <img :src="imgTodo" alt="待办" />
               代办
             </div>
@@ -100,9 +100,21 @@ export default defineComponent({
     callType: {
       type: String as PropType<CallType>,
       required: true
+    },
+    // 显示待办功能
+    showTodo: {
+      type: Boolean,
+      default: false
     }
   },
-  emits: ['todo', 'call', 'hang-up', 'update:status'],
+  emits: [
+    'todo',
+    'call',
+    'hang-up',
+    'update:status',
+    'beforeOpen',
+    'beforeClose'
+  ],
   setup(props, { expose, emit, slots }) {
     const visible = ref(false)
     const statusConfig = ref<StatusConfig[]>(cloneDeep(initStatusConfig))
@@ -135,15 +147,23 @@ export default defineComponent({
 
     function toggle(val: boolean) {
       visible.value = val
-      // 关闭时，将状态重置为 “未开始”
-      !val && emit('update:status', 'NOT_STARTED')
+
+      if (val) {
+        emit('beforeOpen')
+      } else {
+        emit('beforeClose')
+        // 关闭时，将状态重置为 “未开始”
+        emit('update:status', 'NOT_STARTED')
+      }
     }
 
     function hoverHandler(type: MouseEventType) {
+      // 拨号中以及之后的状态，hover 关闭失效
       if (['DIALING', 'CALLING'].includes(props.status)) {
         return
       }
 
+      // 没有默认插槽时，hover 关闭失效
       if (!hasDefaultSlot.value) {
         return
       }

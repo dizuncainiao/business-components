@@ -11,6 +11,10 @@ const dialBar2 = ref()
 const callType = ref('FS')
 const status = ref('NOT_STARTED')
 
+function beforeOpen() {
+  console.log('beforeOpen')
+}
+
 function todoHandler(val: any) {
   console.log('todo的数据：', val)
 }
@@ -62,6 +66,7 @@ function openHandler() {
       @todo="todoHandler"
       @call="callHandler"
       @hang-up="hangUpHandler"
+      @before-open="beforeOpen"
     >
       <button>拨打电话{{ status }}</button>
     </BcDialBar>
@@ -82,6 +87,7 @@ function openHandler() {
         number: 2,
         todo: 'todo-id-001'
       }"
+      showTodo
       @todo="todoHandler"
       @call="callHandler"
       @hang-up="hangUpHandler"
