@@ -59,7 +59,7 @@ const _DEFAULT_OPTIONS = {
   recordsKey: 'records',
   totalKey: 'total',
   pageSizeKey: 'size',
-  pageNumKey: 'pages',
+  pageNumKey: 'current',
   paramPageKey: 'pageNo',
   paramPageSizeKey: 'pageSize',
   autoSearch: true,
@@ -131,9 +131,9 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
     http[method](url, params, { headers }).then(({data}) => {
       state.tableData = funcOptions.dataFilter ? funcOptions.dataFilter(data[funcOptions.recordsKey || 'records']) : data[funcOptions.recordsKey || 'records']
       state.pageConfig = {
-        page: data[funcOptions.pageNumKey || 'pages'],
-        pageSize: data[funcOptions.pageSizeKey || 'size'],
-        total: data[funcOptions.totalKey || 'total']
+        page: data[funcOptions.pageNumKey || 'current'] || pageParams[paramPageKey], // 防止接口返回的页码异常
+        pageSize: data[funcOptions.pageSizeKey || 'size'] || pageParams[paramPageSizeKey], // 防止接口返回的每页条数异常
+        total: data[funcOptions.totalKey || 'total'] || state.pageConfig.total || state.tableData.length // 防止接口返回的总数异常
       }
       state.tableLoading = false
       if (funcOptions.afterSearch) {
