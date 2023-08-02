@@ -45,6 +45,7 @@ export default defineConfig({
         'axios',
         'aplayer',
         'lodash-es',
+        'md5',
         'qs',
         'vue',
         'vue-router',
