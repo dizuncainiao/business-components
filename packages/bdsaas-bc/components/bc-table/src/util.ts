@@ -29,6 +29,8 @@
 
 import { reactive, toRefs } from 'vue'
 import http from '../../../_plugins/axios-http'
+import md5 from 'md5'
+import { Message } from 'blocks-next'
 
 type TypeQueryForm = {
   [key: string]: any
@@ -45,7 +47,7 @@ type TypeOptions = {
   paramPageKey?: string
   paramPageSizeKey?: string
   autoSearch?: boolean
-  dataFilter?: (data: []) => []
+  dataFilter?: (data: any[]) => any[]
   formHandler?: (form: TypeQueryForm) => TypeQueryForm
   afterSearch?: () => void
 }
@@ -64,6 +66,24 @@ const _DEFAULT_OPTIONS = {
   dataFilter: null,
   formHandler: null,
   afterSearch: null
+}
+
+// 公用的XWSSE HEADERS
+function getXWSSEHeaders() {
+  const token = localStorage.getItem('_BDSAAS_TOKEN') || 'empty_token'
+  if (token === 'empty_token') {
+    Message.error('token为空')
+    return {}
+  }
+  const authorization = 'Bearer ' + token
+  const timestamp = new Date().getTime()
+  const xwsse = md5(`token${token}timestamp${timestamp}`)
+  return {
+    authorization,
+    timestamp,
+    xwsse,
+    'Tracking-Url': window.parent.location.href
+  }
 }
 
 export default function BcTableUtil(url: string, queryForm: TypeQueryForm, options: TypeOptions) {
@@ -91,7 +111,7 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
 
   // 接口请求
   function apiHandle() {
-    let form = queryForm
+    let form = Object.assign({}, queryForm)
     // 如果有表单处理函数
     if (funcOptions.formHandler) {
       form = Object.assign({}, queryForm, funcOptions.formHandler(queryForm))
@@ -101,7 +121,7 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
     const params = Object.assign({}, form, pageParams, funcOptions.params)
 
     // 请求头
-    const headers = Object.assign({}, funcOptions.headers)
+    const headers = Object.assign({}, getXWSSEHeaders(), funcOptions.headers)
 
     // 请求方法
     const method = funcOptions.method || 'get'
