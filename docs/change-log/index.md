@@ -1,3 +1,9 @@
+## [0.0.13](https://github.com/dizuncainiao/business-components/compare/v0.0.12...v0.0.13) (2023-08-02)
+
+### 🐛 Bug Fixes
+
+- 🐛 修复表格工具方法的部分问题 ([20047a0](https://github.com/dizuncainiao/business-components/commit/20047a0))
+
 ## [0.0.12](https://github.com/dizuncainiao/business-components/compare/v0.0.11...v0.0.12) (2023-08-01)
 
 ### 🐛 Bug Fixes
