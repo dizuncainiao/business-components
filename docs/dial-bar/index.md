@@ -121,11 +121,12 @@ function closeHandler() {
 
 ## Props
 
-| 属性名   | 说明       | 类型                | 可选值                                  | 默认值        |
-| -------- | ---------- | ------------------- | --------------------------------------- | ------------- |
-| options  | 菜单数据   | [Options](#options) | —                                       | —             |
-| status   | 打电话状态 | `string`            | 'NOT_STARTED' \| 'DIALING' \| 'CALLING' | 'NOT_STARTED' |
-| callType | 拨号类型   | `string`            | 'CALLBACK' \| 'FS'                      | —             |
+| 属性名   | 说明         | 类型                | 可选值                                  | 默认值        |
+| -------- | ------------ | ------------------- | --------------------------------------- | ------------- |
+| options  | 菜单数据     | [Options](#options) | —                                       | —             |
+| status   | 打电话状态   | `string`            | 'NOT_STARTED' \| 'DIALING' \| 'CALLING' | 'NOT_STARTED' |
+| callType | 拨号类型     | `string`            | 'CALLBACK' \| 'FS'                      | —             |
+| showTodo | 显示待办功能 | `boolean`           | —                                       | `false`       |
 
 ### Options
 
