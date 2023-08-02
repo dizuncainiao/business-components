@@ -1,3 +1,10 @@
+## [0.0.14](https://github.com/dizuncainiao/business-components/compare/v0.0.13...v0.0.14) (2023-08-02)
+
+### 🐛 Bug Fixes
+
+- 🐛 调整业务表格组件类型声明及增加通用公用头部获取 ([43939ae](https://github.com/dizuncainiao/business-components/commit/43939ae))
+- 🐛 完善 pageConfig 的赋值，防止某些接口带来的异常问题 ([e3bbad2](https://github.com/dizuncainiao/business-components/commit/e3bbad2))
+
 ## [0.0.13](https://github.com/dizuncainiao/business-components/compare/v0.0.12...v0.0.13) (2023-08-02)
 
 ### 🐛 Bug Fixes
