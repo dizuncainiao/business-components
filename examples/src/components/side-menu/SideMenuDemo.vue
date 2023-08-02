@@ -4,7 +4,8 @@
       :menuData="menuData"
       :jumpMethod="jumpMethod"
       :beforeJump="beforeJump"
-    />
+    >
+    </BcSideMenu>
   </div>
 </template>
 
