@@ -2,6 +2,8 @@
 import BcChartConfigModalDemo from '@/components/chart-config-modal-demo/BcChartConfigModalDemo.vue'
 import DialBarDemo from '@/components/dial-bar-demo/DialBarDemo.vue'
 import BcAudioDemo from '@/components/audio-play-demo/index.vue'
+import BcDownloadDemo from '@/components/download-demo/index.vue'
+import BcTableUtilDemo from '@/components/table-util-demo/index.vue'
 import SideMenuDemo from '@/components/side-menu/SideMenuDemo.vue'
 // import LayoutDemo from '@/components/layout-demo/LayoutDemo.vue'
 </script>
@@ -11,7 +13,9 @@ import SideMenuDemo from '@/components/side-menu/SideMenuDemo.vue'
   <!--  <dial-bar-demo />-->
   <!--  <BcAudioDemo />-->
   <!--  <LayoutDemo />-->
-  <SideMenuDemo />
+  <!-- <SideMenuDemo /> -->
+  <!-- <BcDownloadDemo /> -->
+  <BcTableUtilDemo />
 </template>
 
 <style>

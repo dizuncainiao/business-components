@@ -147,6 +147,9 @@ importers:
       bdsaas-bc:
         specifier: workspace:^
         version: link:../packages/bdsaas-bc
+      blocks-next:
+        specifier: 1.0.1-alpha.32
+        version: 1.0.1-alpha.32(vue@3.3.4)
       vue:
         specifier: ^3.3.4
         version: 3.3.4
