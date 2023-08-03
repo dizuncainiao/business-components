@@ -1,3 +1,10 @@
+## [0.0.20](https://github.com/dizuncainiao/business-components/compare/v0.0.19...v0.0.20) (2023-08-03)
+
+### 🐛 Bug Fixes
+
+- 🐛 完善文档和 examples 内的示例&调整表格工具方法获取值的方式 ([aecbd22](https://github.com/dizuncainiao/business-components/commit/aecbd22))
+- 🐛 暂时隐藏文档里的预览 ([d4fb4d6](https://github.com/dizuncainiao/business-components/commit/d4fb4d6))
+
 ## [0.0.19](https://github.com/dizuncainiao/business-components/compare/v0.0.18...v0.0.19) (2023-08-03)
 
 ## [0.0.18](https://github.com/dizuncainiao/business-components/compare/v0.0.17...v0.0.18) (2023-08-03)
