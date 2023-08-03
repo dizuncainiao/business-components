@@ -20,7 +20,7 @@
     "preview": "vite preview",
     "move:dist": "cd scripts && sh move.sh",
     "build:dist": "pnpm run build && pnpm run move:dist",
-    "start:publishing": "cd publish && npm publish"
+    "start:publishing": "cd publish && npm publish && cd ../scripts && sh notify.sh"
   },
   "peerDependencies": {
     "aplayer": "^1.10.1",
