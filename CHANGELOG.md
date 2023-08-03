@@ -1,3 +1,9 @@
+## [0.0.18](https://github.com/dizuncainiao/business-components/compare/v0.0.17...v0.0.18) (2023-08-03)
+
+### ✨ Features
+
+- ✨ DialBar 组件新增 hangUp 方法（外部手动触发关断事件，并关闭拨号条） ([5f5e4a4](https://github.com/dizuncainiao/business-components/commit/5f5e4a4))
+
 ## [0.0.17](https://github.com/dizuncainiao/business-components/compare/v0.0.16...v0.0.17) (2023-08-02)
 
 ### ✨ Features
