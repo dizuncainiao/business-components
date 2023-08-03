@@ -29,8 +29,6 @@
 
 import { reactive, toRefs } from 'vue'
 import http from '../../../_plugins/axios-http'
-import md5 from 'md5'
-import { Message } from 'blocks-next'
 import { getXWSSEHeaders } from '../../../_utils'
 
 type TypeQueryForm = {
@@ -112,11 +110,17 @@ export default function BcTableUtil(url: string, queryForm: TypeQueryForm, optio
     // 请求
     state.tableLoading = true
     http[method](url, params, { headers }).then(({data}) => {
-      state.tableData = funcOptions.dataFilter ? funcOptions.dataFilter(data[funcOptions.recordsKey || 'records']) : data[funcOptions.recordsKey || 'records']
+      // recordskey 可能存在有.的情况，递归获取值
+      const records = funcOptions.recordsKey ? funcOptions.recordsKey.split('.').reduce((obj, key) => obj[key], data) : data['records']
+      state.tableData = funcOptions.dataFilter ? funcOptions.dataFilter(records) : records
+      // pageNumKey、pageSizeKey、totalKey 可能存在有.的情况，递归获取值
+      const pageSize = funcOptions.pageSizeKey ? funcOptions.pageSizeKey.split('.').reduce((obj, key) => obj[key], data) : pageParams[paramPageKey]
+      const page = funcOptions.pageNumKey ? funcOptions.pageNumKey.split('.').reduce((obj, key) => obj[key], data) : pageParams[paramPageSizeKey]
+      const total = funcOptions.totalKey ? funcOptions.totalKey.split('.').reduce((obj, key) => obj[key], data) : (state.pageConfig.total || state.tableData.length)
       state.pageConfig = {
-        page: data[funcOptions.pageNumKey || 'current'] || pageParams[paramPageKey], // 防止接口返回的页码异常
-        pageSize: data[funcOptions.pageSizeKey || 'size'] || pageParams[paramPageSizeKey], // 防止接口返回的每页条数异常
-        total: data[funcOptions.totalKey || 'total'] || state.pageConfig.total || state.tableData.length // 防止接口返回的总数异常
+        page,
+        pageSize,
+        total
       }
       state.tableLoading = false
       if (funcOptions.afterSearch) {
