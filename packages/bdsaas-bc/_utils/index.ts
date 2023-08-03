@@ -1,3 +1,6 @@
+import {Message} from 'blocks-next'
+import md5 from 'md5'
+
 const matchingList = [
   'import "../../../packages/bdsaas-bc/components/bc-audio/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-layout/style/index.less";',
@@ -36,4 +39,21 @@ export function addZeros(val: number): string {
   return val.toString().length < 2
     ? complementaryZeroes(val, 1)
     : val.toString()
+}
+
+export function getXWSSEHeaders() {
+  const token = localStorage.getItem('_BDSAAS_TOKEN') || 'empty_token'
+  if (token === 'empty_token') {
+    Message.error('token为空')
+    return {}
+  }
+  const authorization = 'Bearer ' + token
+  const timestamp = new Date().getTime()
+  const xwsse = md5(`token${token}timestamp${timestamp}`)
+  return {
+    authorization,
+    timestamp,
+    xwsse,
+    'Tracking-Url': window.parent.location.href
+  }
 }

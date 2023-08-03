@@ -56,13 +56,13 @@ defineComponent({
 </script>
 ```
 
-[//]: # (## 预览)
+## 预览
 
-[//]: # (<script setup lang="ts">)
+<script setup lang="ts">
 
-[//]: # (import { BcAudio } from 'bdsaas-bc')
+import { BcAudio } from 'bdsaas-bc'
 
-[//]: # (</script>)
+</script>
 
-[//]: # ()
-[//]: # (<BcAudio ref="BcAudioRef" src="https://demo.bdsaas.cn/call_record/2023/07/06/1564/bf1b017f37d8495d8f824e57949d4fa8..wav" name="测试录音" />)
+
+<BcAudio ref="BcAudioRef" src="https://demo.bdsaas.cn/call_record/2023/07/06/1564/bf1b017f37d8495d8f824e57949d4fa8..wav" name="测试录音" />

@@ -31,6 +31,7 @@ import { reactive, toRefs } from 'vue'
 import http from '../../../_plugins/axios-http'
 import md5 from 'md5'
 import { Message } from 'blocks-next'
+import { getXWSSEHeaders } from '../../../_utils'
 
 type TypeQueryForm = {
   [key: string]: any
@@ -66,24 +67,6 @@ const _DEFAULT_OPTIONS = {
   dataFilter: null,
   formHandler: null,
   afterSearch: null
-}
-
-// 公用的XWSSE HEADERS
-function getXWSSEHeaders() {
-  const token = localStorage.getItem('_BDSAAS_TOKEN') || 'empty_token'
-  if (token === 'empty_token') {
-    Message.error('token为空')
-    return {}
-  }
-  const authorization = 'Bearer ' + token
-  const timestamp = new Date().getTime()
-  const xwsse = md5(`token${token}timestamp${timestamp}`)
-  return {
-    authorization,
-    timestamp,
-    xwsse,
-    'Tracking-Url': window.parent.location.href
-  }
 }
 
 export default function BcTableUtil(url: string, queryForm: TypeQueryForm, options: TypeOptions) {
