@@ -20,6 +20,7 @@ function todoHandler(val: any) {
 }
 
 function hangUpHandler(type: string) {
+  console.log(dialBar.value.getConfig(), 'configText.value')
   console.log('挂断电话：', type)
 }
 

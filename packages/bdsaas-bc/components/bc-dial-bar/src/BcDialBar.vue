@@ -177,8 +177,8 @@ export default defineComponent({
 
     function closeHandler() {
       clearTimer()
-      emit('hang-up', props.callType)
       toggle(false)
+      emit('hang-up', props.callType)
     }
 
     function todoHandler() {
@@ -244,6 +244,9 @@ export default defineComponent({
       },
       resetConfig() {
         statusConfig.value = cloneDeep(initStatusConfig)
+      },
+      hangUp() {
+        closeHandler()
       }
     })
 
