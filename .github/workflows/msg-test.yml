@@ -13,6 +13,8 @@ jobs:
   publish-npm:
     runs-on: ubuntu-latest
     steps:
+      # 签出您的存储库$GITHUB_WORKSPACE，以便您的工作流可以访问它。
+      - uses: actions/checkout@v3
       # 安装 pnpm 包管理器
       - uses: pnpm/action-setup@v2
         with:
