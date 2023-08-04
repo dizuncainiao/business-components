@@ -4,7 +4,6 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "notify-test": "cd packages/bdsaas-bc/scripts && sh notify.sh",
     "preinstall": "npx only-allow pnpm",
     "lint-fix:script": "eslint . --ext .js,.ts,.vue --fix",
     "prettier:w": "prettier -c -w .",

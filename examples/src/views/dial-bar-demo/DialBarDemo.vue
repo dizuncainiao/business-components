@@ -47,14 +47,14 @@ function openHandler() {
 
 <template>
   <div style="padding: 200px;">
-    <button @click="callType = callType === 'FS' ? 'CALLBACK' : 'FS'">
+    <bn-button @click="callType = callType === 'FS' ? 'CALLBACK' : 'FS'">
       当前 {{ callType }} 切换为{{ callType === 'FS' ? 'CALLBACK' : 'FS' }}
-    </button>
+    </bn-button>
     <br />
-    <button @click="getConfigText">获取 config 数据</button>
-    <button @click="reset">重置 config</button>
+    <bn-button @click="getConfigText">获取 config 数据</bn-button>
+    <bn-button @click="reset">重置 config</bn-button>
     <pre v-html="configText"></pre>
-    <button @click="status = 'CALLING'">通话中{{ status }}</button>
+    <bn-button @click="status = 'CALLING'">通话中{{ status }}</bn-button>
     <BcDialBar
       ref="dialBar"
       :callType="callType"
@@ -69,7 +69,7 @@ function openHandler() {
       @hang-up="hangUpHandler"
       @before-open="beforeOpen"
     >
-      <button>拨打电话{{ status }}</button>
+      <bn-button>拨打电话{{ status }}</bn-button>
     </BcDialBar>
     <div style="height: 200px;">
       <p>DiaBar 组件测试</p>
@@ -93,6 +93,6 @@ function openHandler() {
       @call="callHandler"
       @hang-up="hangUpHandler"
     />
-    <button @click="openHandler">手动打开</button>
+    <bn-button @click="openHandler">手动打开</bn-button>
   </div>
 </template>

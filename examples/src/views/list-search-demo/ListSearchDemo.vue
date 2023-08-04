@@ -1,5 +1,5 @@
 <template>
-  <div style=" padding: 20px;background: #f5f5f5;">
+  <div style="padding: 20px; background: #f5f5f5;">
     <BcListSearch ref="BcListSearchDemo" :options="searchOptions" />
   </div>
 </template>
@@ -8,7 +8,7 @@
 import { defineComponent } from 'vue'
 import { BcListSearch } from 'bdsaas-bc'
 
-defineComponent({
+defineOptions({
   name: 'BcListSearchDemo'
 })
 
@@ -25,7 +25,7 @@ const searchOptions = [
         label: '检索项值2',
         value: 'searchValueKey2'
       }
-    ], // 检索项参数值数组
+    ] // 检索项参数值数组
   },
   {
     key: 'searchKey2', // 检索项的参数key
@@ -39,8 +39,7 @@ const searchOptions = [
         label: '检索项值2',
         value: 'searchValueKey4'
       }
-    ], // 检索项参数值数组
+    ] // 检索项参数值数组
   }
 ]
-
 </script>

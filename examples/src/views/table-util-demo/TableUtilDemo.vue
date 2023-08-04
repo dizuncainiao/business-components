@@ -13,19 +13,21 @@
 import { ref } from 'vue'
 import { BcTableUtil } from 'bdsaas-bc'
 
-const token = 'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiI0MzM0OCIsImV4cCI6MTY5MTA4Mzk5Nn0.pcjoq8SMp0xDNtAf6Wku5zjpglVnLSDKpikbdSF60aQw_rwIm-E161ePJ9VC3OqMuA4Yk_wke37FQvS5UgCPDg'
+const token =
+  'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiI0MzM0OCIsImV4cCI6MTY5MTA4Mzk5Nn0.pcjoq8SMp0xDNtAf6Wku5zjpglVnLSDKpikbdSF60aQw_rwIm-E161ePJ9VC3OqMuA4Yk_wke37FQvS5UgCPDg'
 localStorage.setItem('_BDSAAS_TOKEN', token)
 
-const columns = ref(
-  [{
+const columns = ref([
+  {
     prop: 'id',
-    title: 'ID',
-  }, {
+    title: 'ID'
+  },
+  {
     prop: 'itemTitle',
     title: '商品名称',
-    width: 120,
-  }]
-)
+    width: 120
+  }
+])
 
 const queryForm = {
   token,
@@ -54,5 +56,7 @@ setTimeout(() => {
   search()
 }, 10000)
 
-
+defineOptions({
+  name: 'TableUtilDemo'
+})
 </script>

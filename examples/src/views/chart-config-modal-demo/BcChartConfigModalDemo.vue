@@ -252,7 +252,7 @@ const config = [
 </script>
 
 <template>
-  <button @click="modal.toggle(true)">打开配置框</button>
+  <bn-button type="primary" @click="modal.toggle(true)">打开配置框</bn-button>
   <BcChartConfigModal
     ref="modal"
     :menuSourceData="data"
