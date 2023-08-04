@@ -1,6 +1,7 @@
 .relative-box {
   position: relative;
   z-index: 1;
+  max-width: 520px;
   min-height: 20px;
 
   &.no-slot {
@@ -9,8 +10,12 @@
     left: 50%;
     z-index: 9999;
     width: 520px;
-    height: 86px;
+    min-height: 0;
     transform: translate(-50%, -50%);
+
+    .bc-dial-bar {
+      margin-top: 0;
+    }
   }
 }
 
