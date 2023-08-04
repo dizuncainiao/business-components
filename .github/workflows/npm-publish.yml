@@ -7,7 +7,7 @@ on:
 
 env:
   NPM_TOKEN_BI_CHART: ${{secrets.NPM_TOKEN}}
-  THREE_MICRO_APP: ${{secrets.THREE_MICRO_APP}}
+  FRONT_END_MICRO_SERVICES_GROUP: ${{secrets.FRONT_END_MICRO_SERVICES_GROUP}}
 
 jobs:
   publish-npm:

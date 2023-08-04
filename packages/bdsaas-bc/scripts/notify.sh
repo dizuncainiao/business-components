@@ -1,19 +1,22 @@
 #!/bin/sh
 
-curl 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key='$THREE_MICRO_APP \
+cd ../publish
+
+PKG=$(<package.json)
+
+VERSION=$(echo "$PKG" | sed -n 's/.*"version": "\([^"]*\)",.*$/\1/p')
+NAME=$(echo "$PKG" | sed -n 's/.*"name": "\([^"]*\)",.*$/\1/p')
+
+curl 'https://qyapi.weixin.qq.com/cgi-bin/webhook/send?key='$FRONT_END_MICRO_SERVICES_GROUP \
    -H 'Content-Type: application/json' \
    -d '
    {
-        "msgtype": "text",
-        "text": {
-            "content": "小伙伴们好 [呲牙]。bdsaas-bc 包已经发布成功，可以在 https://www.npmjs.com/package/bdsaas-bc 查看最新版本，请及时更新哦！"
-        }
+       "msgtype": "markdown",
+       "markdown": {
+           "content": "<font color=\"warning\">前端发版通知</font>
+            >项目名称: 业务组件库 '$NAME'
+            >最新版本: '$VERSION'
+            >更新日志: [点击查看](https://dizuncainiao.github.io/business-components/change-log/)
+            >任务已构建完成，请及时更新: <@所有人>",
+       },
    }'
-
-##!/bin/sh
-#MSG="中文字符"
-## 进行urlencode编码，然后传输，否则接口收到的中文是乱码
-#urlEncodeMsg=`echo -n "$MSG" | xxd -ps | tr -d '\n' | sed -r 's/(..)/%\1/g'`;
-## 调用massage校验接口
-#RESULT=`curl -H "Content-Type:application/x-www-form-urlencoded" -s -X POST -d "msg=$urlEncodeMsg" "http://localhost:8080/tt/test"`
-#echo $RESULT;
