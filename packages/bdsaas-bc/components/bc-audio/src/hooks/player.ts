@@ -1,11 +1,13 @@
 import { AudioPlayer } from '../../../../_plugins/a-player'
-import 'aplayer/dist/APlayer.min.css'
 import { Message } from 'blocks-next'
 let audioPlayer: any = null
 
 function initHtml() {
   if (!document.getElementById('audioPlayer')) {
-    document.body.insertAdjacentHTML('beforeend', '<div class="audio-player-wrap"><div id="audioPlayer"></div></div>')
+    document.body.insertAdjacentHTML(
+      'beforeend',
+      '<div class="audio-player-wrap"><div id="audioPlayer"></div></div>'
+    )
   }
 }
 
@@ -73,4 +75,3 @@ export function audioPlay(props: any, emit: any) {
     audioDestory()
   })
 }
-

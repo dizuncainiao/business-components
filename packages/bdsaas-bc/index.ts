@@ -9,6 +9,8 @@ import 'element-plus/es/components/icon/style/css'
 import 'element-plus/es/components/tab-pane/style/css'
 import 'element-plus/es/components/tabs/style/css'
 import 'element-plus/es/components/tooltip/style/css'
+// 引入 APlayer 样式
+import 'aplayer/dist/APlayer.min.css'
 
 // 业务组件
 import BcSideMenu from './components/bc-side-menu'
