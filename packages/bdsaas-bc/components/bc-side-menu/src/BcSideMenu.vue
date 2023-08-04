@@ -19,9 +19,7 @@
               })
             "
           >
-            <el-icon class="menu-icon" style="color: #ffc420;">
-              <Sunny />
-            </el-icon>
+            <component class="menu-icon" :is="child.icon" />
             <!--todo: 后期可采用 TSX 编写-->
             <Badge v-if="child.notice" v-bind="badgeConfig(child)">
               <span class="title">{{ child.title }}</span>
@@ -42,16 +40,12 @@ import { computed, defineComponent, toRefs, unref } from 'vue'
 import { badgeConfig, jumpHandler } from './hooks'
 import { useRoute } from 'vue-router'
 import { Badge } from 'blocks-next'
-import { ElIcon } from 'element-plus'
-import { Sunny } from '@element-plus/icons-vue'
 import type { SideMenuProps } from './types'
 
 export default defineComponent({
   name: 'BcSideMenu',
   components: {
-    Badge,
-    ElIcon,
-    Sunny
+    Badge
   },
   props: {
     // 菜单数据

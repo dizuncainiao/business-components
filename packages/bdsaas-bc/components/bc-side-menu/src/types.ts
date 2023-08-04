@@ -1,6 +1,8 @@
+import { VNode } from 'vue'
+
 export interface MenuItem {
   authKeys: string[]
-  icon: string
+  icon: VNode
   showItem: boolean
   title: string
   routeName: string
