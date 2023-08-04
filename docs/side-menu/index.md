@@ -29,6 +29,7 @@ import SideMenuDemo from '../components/side-menu/SideMenuDemo.vue'
 
 <script setup lang="ts">
 import { BcSideMenu } from 'bdsaas-bc'
+import { BnIconSearch } from 'blocks-next'
 
 defineOptions({
   name: 'SideMenuDemo'
@@ -40,7 +41,7 @@ const menuData = [
     showGroup: true, // 是否显示组
     children: [
       {
-        icon: 'icon-things-icon-2', // blocks-next Icon 图标名称
+        icon: h(BnIconSearch), // blocks-next Icon 图标名称（暂时只接收 VNode）
         title: '概况', // 菜单子项名称
         routeName: 'OverviewBi', // 跳转页面的 routeName
         showItem: true, // 是否显示组下面的菜单子项
@@ -54,7 +55,7 @@ const menuData = [
     showGroup: true,
     children: [
       {
-        icon: 'icon-things-icon-5',
+        icon: h(BnIconSearch),
         title: '通话记录',
         routeName: 'CallRecord',
         showItem: true,
