@@ -1,0 +1,25 @@
+name: TestNotify
+
+on:
+  workflow_dispatch: {}
+  push:
+    branches:
+      - main
+env:
+  NPM_TOKEN_BI_CHART: ${{secrets.NPM_TOKEN}}
+  FRONT_END_MICRO_SERVICES_GROUP: ${{secrets.FRONT_END_MICRO_SERVICES_GROUP}}
+
+jobs:
+  publish-npm:
+    runs-on: ubuntu-latest
+    steps:
+      # 安装 pnpm 包管理器
+      - uses: pnpm/action-setup@v2
+        with:
+          version: 8
+      # 使用特定版本的 node.js 设置 GitHub Actions 工作流程
+      - uses: actions/setup-node@v3
+        with:
+          node-version: 18
+          cache: 'pnpm'
+      - run: pnpm run notify-test
