@@ -5,6 +5,7 @@ on:
   push:
     branches:
       - main
+
 env:
   NPM_TOKEN_BI_CHART: ${{secrets.NPM_TOKEN}}
   FRONT_END_MICRO_SERVICES_GROUP: ${{secrets.FRONT_END_MICRO_SERVICES_GROUP}}
@@ -26,3 +27,5 @@ jobs:
           cache: 'pnpm'
       - run: pnpm i --frozen-lockfile
       - run: pnpm run notify-test
+        env:
+          NODE_AUTH_TOKEN: ${{secrets.NPM_TOKEN}}
