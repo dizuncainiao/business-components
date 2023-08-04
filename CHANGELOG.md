@@ -1,3 +1,13 @@
+## [0.0.22](https://github.com/dizuncainiao/business-components/compare/v0.0.21...v0.0.22) (2023-08-04)
+
+### 🐛 Bug Fixes
+
+- 🐛 优化调整音频播放的处理方式，使其更流畅的切换 ([4f3791f](https://github.com/dizuncainiao/business-components/commit/4f3791f))
+
+### 🚀 Performance Improvements
+
+- 🚀 拨号条组件布局细节优化 ([33518c9](https://github.com/dizuncainiao/business-components/commit/33518c9))
+
 ## [0.0.21](https://github.com/dizuncainiao/business-components/compare/v0.0.20...v0.0.21) (2023-08-04)
 
 ## [0.0.20](https://github.com/dizuncainiao/business-components/compare/v0.0.19...v0.0.20) (2023-08-03)
