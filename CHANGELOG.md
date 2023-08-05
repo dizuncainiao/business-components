@@ -1,3 +1,10 @@
+## [0.0.23](https://github.com/dizuncainiao/business-components/compare/v0.0.22...v0.0.23) (2023-08-05)
+
+### ✨ Features
+
+- ✨ SideMenu 接收的图标类型改为 VNode ([9bb1af4](https://github.com/dizuncainiao/business-components/commit/9bb1af4))
+- ✨ SideMenu Icon 类型增加 DefineComponent ([ccf7229](https://github.com/dizuncainiao/business-components/commit/ccf7229))
+
 ## [0.0.22](https://github.com/dizuncainiao/business-components/compare/v0.0.21...v0.0.22) (2023-08-04)
 
 ### 🐛 Bug Fixes
