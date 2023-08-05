@@ -17,7 +17,7 @@ if command -v jq >/dev/null 2>&1; then
        {
            "msgtype": "markdown",
            "markdown": {
-               "content": "<font color=\"warning\">前端发版通知</font>
+               "content": "**<font color=\"warning\">前端发版通知</font>**
                 >项目名称: 业务组件库 '$PKG_NAME'
                 >最新版本: <font color=\"info\">'$PKG_VERSION'</font>
                 >更新日志: [点击查看](https://dizuncainiao.github.io/business-components/change-log/)
@@ -43,7 +43,7 @@ else
        {
            "msgtype": "markdown",
            "markdown": {
-               "content": "<font color=\"warning\">前端发版通知</font>
+               "content": "**<font color=\"warning\">前端发版通知</font>**
                 >项目名称: 业务组件库 '$PKG_NAME'
                 >最新版本: '$PKG_VERSION'
                 >更新日志: [点击查看](https://dizuncainiao.github.io/business-components/change-log/)
