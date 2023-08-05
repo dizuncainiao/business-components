@@ -13,32 +13,34 @@ export const menuData = [
     showGroup: true,
     children: [
       {
-        icon: h(BnIconEmpty),
+        icon: BnIconEmpty,
         title: '拨号条',
         routeName: 'DialBarDemo',
         showItem: true,
         authKeys: []
       },
       {
-        icon: h(BnIconSearch),
+        icon: BnIconSearch,
         title: '图表配置框',
         routeName: 'BcChartConfigModalDemo',
         showItem: true,
         authKeys: []
       },
       {
-        icon: h(BnIconCalendar),
+        icon: BnIconCalendar,
         title: '下载按钮',
         routeName: 'DownloadDemo',
         showItem: true,
-        authKeys: []
+        authKeys: [],
+        notice: 5
       },
       {
-        icon: h(BnIconSetting),
+        icon: BnIconSetting,
         title: '音频播放',
         routeName: 'AudioPlayDemo',
         showItem: true,
-        authKeys: []
+        authKeys: [],
+        notice: true
       }
     ]
   },
@@ -47,7 +49,7 @@ export const menuData = [
     showGroup: true,
     children: [
       {
-        icon: h(BnIconClock),
+        icon: BnIconClock,
         title: '表格工具方法',
         routeName: 'TableUtilDemo',
         showItem: true,

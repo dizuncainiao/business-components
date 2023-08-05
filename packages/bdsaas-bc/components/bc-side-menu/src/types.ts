@@ -1,8 +1,8 @@
-import { VNode } from 'vue'
+import { DefineComponent, VNode } from 'vue'
 
 export interface MenuItem {
   authKeys: string[]
-  icon: VNode
+  icon: VNode | DefineComponent
   showItem: boolean
   title: string
   routeName: string

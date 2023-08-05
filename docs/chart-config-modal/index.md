@@ -281,12 +281,64 @@ const config = [
 </template>
 ```
 
-## 属性
+## Props
 
 | 属性名         | 说明                       | 类型     | 可选值 | 默认值 |
 | -------------- | -------------------------- | -------- | ------ | ------ |
 | menuSourceData | 接口获取的菜单数据         | `object` | —      | —      |
 | menuConfig     | 接口获取的已配置的菜单数据 | `array`  | —      | —      |
+
+### menuSourceData
+
+```typescript
+const data = {
+  auth: 'THING',
+  authName: '事儿电话',
+  parentAuth: 'MARKETING',
+  parentAuthName: '营销中心',
+  routeName: null,
+  icon: 'phone-call',
+  formList: [
+    {
+      id: 98,
+      menuLimit: 'THING',
+      reportFormName: '事儿-话费余额',
+      url: 'TelephoneBalance',
+      type: 1,
+      formType: 1,
+      formProperty: 2,
+      description: ' ',
+      scope: 0
+    }
+  ]
+```
+
+### menuConfig
+
+```typescript
+const config = [
+  {
+    id: 111,
+    menuLimit: 'THING',
+    reportFormName: '事儿-外呼次数排行榜',
+    url: 'ThingsOutboundNumberRanking',
+    type: 2,
+    formType: 1,
+    formProperty: 1,
+    formSort: 1
+  },
+  {
+    id: 112,
+    menuLimit: 'THING',
+    reportFormName: '事儿-外呼接通率排行榜',
+    url: 'ThingsOutboundConnectionRateRanking',
+    type: 2,
+    formType: 1,
+    formProperty: 2,
+    formSort: 3
+  }
+]
+```
 
 ## 事件
 

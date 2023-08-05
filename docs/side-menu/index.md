@@ -78,11 +78,30 @@ function beforeJump(to: any, from: any, next: (args: any) => void) {
 </script>
 ```
 
-## 属性
+## Props
 
-| 属性名     | 说明           | 类型                     | 可选值 | 默认值 |
-| ---------- | -------------- | ------------------------ | ------ | ------ |
-| menuData   | 菜单数据       | Array                    | —      | —      |
-| authKeys   | 权限数据       | Array                    | —      | —      |
-| beforeJump | 跳转之前的钩子 | (to, from, next) => void | —      | —      |
-| jumpMethod | 自定义跳转方法 | (menuItem) => void       | —      | —      |
+| 属性名     | 说明           | 类型                      | 可选值 | 默认值 |
+| ---------- | -------------- | ------------------------- | ------ | ------ |
+| menuData   | 菜单数据       | [GroupItem](#groupitem)[] | —      | —      |
+| authKeys   | 权限数据       | `string`[]                | —      | —      |
+| beforeJump | 跳转之前的钩子 | (to, from, next) => void  | —      | —      |
+| jumpMethod | 自定义跳转方法 | (menuItem) => void        | —      | —      |
+
+### GroupItem
+
+| 属性名    | 说明             | 类型                    | 可选值 | 默认值 |
+| --------- | ---------------- | ----------------------- | ------ | ------ |
+| groupName | 组名称           | `string`                | —      | —      |
+| showGroup | 是否显示组       | `boolean`               | —      | —      |
+| children  | 组下的菜单项集合 | [MenuItem](#menuitem)[] | —      | —      |
+
+### MenuItem
+
+| 属性名    | 说明                                     | 类型                       | 可选值 | 默认值 |
+| --------- | ---------------------------------------- | -------------------------- | ------ | ------ |
+| icon      | blocks-next Icon 组件                    | `VNode`꒐`DefineComponent` | —      | —      |
+| title     | 菜单子项名称                             | `boolean`                  | —      | —      |
+| routeName | 跳转页面的 routeName                     | `string`                   | —      | —      |
+| showItem  | 是否显示组下面的菜单子项                 | `boolean`                  | —      | —      |
+| authKeys  | 控制菜单展示的权限 key                   | `string`[]                 | —      | —      |
+| notice    | 布尔值：是否显示红点，数值：显示红点数字 | `boolean`꒐`number`        | —      | —      |
