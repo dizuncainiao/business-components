@@ -1,3 +1,9 @@
+## [0.0.24](https://github.com/dizuncainiao/business-components/compare/v0.0.23...v0.0.24) (2023-08-18)
+
+### ✨ Features
+
+- ✨ DialBar 组件定位优化 ([23a9548](https://github.com/dizuncainiao/business-components/commit/23a9548))
+
 ## [0.0.23](https://github.com/dizuncainiao/business-components/compare/v0.0.22...v0.0.23) (2023-08-05)
 
 ### ✨ Features
