@@ -1,8 +1,12 @@
 .relative-box {
-  position: relative;
   z-index: 1;
   max-width: 520px;
   min-height: 20px;
+
+  &:hover,
+  &.is-active {
+    position: relative;
+  }
 
   &.no-slot {
     position: fixed;

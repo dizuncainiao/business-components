@@ -1,7 +1,7 @@
 <template>
   <!--  1.鼠标移入，展示拨号条，鼠标移除关闭拨号条-->
   <!--  2.进入到拨号中页面，拨号条常驻，hover 关闭失效-->
-  <div class="relative-box" :class="!hasDefaultSlot && 'no-slot'">
+  <div class="relative-box" :class="relativeBoxClass">
     <div
       class="hover-wrapper"
       @mouseenter="hoverHandler('mouseover')"
@@ -119,6 +119,10 @@ export default defineComponent({
     const visible = ref(false)
     const statusConfig = ref<StatusConfig[]>(cloneDeep(initStatusConfig))
     const hasDefaultSlot = computed(() => !!slots.default)
+    const relativeBoxClass = computed(() => [
+      !hasDefaultSlot.value ? 'no-slot' : '',
+      visible.value ? 'is-active' : ''
+    ])
 
     const tipConfig = {
       CALLBACK: {
@@ -259,6 +263,7 @@ export default defineComponent({
       todoHandler,
       callHandler,
       visible,
+      relativeBoxClass,
       currentStatus,
       classList,
       timeText,

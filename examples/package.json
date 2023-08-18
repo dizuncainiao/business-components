@@ -10,7 +10,7 @@
   },
   "dependencies": {
     "bdsaas-bc": "workspace:^",
-    "blocks-next": "1.0.1-alpha.33",
+    "blocks-next": "1.0.1-alpha.35",
     "vue": "^3.3.4",
     "vue-router": "^4.1.6"
   },
