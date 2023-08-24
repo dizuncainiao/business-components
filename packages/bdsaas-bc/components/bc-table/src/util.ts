@@ -1,5 +1,5 @@
 /**
- * description: 通用表格工具类
+ * 通用表格分页查询Composition API
  * @param {string} url 请求地址
  * @param {object} queryForm 查询条件表单
  * @param {object} options 请求参数
