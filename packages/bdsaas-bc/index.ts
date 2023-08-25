@@ -24,6 +24,12 @@ import BcChartConfigModal from './components/bc-chart-config-modal'
 // 通用表格工具类
 import BcTableUtil from './components/bc-table/src/util'
 
+// 通用操作Composition API
+import BcOperateComposition from './components/bc-table/src/operate'
+
+// 通用CURD 融合页面级Composition API
+import BcPageMixinComposition from './components/bc-table/src/pageMixin'
+
 // 请求拦截器
 import { initRequestInterceptors } from './_plugins/axios-http'
 
@@ -36,6 +42,8 @@ export {
   BcDialBar,
   BcChartConfigModal,
   BcTableUtil,
+  BcOperateComposition,
+  BcPageMixinComposition,
   initRequestInterceptors
 }
 

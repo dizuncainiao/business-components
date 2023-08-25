@@ -13,7 +13,7 @@
  *  @param {string} options.errorMessage 操作失败后的备用提示语 默认会提示后台返回的错误msg
  *  @param {string} options.cancelMessage 取消操作的提示语
  * @returns {object} 返回数据或方法
- *  @returns {function} operatehandle 添加操作函数
+ *  @returns {function} handle 添加操作函数
  *  @returns {function} cancel 取消添加操作函数
  */
 
@@ -75,20 +75,24 @@ export default function (url: string, type: 'create' | 'update' | 'del', operate
     const method = funcOptions.method || 'postJson'
 
     // 请求
-    http[method](url, params, { headers }).then((r) => {
-      Message.success({
-        message: funcOptions.successMessage
+    return new Promise<void>((resolve, reject) => {
+      http[method](url, params, { headers }).then((r) => {
+        Message.success({
+          message: funcOptions.successMessage
+        })
+        if (funcOptions.afterOperate) {
+          funcOptions.afterOperate('success', r)
+        }
+        resolve()
+      }).catch(e => {
+        Message.error({
+          message: e.msg || funcOptions.errorMessage,
+        })
+        if (funcOptions.afterOperate) {
+          funcOptions.afterOperate('error', e)
+        }
+        reject()
       })
-      if (funcOptions.afterOperate) {
-        funcOptions.afterOperate('success', r)
-      }
-    }).catch(e => {
-      Message.error({
-        message: e.msg || funcOptions.errorMessage,
-      })
-      if (funcOptions.afterOperate) {
-        funcOptions.afterOperate('error', e)
-      }
     })
   }
 
