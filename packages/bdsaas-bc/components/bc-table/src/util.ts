@@ -67,7 +67,7 @@ const _DEFAULT_OPTIONS = {
   afterSearch: null
 }
 
-export default function BcTableUtil(url: string, queryForm: TypeQueryForm, options: TypeOptions) {
+export default function (url: string, queryForm: TypeQueryForm, options: TypeOptions) {
 
   const funcOptions: TypeOptions = Object.assign({}, _DEFAULT_OPTIONS, options) // 合并默认参数
 
