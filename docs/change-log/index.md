@@ -1,3 +1,10 @@
+## [0.0.25](https://github.com/dizuncainiao/business-components/compare/v0.0.24...v0.0.25) (2023-08-28)
+
+### ✨ Features
+
+- ✨ 完善部分 PageMixin 代码 ([c360158](https://github.com/dizuncainiao/business-components/commit/c360158))
+- ✨ 新增增删改操作的通用 Composition API ([f2f755d](https://github.com/dizuncainiao/business-components/commit/f2f755d))
+
 ## [0.0.24](https://github.com/dizuncainiao/business-components/compare/v0.0.23...v0.0.24) (2023-08-18)
 
 ### ✨ Features
