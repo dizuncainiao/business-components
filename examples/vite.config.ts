@@ -29,7 +29,7 @@ export default defineConfig(({ command, mode }) => {
         }
       },
       open: true,
-      port: 5676
+      port: 5678
     },
     resolve: {
       alias: {
