@@ -1,3 +1,9 @@
+## [0.0.26](https://github.com/dizuncainiao/business-components/compare/v0.0.25...v0.0.26) (2023-08-30)
+
+### 🐛 Bug Fixes
+
+- 🐛 修复下载组件和音频播放组件在组件外部调用暴露方法时的 bug ([3767507](https://github.com/dizuncainiao/business-components/commit/3767507))
+
 ## [0.0.25](https://github.com/dizuncainiao/business-components/compare/v0.0.24...v0.0.25) (2023-08-28)
 
 ### ✨ Features
