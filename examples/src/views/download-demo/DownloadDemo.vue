@@ -2,9 +2,11 @@
   <div>
     <BcDownload
       ref="BcDownloadDemo"
-      action="https://demo.bdsaas.cn/call_record/2023/07/06/1564/bf1b017f37d8495d8f824e57949d4fa8..wav"
+      :action="action"
       file-name="测试下载录音"
     />
+
+    <button @click="refDownload">下载</button>
 
     <BcDownload
       :action="downloadAction"
@@ -26,13 +28,21 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent } from 'vue'
+import { ref } from 'vue'
 import { BcDownload } from 'bdsaas-bc'
+
+const action = ref('')
+const BcDownloadDemo = ref()
 
 // token: eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiI0MjM0NSIsImV4cCI6MTY5MTA3NTUwN30.sAc3xlRNZswc64yrgutvF2lA6AOHcVTrF2RW8wG-GSnTCTkOaBI1Ct2zNjUrHMvr6mXvQ20S58Ercb7VpVaj0g
 defineOptions({
   name: 'DownloadDemo'
 })
+
+const refDownload = () => {
+  action.value = 'https://demo.bdsaas.cn/call_record/2023/07/06/1564/bf1b017f37d8495d8f824e57949d4fa8..wav'
+  BcDownloadDemo.value.download()
+}
 
 // bdsaas/ajax/crm/queryMyCustomer.do
 // sortFieldName 0 1 2

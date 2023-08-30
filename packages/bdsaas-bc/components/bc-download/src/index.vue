@@ -1,5 +1,5 @@
 <template>
-  <div class="bc-download-btn" :class="{ inline }" @click="download">
+  <div class="bc-download-btn" :class="{ inline }" @click="_download">
     <BnButton v-if="showBtn && !isSlot" type="primary" link>{{
       btnName
     }}</BnButton>
@@ -10,7 +10,7 @@
 <script lang="ts">
 import '../style/index.less'
 
-import { defineComponent, useSlots } from 'vue'
+import { defineComponent, useSlots, nextTick } from 'vue'
 import { Button, Message } from 'blocks-next'
 import { last } from 'lodash-es'
 
@@ -68,7 +68,7 @@ export default defineComponent({
     const isSlot = !!useSlots().default
 
     // 下载
-    const download = () => {
+    const _download = () => {
       const params = Object.keys(props.params)
         .map(key => `${key}=${props.params[key]}`)
         .join('&')
@@ -127,7 +127,14 @@ export default defineComponent({
       }
     }
 
+    const download = () => {
+      nextTick(() => {
+        _download()
+      })
+    }
+
     return {
+      _download,
       download,
       isSlot
     }

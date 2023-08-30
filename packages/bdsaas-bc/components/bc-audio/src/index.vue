@@ -6,7 +6,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, useSlots } from 'vue'
+import { defineComponent, nextTick, useSlots } from 'vue'
 import { Button } from 'blocks-next'
 import { audioPlay, audioDestory } from './hooks/player'
 import '../style/index.less'
@@ -66,13 +66,15 @@ export default defineComponent({
     }
   },
   emits: ['afterPlay', 'afterError'],
-  expose: ['play', 'destroy'],
+  expose: ['play', 'destroy', ],
   setup(props, { emit }) {
 
     const isSlot = !!useSlots().default
 
     const play = () => {
-      audioPlay(props, emit)
+      nextTick(() => {
+        audioPlay(props, emit)
+      })
     }
 
     const destroy = () => {
