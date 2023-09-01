@@ -1,3 +1,9 @@
+## [0.0.27](https://github.com/dizuncainiao/business-components/compare/v0.0.26...v0.0.27) (2023-09-01)
+
+### ✨ Features
+
+- ✨ 增加 props.integerMultiple（允许放置的小图表整数倍） ([82b5fce](https://github.com/dizuncainiao/business-components/commit/82b5fce))
+
 ## [0.0.26](https://github.com/dizuncainiao/business-components/compare/v0.0.25...v0.0.26) (2023-08-30)
 
 ### 🐛 Bug Fixes
