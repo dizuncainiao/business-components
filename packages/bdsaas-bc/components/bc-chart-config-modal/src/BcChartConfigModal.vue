@@ -63,6 +63,11 @@ export default defineComponent({
     menuConfig: {
       type: Array as PropType<MenuConfig>,
       required: true
+    },
+    // 允许放置的小图表整数倍
+    integerMultiple: {
+      type: Number as PropType<number>,
+      default: 6
     }
   },
   emits: ['configured'],
@@ -110,9 +115,9 @@ export default defineComponent({
     function saveHandler() {
       const dataReport: any = state.selectedConfigData.dataReport
 
-      if (dataReport?.small?.length % 3) {
+      if (dataReport?.small?.length % props.integerMultiple) {
         return MessageBox({
-          title: '小报表数量不是3的倍数',
+          title: `小报表数量不是${props.integerMultiple}的倍数`,
           type: 'strong',
           okText: '确定',
           hideCancel: true,
