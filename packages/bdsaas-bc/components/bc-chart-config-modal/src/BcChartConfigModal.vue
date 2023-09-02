@@ -64,10 +64,10 @@ export default defineComponent({
       type: Array as PropType<MenuConfig>,
       required: true
     },
-    // 允许放置的小图表整数倍
+    // 允许放置的小图表整数倍（默认为3）
     integerMultiple: {
       type: Number as PropType<number>,
-      default: 6
+      default: 3
     }
   },
   emits: ['configured'],
