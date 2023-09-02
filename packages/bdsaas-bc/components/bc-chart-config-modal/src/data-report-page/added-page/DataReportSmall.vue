@@ -6,7 +6,11 @@
         <span class="gray">（{{ state.selectedList.length }}）</span>
       </div>
 
-      <span>最多可添加6条小报表，数量为3的倍数</span>
+      <span
+        >最多可添加{{ configModalProps.smallChartMax }}条小报表，数量为{{
+          configModalProps.integerMultiple
+        }}的倍数</span
+      >
     </div>
     <VueDraggableNext
       class="selected-list"
@@ -40,8 +44,8 @@ import { ElIcon } from 'element-plus'
 import { Delete, Sort } from '@element-plus/icons-vue'
 import { VueDraggableNext } from 'vue-draggable-next'
 import { cloneDeep } from 'lodash-es'
-import { reactive, toRaw, watch, defineComponent } from 'vue'
-import type { PropType } from 'vue'
+import { reactive, toRaw, watch, defineComponent, inject } from 'vue'
+import type { PropType, ComputedRef } from 'vue'
 
 export default defineComponent({
   name: 'DataReportSmall',
@@ -60,6 +64,8 @@ export default defineComponent({
     const state = reactive({
       selectedList: []
     })
+
+    const configModalProps = inject('configModalProps') as ComputedRef
 
     watch(
       () => props.smallSelectedList,
@@ -94,7 +100,8 @@ export default defineComponent({
     return {
       state,
       draggableChange,
-      cancelActive
+      cancelActive,
+      configModalProps
     }
   }
 })

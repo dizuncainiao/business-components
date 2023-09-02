@@ -68,6 +68,11 @@ export default defineComponent({
     integerMultiple: {
       type: Number as PropType<number>,
       default: 3
+    },
+    // 小图表的最大数量
+    smallChartMax: {
+      type: Number as PropType<number>,
+      default: 6
     }
   },
   emits: ['configured'],
@@ -143,6 +148,10 @@ export default defineComponent({
     provide('getPurchaseConfigData', getPurchaseConfigData)
     provide('useMenuData', () =>
       useMenuData(props.menuSourceData, props.menuConfig)
+    )
+    provide(
+      'configModalProps',
+      computed(() => props)
     )
 
     expose({

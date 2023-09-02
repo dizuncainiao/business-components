@@ -13,7 +13,7 @@
 import { ElTabs, ElTabPane } from 'element-plus'
 import BasicMenu from '../../components/basic-menu/BasicMenu.vue'
 import { smLength } from '../data-report-page'
-import { reactive, defineComponent } from 'vue'
+import { reactive, defineComponent, inject, ComputedRef } from 'vue'
 import type { SmallTagData } from '../type'
 import type { PropType } from 'vue'
 
@@ -31,11 +31,13 @@ export default defineComponent({
       activeName: 'my'
     })
 
+    const configModalProps = inject('configModalProps') as ComputedRef
+
     function getData(info: any) {
       // 收集小报表的长度
       const smLen = smLength(props.data.small)
       // 小报表数量不超过6个
-      if (smLen < 6 && info.active) {
+      if (smLen < configModalProps.value.smallChartMax && info.active) {
         info.item.active = info.active
       }
     }

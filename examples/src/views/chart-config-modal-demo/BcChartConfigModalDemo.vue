@@ -257,6 +257,8 @@ const config = [
     ref="modal"
     :menuSourceData="data"
     :menuConfig="config"
+    :integerMultiple="2"
+    :smallChartMax="6"
     @configured="save"
   />
 </template>
