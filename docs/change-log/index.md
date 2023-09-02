@@ -1,3 +1,9 @@
+## [0.0.29](https://github.com/dizuncainiao/business-components/compare/v0.0.28...v0.0.29) (2023-09-02)
+
+### ✨ Features
+
+- ✨ 图表配置框-增加 smallChartMax (小图表的最大数量) ([034e3b4](https://github.com/dizuncainiao/business-components/commit/034e3b4))
+
 ## [0.0.28](https://github.com/dizuncainiao/business-components/compare/v0.0.27...v0.0.28) (2023-09-02)
 
 ### ✨ Features
