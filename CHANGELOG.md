@@ -1,3 +1,9 @@
+## [0.0.28](https://github.com/dizuncainiao/business-components/compare/v0.0.27...v0.0.28) (2023-09-02)
+
+### ✨ Features
+
+- ✨ integerMultiple 默认值改为 3 ([5ba7502](https://github.com/dizuncainiao/business-components/commit/5ba7502))
+
 ## [0.0.27](https://github.com/dizuncainiao/business-components/compare/v0.0.26...v0.0.27) (2023-09-01)
 
 ### ✨ Features
