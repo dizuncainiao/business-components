@@ -1,3 +1,9 @@
+## [0.0.30](https://github.com/dizuncainiao/business-components/compare/v0.0.29...v0.0.30) (2023-09-05)
+
+### ✨ Features
+
+- ✨ 新增 BcDialBarPopover 组件（拨号条 popover 式交互） ([3510e44](https://github.com/dizuncainiao/business-components/commit/3510e44))
+
 ## [0.0.29](https://github.com/dizuncainiao/business-components/compare/v0.0.28...v0.0.29) (2023-09-02)
 
 ### ✨ Features
