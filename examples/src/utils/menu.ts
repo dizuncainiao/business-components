@@ -20,6 +20,13 @@ export const menuData = [
         authKeys: []
       },
       {
+        icon: shallowRef(BnIconEmpty),
+        title: '拨号条 Popover',
+        routeName: 'BasicPopoverDemo',
+        showItem: true,
+        authKeys: []
+      },
+      {
         icon: BnIconSearch,
         title: '图表配置框',
         routeName: 'BcChartConfigModalDemo',

@@ -37,6 +37,11 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/table-util-demo',
     name: 'TableUtilDemo',
     component: () => import('@/views/table-util-demo/TableUtilDemo.vue')
+  },
+  {
+    path: '/basic-popover-demo',
+    name: 'BasicPopoverDemo',
+    component: () => import('@/views/basic-popover-demo/BasicPopoverDemo.vue')
   }
 ]
 

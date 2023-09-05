@@ -33,3 +33,11 @@
 .collapse-transition-leave-to {
   max-height: 0;
 }
+
+/* element-plus 自定义 popover 样式 */
+.bc-dial-bar-popover {
+  padding: 0 !important;
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+}

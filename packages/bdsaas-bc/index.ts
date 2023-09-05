@@ -9,6 +9,7 @@ import 'element-plus/es/components/icon/style/css'
 import 'element-plus/es/components/tab-pane/style/css'
 import 'element-plus/es/components/tabs/style/css'
 import 'element-plus/es/components/tooltip/style/css'
+import 'element-plus/es/components/popover/style/css'
 // 引入 APlayer 样式
 import 'aplayer/dist/APlayer.min.css'
 
@@ -18,7 +19,7 @@ import BcLayout from './components/bc-layout'
 import BcAudio from './components/bc-audio'
 import BcDownload from './components/bc-download'
 import BcListSearch from './components/bc-list-search'
-import BcDialBar from './components/bc-dial-bar'
+import BcDialBar, { BcDialBarPopover } from './components/bc-dial-bar'
 import BcChartConfigModal from './components/bc-chart-config-modal'
 
 // 通用表格工具类
@@ -40,6 +41,7 @@ export {
   BcDownload,
   BcListSearch,
   BcDialBar,
+  BcDialBarPopover,
   BcChartConfigModal,
   BcTableUtil,
   BcOperateComposition,
@@ -54,6 +56,7 @@ const components = [
   BcDownload,
   BcListSearch,
   BcDialBar,
+  BcDialBarPopover,
   BcChartConfigModal
 ]
 
