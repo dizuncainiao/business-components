@@ -1,3 +1,10 @@
+## [0.0.34](https://github.com/dizuncainiao/business-components/compare/v0.0.33...v0.0.34) (2023-09-05)
+
+### ✨ Features
+
+- ✨ 新增”拨打中、通话中“点击遮罩不给关闭 ([1b3090f](https://github.com/dizuncainiao/business-components/commit/1b3090f))
+- ✨ 遮罩改为 fixed ([2eb7f39](https://github.com/dizuncainiao/business-components/commit/2eb7f39))
+
 ## [0.0.33](https://github.com/dizuncainiao/business-components/compare/v0.0.32...v0.0.33) (2023-09-05)
 
 ### ✨ Features
