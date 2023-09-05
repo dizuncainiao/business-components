@@ -1,4 +1,7 @@
 <template>
+  <teleport to="body">
+    <div v-if="visible" class="bc-dial-bar-popover-mask"></div>
+  </teleport>
   <ElPopover
     v-model:visible="visible"
     popper-class="bc-dial-bar-popover"
