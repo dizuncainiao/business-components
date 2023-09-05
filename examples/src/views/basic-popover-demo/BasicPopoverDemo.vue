@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { BcDialBar, BcDialBarPopover } from 'bdsaas-bc'
+import { BcDialBarPopover } from 'bdsaas-bc'
 import { ref } from 'vue'
 
 defineOptions({
@@ -143,7 +143,9 @@ function openHandler() {
     @todo="todoHandler"
     @call="callHandler"
     @hang-up="hangUpHandler"
-  />
+  >
+    <span></span>
+  </BcDialBarPopover>
   <bn-button @click="openHandler">手动打开</bn-button>
 
   <hr />

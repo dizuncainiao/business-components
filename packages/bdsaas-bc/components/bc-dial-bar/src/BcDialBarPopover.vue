@@ -8,6 +8,7 @@
     transition="fade-out-up"
     :show-arrow="false"
     :popper-style="$props.popperStyle as any"
+    @before-enter="$emit('beforeOpen')"
   >
     <template #reference>
       <slot />
