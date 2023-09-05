@@ -12,6 +12,7 @@
     :show-arrow="false"
     :popper-style="$props.popperStyle as any"
     @before-enter="$emit('beforeOpen')"
+    @before-leave="beforeCloseHandler"
   >
     <template #reference>
       <slot />
@@ -218,6 +219,13 @@ export default defineComponent({
       initTimer()
     }
 
+    function beforeCloseHandler() {
+      // 拨号、通话中
+      if (['DIALING', 'CALLING'].includes(props.status)) {
+        visible.value = true
+      }
+    }
+
     expose({
       open() {
         toggle(true)
@@ -243,6 +251,7 @@ export default defineComponent({
       closeHandler,
       todoHandler,
       callHandler,
+      beforeCloseHandler,
       visible,
       currentStatus,
       timeText,

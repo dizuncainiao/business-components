@@ -98,7 +98,9 @@ function openHandler() {
     <bn-button @click="getConfigText">获取 config 数据</bn-button>
     <bn-button @click="reset">重置 config</bn-button>
     <pre v-html="configText"></pre>
-    <bn-button @click="status = 'CALLING'">通话中{{ status }}</bn-button>
+    <bn-button style="width: 300px;" @click="status = 'CALLING'"
+      >通话中{{ status }}</bn-button
+    >
     <BcDialBarPopover
       ref="dialBar"
       :callType="callType"
@@ -113,7 +115,7 @@ function openHandler() {
       @hang-up="hangUpHandler"
       @before-open="beforeOpen"
     >
-      <bn-button>Click to 拨打电话{{ status }}</bn-button>
+      <bn-button style="width: 300px;">Click to 拨打电话{{ status }}</bn-button>
     </BcDialBarPopover>
     <div style="height: 200px;">
       <p>DiaBar 组件测试</p>
