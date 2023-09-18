@@ -1,7 +1,7 @@
 <template>
   <el-dialog
     v-model="state.visible"
-    custom-class="bc-chart-config-modal"
+    class="bc-chart-config-modal"
     width="1060px"
     :show-close="false"
     destroy-on-close
