@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { BcLayout } from 'bdsaas-bc'
 import type { MenuItem } from 'bdsaas-bc/components/bc-side-menu/src/types.ts'
-import { ref } from 'vue'
+import { ref, shallowRef } from 'vue'
 import { useRouter } from 'vue-router'
 import { menuData } from '@/utils/menu.ts'
 
@@ -9,7 +9,7 @@ defineOptions({
   name: 'App'
 })
 const router = useRouter()
-const options = ref({
+const options = shallowRef({
   menuData,
   beforeJump: (to: any, from: any, next: any) => {
     // console.log('to: ', to, 'from: ', from, 'next: ', next)

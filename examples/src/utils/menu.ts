@@ -1,4 +1,3 @@
-import { shallowRef } from 'vue'
 import {
   BnIconEmpty,
   BnIconSearch,
@@ -13,14 +12,14 @@ export const menuData = [
     showGroup: true,
     children: [
       {
-        icon: shallowRef(BnIconEmpty),
+        icon: BnIconEmpty,
         title: '拨号条',
         routeName: 'DialBarDemo',
         showItem: true,
         authKeys: []
       },
       {
-        icon: shallowRef(BnIconEmpty),
+        icon: BnIconEmpty,
         title: '拨号条 Popover',
         routeName: 'BasicPopoverDemo',
         showItem: true,
@@ -34,7 +33,7 @@ export const menuData = [
         authKeys: []
       },
       {
-        icon: shallowRef(BnIconCalendar),
+        icon: BnIconCalendar,
         title: '下载按钮',
         routeName: 'DownloadDemo',
         showItem: true,
@@ -42,7 +41,7 @@ export const menuData = [
         notice: 5
       },
       {
-        icon: shallowRef(BnIconSetting),
+        icon: BnIconSetting,
         title: '音频播放',
         routeName: 'AudioPlayDemo',
         showItem: true,
@@ -56,7 +55,7 @@ export const menuData = [
     showGroup: true,
     children: [
       {
-        icon: shallowRef(BnIconClock),
+        icon: BnIconClock,
         title: '表格工具方法',
         routeName: 'TableUtilDemo',
         showItem: true,
