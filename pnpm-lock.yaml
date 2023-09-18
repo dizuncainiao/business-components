@@ -148,8 +148,8 @@ importers:
         specifier: workspace:^
         version: link:../packages/bdsaas-bc
       blocks-next:
-        specifier: 1.0.1-alpha.35
-        version: 1.0.1-alpha.35(vue@3.3.4)
+        specifier: 1.0.1-alpha.41.1
+        version: 1.0.1-alpha.41.1(vue@3.3.4)
       element-plus:
         specifier: ^2.3.12
         version: 2.3.12(vue@3.3.4)
@@ -191,8 +191,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       blocks-next:
-        specifier: ^1.0.1-alpha.33
-        version: 1.0.1-alpha.33(vue@3.2.47)
+        specifier: ^1.0.1-alpha.41.1
+        version: 1.0.1-alpha.41.1(vue@3.2.47)
       element-plus:
         specifier: ^2.3.12
         version: 2.3.12(vue@3.2.47)
@@ -2632,7 +2632,7 @@ packages:
     dependencies:
       aplayer: 1.10.1
       axios: 1.4.0
-      blocks-next: 1.0.1-alpha.38.1(vue@3.3.4)
+      blocks-next: 1.0.1-alpha.41.1(vue@3.3.4)
       lodash-es: 4.17.21
       md5: 2.3.0
       qs: 6.11.2
@@ -2667,8 +2667,8 @@ packages:
       readable-stream: 3.6.2
     dev: true
 
-  /blocks-next@1.0.1-alpha.33(vue@3.2.47):
-    resolution: {integrity: sha512-CPQcrXckGKGxH0MPcPvnN7LfMfWItbChPXFIMj4d5JP92wR1ApYcGGftq7jy36HQHAnY+mYtQPb/2YyukFkSMg==}
+  /blocks-next@1.0.1-alpha.41.1(vue@3.2.47):
+    resolution: {integrity: sha512-M1uLQhY00rogRWVgLapE78Klpn7vYiiw0FLa9mVMBQW4o5q0gZlsDxA2GgQZb48d7UB0lPBmP4vdPUX4ySfNEg==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
@@ -2677,18 +2677,8 @@ packages:
       vue: 3.2.47
     dev: false
 
-  /blocks-next@1.0.1-alpha.35(vue@3.3.4):
-    resolution: {integrity: sha512-zXy/a8419G7XmOkqXbGXKRVnspGMxyKWRFmyg6/53ZPXPsfwGNvGcYCK6fM8L2tfMYlZ0v7xmaS+p92bUzgbTQ==}
-    peerDependencies:
-      vue: ^3.2.0
-    dependencies:
-      async-validator: 4.2.5
-      resize-observer-polyfill: 1.5.1
-      vue: 3.3.4
-    dev: false
-
-  /blocks-next@1.0.1-alpha.38.1(vue@3.3.4):
-    resolution: {integrity: sha512-iHjlGf1vRWNQB/kkulaHY8EaP+KWzkaxml2ZUx6oKBnrmSzqmD0cpqd/BHz/IQb5OwtblzgqKnkZdn5jtfRdww==}
+  /blocks-next@1.0.1-alpha.41.1(vue@3.3.4):
+    resolution: {integrity: sha512-M1uLQhY00rogRWVgLapE78Klpn7vYiiw0FLa9mVMBQW4o5q0gZlsDxA2GgQZb48d7UB0lPBmP4vdPUX4ySfNEg==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
