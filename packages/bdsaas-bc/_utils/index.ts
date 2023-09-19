@@ -1,4 +1,4 @@
-import {Message} from 'blocks-next'
+import { Message } from 'blocks-next'
 import md5 from 'md5'
 
 const matchingList = [
@@ -8,7 +8,8 @@ const matchingList = [
   'import "../../../packages/bdsaas-bc/components/bc-list-search/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-dial-bar/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-download/style/index.less";',
-  'import "../../../packages/bdsaas-bc/components/bc-chart-config-modal/style/index.less";'
+  'import "../../../packages/bdsaas-bc/components/bc-chart-config-modal/style/index.less";',
+  'import "../../../packages/bdsaas-bc/components/bc-org-select-modal/style/index.less";'
 ]
 
 const replaceVal = 'import "../style/index.css";'
