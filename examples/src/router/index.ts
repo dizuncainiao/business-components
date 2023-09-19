@@ -42,6 +42,11 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/basic-popover-demo',
     name: 'BasicPopoverDemo',
     component: () => import('@/views/basic-popover-demo/BasicPopoverDemo.vue')
+  },
+  {
+    path: '/org-select-modal-demo',
+    name: 'OrgSelectModal',
+    component: () => import('@/views/org-select-modal-demo/OrgSelectModal.vue')
   }
 ]
 

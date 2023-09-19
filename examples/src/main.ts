@@ -8,6 +8,7 @@ import router from './router'
 // @ts-ignore （webstorm 报错）
 import BlocksNext, { Icon } from 'blocks-next'
 import ElementPlus from 'element-plus'
+import '@/plugins/bdsaas-bc'
 import 'element-plus/dist/index.css'
 
 createApp(App)

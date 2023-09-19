@@ -47,6 +47,14 @@ export const menuData = [
         showItem: true,
         authKeys: [],
         notice: true
+      },
+      {
+        icon: BnIconSetting,
+        title: '组织架构选择框',
+        routeName: 'OrgSelectModal',
+        showItem: true,
+        authKeys: [],
+        notice: true
       }
     ]
   },

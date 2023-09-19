@@ -1,0 +1,110 @@
+.bc-org-select-modal {
+  .bn-dialog__header {
+    padding-top: 25px;
+    padding-bottom: 25px;
+    border-bottom: 1px solid #edf1f6;
+  }
+
+  .bn-dialog__body {
+    height: calc(100% - 69px);
+    padding: 0;
+  }
+
+  .bn-dialog__footer {
+    display: none;
+  }
+
+  .bc-org-select-content {
+    display: flex;
+    height: 100%;
+
+    .bc-org-select-content-left {
+      display: flex;
+      flex-direction: column;
+      width: 400px;
+      height: 100%;
+      padding: 24px 28px;
+      border-right: 1px solid #edf1f6;
+
+      .tree-box {
+        flex: 1;
+        margin-top: 21px;
+        overflow-y: auto;
+
+        &.disabled {
+          .bn-tree__node {
+            pointer-events: none;
+          }
+        }
+      }
+    }
+
+    .bc-org-select-content-right {
+      display: flex;
+      flex-direction: column;
+      width: 300px;
+      height: 100%;
+
+      .selected-person {
+        padding: 37px 24px 22px;
+        font-size: 14px;
+        font-weight: 400;
+        color: #9ca6b9;
+      }
+
+      .selected-list-box {
+        flex: 1;
+        padding: 0 12px;
+        overflow-y: auto;
+        list-style: none;
+
+        > li {
+          display: flex;
+          align-items: center;
+          padding: 6px 12px;
+
+          &:not(:first-child) {
+            margin-top: 7px;
+          }
+
+          &:hover {
+            background: #f5f7fb;
+            border-radius: 8px;
+          }
+        }
+
+        .list-avatar {
+          width: 29px;
+          height: 29px;
+          border-radius: 29px;
+        }
+
+        .person-name {
+          flex: 1;
+          padding-left: 11px;
+          font-size: 14px;
+          font-weight: 400;
+          line-height: 14px;
+          color: #242934;
+        }
+
+        .del-icon {
+          font-size: 16px;
+          color: rgb(162 171 189);
+          cursor: pointer;
+          border: 1px solid rgb(162 171 189);
+          border-radius: 100%;
+        }
+      }
+
+      .action-box {
+        justify-content: flex-end;
+        padding: 12px 28px 24px;
+      }
+    }
+  }
+}
+
+.w344 {
+  width: 344px;
+}

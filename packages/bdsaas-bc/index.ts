@@ -21,6 +21,7 @@ import BcDownload from './components/bc-download'
 import BcListSearch from './components/bc-list-search'
 import BcDialBar, { BcDialBarPopover } from './components/bc-dial-bar'
 import BcChartConfigModal from './components/bc-chart-config-modal'
+import BcOrgSelectModal from './components/bc-org-select-modal'
 
 // 通用表格工具类
 import BcTableUtil from './components/bc-table/src/util'
@@ -41,6 +42,7 @@ export {
   BcDownload,
   BcListSearch,
   BcDialBar,
+  BcOrgSelectModal,
   BcDialBarPopover,
   BcChartConfigModal,
   BcTableUtil,
@@ -57,7 +59,8 @@ const components = [
   BcListSearch,
   BcDialBar,
   BcDialBarPopover,
-  BcChartConfigModal
+  BcChartConfigModal,
+  BcOrgSelectModal
 ]
 
 export default function (app: App) {
