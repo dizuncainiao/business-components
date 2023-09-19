@@ -32,7 +32,8 @@ export default defineConfig({
         items: [
           { text: '下载按钮', link: '/download/' },
           { text: '音频播放', link: '/audio-player/' },
-          { text: '表格工具方法', link: '/table/utils' }
+          { text: '表格工具方法', link: '/table/utils' },
+          { text: '组织架构树选择框', link: '/org-select-modal/' }
         ]
       }
     ],
