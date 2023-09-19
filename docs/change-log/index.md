@@ -1,3 +1,13 @@
+## [0.0.35](https://github.com/dizuncainiao/business-components/compare/v0.0.34...v0.0.35) (2023-09-19)
+
+### ✨ Features
+
+- ✨ 完成 “组织架构树选择框” 组件 ([e0f51bd](https://github.com/dizuncainiao/business-components/commit/e0f51bd))
+
+### 🚀 Performance Improvements
+
+- 🚀 el-dialog custom-class 改为 class ([6cfa69e](https://github.com/dizuncainiao/business-components/commit/6cfa69e))
+
 ## [0.0.34](https://github.com/dizuncainiao/business-components/compare/v0.0.33...v0.0.34) (2023-09-05)
 
 ### ✨ Features
