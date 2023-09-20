@@ -1,6 +1,7 @@
 type ComponentName =
   | 'BcAudio'
   | 'BcChartConfigModal'
+  | 'BcOrgSelectModal'
   | 'BcDialBar'
   | 'BcDownload'
   | 'BcLayout'

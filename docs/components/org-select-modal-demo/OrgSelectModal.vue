@@ -1,6 +1,6 @@
 <script setup lang="ts">
-import { BcOrgSelectModal } from 'bdsaas-bc'
 import { ref } from 'vue'
+import { useBDSaasBC } from '../../utils'
 
 const bcOrgSelectModal = ref()
 const disabled = ref(false)
@@ -12,6 +12,12 @@ defineOptions({
 function okHandler({ checkedKeys, checkedNodes }) {
   console.log(checkedKeys, checkedNodes)
 }
+
+const component = ref()
+
+useBDSaasBC(component, 'BcOrgSelectModal')
+
+console.log(component)
 </script>
 
 <template>
@@ -19,10 +25,11 @@ function okHandler({ checkedKeys, checkedNodes }) {
   <br />
   <br />
   <button @click="disabled = !disabled">禁用状态：{{ disabled }}</button>
-  <BcOrgSelectModal
+  <component
+    :is="component"
     ref="bcOrgSelectModal"
     :defaultCheckedKeys="[383026, 552928, 104180, 556560]"
-    @ok="okHandler"
     :disabled="disabled"
+    @ok="okHandler"
   />
 </template>
