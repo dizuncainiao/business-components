@@ -1,5 +1,5 @@
 <template>
-  <bn-dialog
+  <BnDialog
     popup-class="bc-org-select-modal"
     v-model="visible"
     :title="$props.title"
@@ -50,27 +50,33 @@
             />
           </li>
         </ul>
-        <bn-space class="action-box">
-          <bn-button @click="toggle(false)">取消</bn-button>
-          <bn-button type="primary" @click="saveHandler">确认</bn-button>
-        </bn-space>
+        <BnSpace class="action-box">
+          <BnButton @click="toggle(false)">取消</BnButton>
+          <BnButton type="primary" @click="saveHandler">确认</BnButton>
+        </BnSpace>
       </div>
     </div>
-  </bn-dialog>
+  </BnDialog>
 </template>
 
 <script lang="ts">
 import '../style/index.less'
 
 import { defineComponent, nextTick, reactive, ref, watch } from 'vue'
-import { Dialog as BnDialog, Input as BnInput, BnIconClose } from 'blocks-next'
+import {
+  Dialog as BnDialog,
+  Input as BnInput,
+  BnIconClose,
+  Space as BnSpace,
+  Button as BnButton
+} from 'blocks-next'
 import { getDepAndUserTree } from '../../../_plugins/axios-http/apis'
 import { getTreeData } from './hooks'
 import { cloneDeep } from 'lodash-es'
 
 export default defineComponent({
   name: 'BcOrgSelection',
-  components: { BnDialog, BnInput, BnIconClose },
+  components: { BnDialog, BnInput, BnIconClose, BnSpace, BnButton },
   props: {
     disabled: {
       type: Boolean,
