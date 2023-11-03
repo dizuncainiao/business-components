@@ -1,6 +1,9 @@
 <template>
   <teleport to="body">
-    <div v-if="visible" class="bc-dial-bar-popover-mask"></div>
+    <div
+      v-if="$props.showMask && visible"
+      class="bc-dial-bar-popover-mask"
+    ></div>
   </teleport>
   <ElPopover
     v-model:visible="visible"
@@ -76,7 +79,16 @@
 <script lang="ts">
 import '../style/index.less'
 
-import { computed, toRaw, defineComponent, ref, watch } from 'vue'
+import {
+  computed,
+  toRaw,
+  defineComponent,
+  ref,
+  watch
+  // onMounted,
+  // unref
+} from 'vue'
+// import { useDraggable } from '@vueuse/core'
 import { ElPopover } from 'element-plus'
 import { imgCall, imgClose, imgTodo } from './base64'
 import { addZeros, secondsToHms } from '../../../_utils'
@@ -108,6 +120,16 @@ export default defineComponent({
     },
     // 显示待办功能
     showTodo: {
+      type: Boolean,
+      default: false
+    },
+    // 显示蒙层
+    showMask: {
+      type: Boolean,
+      default: true
+    },
+    // 可拖拽
+    draggable: {
       type: Boolean,
       default: false
     },

@@ -193,9 +193,12 @@ importers:
       '@element-plus/icons-vue':
         specifier: ^2.1.0
         version: 2.1.0(vue@3.2.47)
+      '@vueuse/core':
+        specifier: ^10.5.0
+        version: 10.5.0(vue@3.2.47)
       aplayer:
         specifier: ^1.10.1
-        version: registry.npmmirror.com/aplayer@1.10.1
+        version: 1.10.1
       axios:
         specifier: ^1.4.0
         version: 1.4.0
@@ -235,7 +238,7 @@ importers:
         version: 18.16.5
       '@types/qs':
         specifier: latest
-        version: 6.9.8
+        version: 6.9.9
       '@vitejs/plugin-vue':
         specifier: ^4.2.1
         version: 4.2.1(vite@4.4.7)(vue@3.2.47)
@@ -1597,8 +1600,8 @@ packages:
     resolution: {integrity: sha512-O397rnSS9iQI4OirieAtsDqvCj4+3eY1J+EPdNTKuHuRWIfUoGyzX294o8C4KJYaLqgSrd2o60c5EqCU8Zv02g==}
     dev: true
 
-  /@types/qs@6.9.8:
-    resolution: {integrity: sha512-u95svzDlTysU5xecFNTgfFG5RUWu1A9P0VzgpcIiGZA9iraHOdSzcxMxQ55DyeRaGCSxQi7LxXDI4rzq/MYfdg==}
+  /@types/qs@6.9.9:
+    resolution: {integrity: sha512-wYLxw35euwqGvTDx6zfY1vokBFnsK0HNrzc6xNHchxfO2hpuRg74GbkEW7e3sSmPvj0TjCDT1VCa6OtHXnubsg==}
     dev: true
 
   /@types/semver@7.3.13:
@@ -1645,6 +1648,10 @@ packages:
   /@types/web-bluetooth@0.0.17:
     resolution: {integrity: sha512-4p9vcSmxAayx72yn70joFoL44c9MO/0+iVEBIQXe3v2h2SiAsEIo/G5v6ObFWvNKRFjbrVadNf9LqEEZeQPzdA==}
     dev: true
+
+  /@types/web-bluetooth@0.0.18:
+    resolution: {integrity: sha512-v/ZHEj9xh82usl8LMR3GarzFY1IrbXJw5L4QfQhokjRV91q+SelFqxQWSep1ucXEZ22+dSTwLFkXeur25sPIbw==}
+    dev: false
 
   /@typescript-eslint/eslint-plugin@5.59.2(@typescript-eslint/parser@5.59.2)(eslint@8.45.0)(typescript@5.0.4):
     resolution: {integrity: sha512-yVrXupeHjRxLDcPKL10sGQ/QlVrA8J5IYOEWVqk0lJaSZP7X5DfnP7Ns3cc74/blmbipQ1htFNVGsHX6wsYm0A==}
@@ -2099,6 +2106,18 @@ packages:
       - vue
     dev: true
 
+  /@vueuse/core@10.5.0(vue@3.2.47):
+    resolution: {integrity: sha512-z/tI2eSvxwLRjOhDm0h/SXAjNm8N5ld6/SC/JQs6o6kpJ6Ya50LnEL8g5hoYu005i28L0zqB5L5yAl8Jl26K3A==}
+    dependencies:
+      '@types/web-bluetooth': 0.0.18
+      '@vueuse/metadata': 10.5.0
+      '@vueuse/shared': 10.5.0(vue@3.2.47)
+      vue-demi: 0.14.6(vue@3.2.47)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
+
   /@vueuse/core@9.13.0(vue@3.2.47):
     resolution: {integrity: sha512-pujnclbeHWxxPRqXWmdkKV5OX4Wk4YeK7wusHqRwU0Q7EFusHoqNA/aPhB6KCh9hEqJkLAJo7bb0Lh9b+OIVzw==}
     dependencies:
@@ -2179,6 +2198,10 @@ packages:
     resolution: {integrity: sha512-3Gt68mY/i6bQvFqx7cuGBzrCCQu17OBaGWS5JdwISpMsHnMKKjC2FeB5OAfMcCQ0oINfADP3i9A4PPRo0peHdQ==}
     dev: true
 
+  /@vueuse/metadata@10.5.0:
+    resolution: {integrity: sha512-fEbElR+MaIYyCkeM0SzWkdoMtOpIwO72x8WsZHRE7IggiOlILttqttM69AS13nrDxosnDBYdyy3C5mR1LCxHsw==}
+    dev: false
+
   /@vueuse/metadata@9.13.0:
     resolution: {integrity: sha512-gdU7TKNAUVlXXLbaF+ZCfte8BjRJQWPCa2J55+7/h+yDtzw3vOoGQDRXzI6pyKyo6bXFT5/QoPE4hAknExjRLQ==}
     dev: false
@@ -2191,6 +2214,15 @@ packages:
       - '@vue/composition-api'
       - vue
     dev: true
+
+  /@vueuse/shared@10.5.0(vue@3.2.47):
+    resolution: {integrity: sha512-18iyxbbHYLst9MqU1X1QNdMHIjks6wC7XTVf0KNOv5es/Ms6gjVFCAAWTVP2JStuGqydg3DT+ExpFORUEi9yhg==}
+    dependencies:
+      vue-demi: 0.14.6(vue@3.2.47)
+    transitivePeerDependencies:
+      - '@vue/composition-api'
+      - vue
+    dev: false
 
   /@vueuse/shared@9.13.0(vue@3.2.47):
     resolution: {integrity: sha512-UrnhU+Cnufu4S6JLCPZnkWh0WwZGUp72ktOF2DFptMlOs3TOdVv8xJN53zhHGARmVOsz5KqOls09+J1NR6sBKw==}
@@ -2641,7 +2673,7 @@ packages:
     dependencies:
       aplayer: 1.10.1
       axios: 1.4.0
-      blocks-next: 1.0.1-alpha.41.1(vue@3.3.4)
+      blocks-next: 1.0.1-alpha.43(vue@3.3.4)
       lodash-es: 4.17.21
       md5: 2.3.0
       qs: 6.11.2
@@ -2688,6 +2720,16 @@ packages:
 
   /blocks-next@1.0.1-alpha.41.1(vue@3.3.4):
     resolution: {integrity: sha512-M1uLQhY00rogRWVgLapE78Klpn7vYiiw0FLa9mVMBQW4o5q0gZlsDxA2GgQZb48d7UB0lPBmP4vdPUX4ySfNEg==}
+    peerDependencies:
+      vue: ^3.2.0
+    dependencies:
+      async-validator: 4.2.5
+      resize-observer-polyfill: 1.5.1
+      vue: 3.3.4
+    dev: false
+
+  /blocks-next@1.0.1-alpha.43(vue@3.3.4):
+    resolution: {integrity: sha512-PYzUhuNHztXPB81yb1psx6HfNKVTXaGDX4BxRwkvPDgEQr5JkBB01A7UEpG4BbHNfPzLl1Mu9PAimiH63Dg12A==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
@@ -8054,7 +8096,7 @@ packages:
   /vinyl-sourcemaps-apply@0.2.1:
     resolution: {integrity: sha512-+oDh3KYZBoZC8hfocrbrxbLUeaYtQK7J5WU5Br9VqWqmCll3tFJqKp97GC9GmMsVIL0qnx2DgEDVxdo5EZ5sSw==}
     dependencies:
-      source-map: registry.npmmirror.com/source-map@0.5.7
+      source-map: 0.5.7
     dev: true
 
   /vinyl@2.2.1:
@@ -8247,6 +8289,21 @@ packages:
         optional: true
     dependencies:
       vue: 3.3.4
+
+  /vue-demi@0.14.6(vue@3.2.47):
+    resolution: {integrity: sha512-8QA7wrYSHKaYgUxDA5ZC24w+eHm3sYCbp0EzcDwKqN3p6HqtTCGR/GVsPyZW92unff4UlcSh++lmqDWN3ZIq4w==}
+    engines: {node: '>=12'}
+    hasBin: true
+    requiresBuild: true
+    peerDependencies:
+      '@vue/composition-api': ^1.0.0-rc.1
+      vue: ^3.0.0-0 || ^2.6.0
+    peerDependenciesMeta:
+      '@vue/composition-api':
+        optional: true
+    dependencies:
+      vue: 3.2.47
+    dev: false
 
   /vue-draggable-next@2.2.1(sortablejs@1.15.0)(vue@3.2.47):
     resolution: {integrity: sha512-EAMS1IRHF0kZO0o5PMOinsQsXIqsrKT1hKmbICxG3UEtn7zLFkLxlAtajcCcUTisNvQ6TtCB5COjD9a1raNADw==}
@@ -8600,39 +8657,4 @@ packages:
       validator: 13.9.0
     optionalDependencies:
       commander: 9.5.0
-    dev: true
-
-  registry.npmmirror.com/aplayer@1.10.1:
-    resolution: {integrity: sha512-HAfyxgCUTLAqtYlxzzK9Fyqg6y+kZ9CqT1WfeWE8FSzwspT6oBqWOZHANPHF3RGTtC33IsyEgrfthPDzU5r9kQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/aplayer/-/aplayer-1.10.1.tgz}
-    name: aplayer
-    version: 1.10.1
-    dependencies:
-      balloon-css: registry.npmmirror.com/balloon-css@0.5.2
-      promise-polyfill: registry.npmmirror.com/promise-polyfill@7.1.0
-      smoothscroll: registry.npmmirror.com/smoothscroll@0.4.0
-    dev: false
-
-  registry.npmmirror.com/balloon-css@0.5.2:
-    resolution: {integrity: sha512-zheJpzwyNrG4t39vusA67v3BYg1HTVXOF8cErPEHzWK88PEOFwgo6Ea9VHOgOWNMgeuOtFVtB73NE2NWl9uDyQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/balloon-css/-/balloon-css-0.5.2.tgz}
-    name: balloon-css
-    version: 0.5.2
-    dev: false
-
-  registry.npmmirror.com/promise-polyfill@7.1.0:
-    resolution: {integrity: sha512-P6NJ2wU/8fac44ENORsuqT8TiolKGB2u0fEClPtXezn7w5cmLIjM/7mhPlTebke2EPr6tmqZbXvnX0TxwykGrg==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/promise-polyfill/-/promise-polyfill-7.1.0.tgz}
-    name: promise-polyfill
-    version: 7.1.0
-    dev: false
-
-  registry.npmmirror.com/smoothscroll@0.4.0:
-    resolution: {integrity: sha512-sggQ3U2Un38b3+q/j1P4Y4fCboCtoUIaBYoge+Lb6Xg1H8RTIif/hugVr+ErMtIDpvBbhQfTjtiTeYAfbw1ZGQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/smoothscroll/-/smoothscroll-0.4.0.tgz}
-    name: smoothscroll
-    version: 0.4.0
-    dev: false
-
-  registry.npmmirror.com/source-map@0.5.7:
-    resolution: {integrity: sha512-LbrmJOMUSdEVxIKvdcJzQC+nQhe8FUZQTXQy6+I75skNgn3OoQ0DZA8YnFa7gp8tqtL3KPf1kmo0R5DoApeSGQ==, registry: https://registry.npmjs.org/, tarball: https://registry.npmmirror.com/source-map/-/source-map-0.5.7.tgz}
-    name: source-map
-    version: 0.5.7
-    engines: {node: '>=0.10.0'}
     dev: true

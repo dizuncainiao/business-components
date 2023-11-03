@@ -137,10 +137,8 @@ function openHandler() {
       number: 2,
       todo: 'todo-id-001'
     }"
-    :popper-style="{
-      top: '200px',
-      left: '200px'
-    }"
+    :showMask="false"
+    draggable
     showTodo
     @todo="todoHandler"
     @call="callHandler"
