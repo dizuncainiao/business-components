@@ -13,7 +13,7 @@
     trigger="click"
     transition="fade-out-up"
     :show-arrow="false"
-    :popper-style="$props.popperStyle as any"
+    :popper-style="popperStyleComputed"
     @before-enter="$emit('beforeOpen')"
     @before-leave="beforeCloseHandler"
   >
@@ -21,7 +21,11 @@
       <slot />
     </template>
 
-    <div class="bc-dial-bar">
+    <div
+      ref="bcDialBar"
+      class="bc-dial-bar"
+      :class="$props.draggable && 'drag'"
+    >
       <!--开始页面-->
       <!--todo:如果需要隐藏的话，在计算属性里延迟 500ms 返回布尔值，让蓝色背景移入完毕再隐藏
        v-if="!['DIALING', 'CALLING'].includes($props.status)"-->
@@ -84,11 +88,12 @@ import {
   toRaw,
   defineComponent,
   ref,
-  watch
+  watch,
+  nextTick
   // onMounted,
   // unref
 } from 'vue'
-// import { useDraggable } from '@vueuse/core'
+import { useDraggable } from '@vueuse/core'
 import { ElPopover } from 'element-plus'
 import { imgCall, imgClose, imgTodo } from './base64'
 import { addZeros, secondsToHms } from '../../../_utils'
@@ -128,11 +133,12 @@ export default defineComponent({
       type: Boolean,
       default: true
     },
-    // 可拖拽
+    // 可拖拽（优先级比 popperStyle 高，为 true 时，覆盖掉 popperStyle 的样式）
     draggable: {
       type: Boolean,
       default: false
     },
+    // 外部定义 popover 的位置，通常在函数调用打开 BcDialBarPopover 时使用
     popperStyle: {
       type: [Object, String],
       default: () => ({})
@@ -150,6 +156,7 @@ export default defineComponent({
     const visible = ref(false)
     const statusConfig = ref<StatusConfig[]>(cloneDeep(initStatusConfig))
     const hasDefaultSlot = computed(() => !!slots.default)
+    const bcDialBar = ref<HTMLElement | null>(null)
 
     const tipConfig = {
       CALLBACK: {
@@ -169,6 +176,25 @@ export default defineComponent({
       return {
         ...currentStatus,
         tip
+      }
+    })
+
+    const { style } = useDraggable(bcDialBar)
+    const INIT_STYLE_VALUE = 'left:0px;top:0px;' // 没有任务初始配置时，style 的值
+
+    // watch(visible, val => {
+    //   if (!val) {
+    //   }
+    // })
+
+    const popperStyleComputed = computed(() => {
+      if (props.draggable) {
+        if (style.value === INIT_STYLE_VALUE) {
+          return {}
+        }
+        return style.value
+      } else {
+        return props.popperStyle
       }
     })
 
@@ -277,7 +303,9 @@ export default defineComponent({
       visible,
       currentStatus,
       timeText,
-      hasDefaultSlot
+      hasDefaultSlot,
+      bcDialBar,
+      popperStyleComputed
     }
   }
 })

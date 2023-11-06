@@ -161,6 +161,8 @@ function openHandler() {
           number: 2,
           todo: 'todo-id-001'
         }"
+        :showMask="false"
+        draggable
         @todo="todoHandler"
         @call="callHandler"
         @hang-up="hangUpHandler"
