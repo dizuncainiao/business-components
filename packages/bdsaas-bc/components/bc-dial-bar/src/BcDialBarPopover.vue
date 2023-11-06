@@ -179,14 +179,19 @@ export default defineComponent({
       }
     })
 
-    const { style } = useDraggable(bcDialBar)
+    // const { style } = useDraggable(bcDialBar)
+    const dragData = useDraggable(bcDialBar)
+    const style = dragData.style
     const INIT_STYLE_VALUE = 'left:0px;top:0px;' // 没有任务初始配置时，style 的值
 
-    // watch(visible, val => {
-    //   if (!val) {
-    //   }
-    // })
-
+    watch(visible, val => {
+      if (val) {
+        // 解决拖动后，关闭，再开启（位置不能复原）
+        dragData.position.value.x = 0
+        dragData.position.value.y = 0
+      }
+    })
+    console.log(dragData, 'dragData')
     const popperStyleComputed = computed(() => {
       if (props.draggable) {
         if (style.value === INIT_STYLE_VALUE) {
