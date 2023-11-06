@@ -1,3 +1,11 @@
+## [0.0.38](https://github.com/dizuncainiao/business-components/compare/v0.0.37...v0.0.38) (2023-11-06)
+
+### ✨ Features
+
+- ✨ 拨号条可拖动 ([27c4712](https://github.com/dizuncainiao/business-components/commit/27c4712))
+- ✨ 解决拖动后，关闭，再开启（位置不能复原） ([261553a](https://github.com/dizuncainiao/business-components/commit/261553a))
+- ✨ 增加 showMask、draggable ([4e2056c](https://github.com/dizuncainiao/business-components/commit/4e2056c))
+
 ## [0.0.37](https://github.com/dizuncainiao/business-components/compare/v0.0.36...v0.0.37) (2023-09-20)
 
 ### 🚀 Performance Improvements
