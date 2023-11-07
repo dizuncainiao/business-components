@@ -185,7 +185,8 @@ export default defineComponent({
     const INIT_STYLE_VALUE = 'left:0px;top:0px;' // 没有任务初始配置时，style 的值
 
     watch(visible, val => {
-      if (val) {
+      // 判断只在初始状态时，才重置定位
+      if (val && props.status === 'NOT_STARTED') {
         // 解决拖动后，关闭，再开启（位置不能复原）
         dragData.position.value.x = 0
         dragData.position.value.y = 0
