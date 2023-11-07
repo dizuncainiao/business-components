@@ -1,6 +1,7 @@
 import { computed, ref } from 'vue'
 import { isClient, toRefs, toValue } from '@vueuse/shared'
 import { useEventListener } from './useEventListener'
+import { useElementOffset } from './useElementOffset'
 const defaultWindow = isClient ? window : void 0
 
 export function useDraggable(target, options = {}) {
@@ -38,9 +39,15 @@ export function useDraggable(target, options = {}) {
     const container =
       (_a2 = toValue(containerElement)) != null ? _a2 : toValue(target)
     const rect = container.getBoundingClientRect()
+
+    const { offsetTop, offsetLeft } = useElementOffset(
+      window.parent.document.getElementById('bd-saas-bc-wujie')
+    )
+    console.log(offsetTop, offsetLeft, 'bc - body')
+
     const pos = {
-      x: e.clientX - rect.left,
-      y: e.clientY - rect.top
+      x: e.clientX - rect.left + offsetLeft,
+      y: e.clientY - rect.top + offsetTop
     }
     if ((onStart == null ? void 0 : onStart(pos, e)) === false) return
     pressedDelta.value = pos
