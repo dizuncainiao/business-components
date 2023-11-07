@@ -1,3 +1,9 @@
+## [0.0.39](https://github.com/dizuncainiao/business-components/compare/v0.0.38...v0.0.39) (2023-11-07)
+
+### ✨ Features
+
+- ✨ 判断只在初始状态时，才重置定位 ([aa9a693](https://github.com/dizuncainiao/business-components/commit/aa9a693))
+
 ## [0.0.38](https://github.com/dizuncainiao/business-components/compare/v0.0.37...v0.0.38) (2023-11-06)
 
 ### ✨ Features
