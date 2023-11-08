@@ -143,6 +143,7 @@ function openHandler() {
     @todo="todoHandler"
     @call="callHandler"
     @hang-up="hangUpHandler"
+    @before-open="beforeOpen"
   >
     <span></span>
   </BcDialBarPopover>

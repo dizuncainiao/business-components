@@ -192,7 +192,7 @@ export default defineComponent({
         dragData.position.value.y = 0
       }
     })
-    console.log(dragData, 'dragData')
+    // console.log(dragData, 'dragData')
     const popperStyleComputed = computed(() => {
       if (props.draggable) {
         if (style.value === INIT_STYLE_VALUE) {
@@ -208,7 +208,8 @@ export default defineComponent({
       visible.value = val
 
       if (val) {
-        emit('beforeOpen')
+        // 无需主动触发，@before-enter="$emit('beforeOpen')" 已经触发过了
+        // emit('beforeOpen')
       } else {
         emit('beforeClose')
         // 关闭时，将状态重置为 “未开始”
