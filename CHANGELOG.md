@@ -1,3 +1,9 @@
+## [0.0.40](https://github.com/dizuncainiao/business-components/compare/v0.0.39...v0.0.40) (2023-11-08)
+
+### 🐛 Bug Fixes
+
+- 🐛 DialBarPopover 组件 beforeOpen 组件重复触发问题修复 ([d112e33](https://github.com/dizuncainiao/business-components/commit/d112e33))
+
 ## [0.0.39](https://github.com/dizuncainiao/business-components/compare/v0.0.38...v0.0.39) (2023-11-07)
 
 ### ✨ Features
