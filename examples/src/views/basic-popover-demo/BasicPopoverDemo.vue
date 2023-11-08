@@ -138,14 +138,17 @@ function openHandler() {
       todo: 'todo-id-001'
     }"
     :showMask="false"
+    :popperStyle="{
+      top: '50px',
+      right: '50px',
+      left: 'initial'
+    }"
     draggable
     showTodo
     @todo="todoHandler"
     @call="callHandler"
     @hang-up="hangUpHandler"
-  >
-    <span></span>
-  </BcDialBarPopover>
+  />
   <bn-button @click="openHandler">手动打开</bn-button>
 
   <hr />

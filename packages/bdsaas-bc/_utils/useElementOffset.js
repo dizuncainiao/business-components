@@ -1,4 +1,11 @@
 export function useElementOffset(el) {
+  if (isNoWuJie()) {
+    return {
+      offsetTop: 0,
+      offsetLeft: 0
+    }
+  }
+
   let left = el.offsetLeft
   let top = el.offsetTop
 
@@ -15,4 +22,8 @@ export function useElementOffset(el) {
     offsetTop: top,
     offsetLeft: left
   }
+}
+
+export function isNoWuJie() {
+  return window.parent === window
 }

@@ -134,7 +134,7 @@ export default defineComponent({
       type: Boolean,
       default: true
     },
-    // 可拖拽（优先级比 popperStyle 高，为 true 时，覆盖掉 popperStyle 的样式）
+    // 可拖拽（初始位置在 默认插槽处。如果指定了 popperStyle，则初始位置为 popperStyle）
     draggable: {
       type: Boolean,
       default: false
@@ -197,6 +197,9 @@ export default defineComponent({
     const popperStyleComputed = computed(() => {
       if (props.draggable) {
         if (style.value === INIT_STYLE_VALUE) {
+          if (props.popperStyle) {
+            return props.popperStyle
+          }
           return {}
         }
         return style.value
