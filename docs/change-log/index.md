@@ -1,8 +1,13 @@
-## [0.0.40](https://github.com/dizuncainiao/business-components/compare/v0.0.39...v0.0.40) (2023-11-08)
+## [0.0.41](https://github.com/dizuncainiao/business-components/compare/v0.0.39...v0.0.41) (2023-11-20)
+
+### ✨ Features
+
+- ✨ 更改组件名称 ([7de85b5](https://github.com/dizuncainiao/business-components/commit/7de85b5))
+- ✨ 新增日历组件 ([b1d6a47](https://github.com/dizuncainiao/business-components/commit/b1d6a47))
 
 ### 🐛 Bug Fixes
 
-- 🐛 DialBarPopover 组件 beforeOpen 组件重复触发问题修复 ([d112e33](https://github.com/dizuncainiao/business-components/commit/d112e33))
+- 🐛 DialBarPopover 组件 beforeOpen 事件触发两次问题修复 ([1df9c43](https://github.com/dizuncainiao/business-components/commit/1df9c43))
 
 ## [0.0.39](https://github.com/dizuncainiao/business-components/compare/v0.0.38...v0.0.39) (2023-11-07)
 
