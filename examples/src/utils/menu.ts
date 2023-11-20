@@ -55,6 +55,14 @@ export const menuData = [
         showItem: true,
         authKeys: [],
         notice: true
+      },
+      {
+        icon: BnIconSetting,
+        title: '日历',
+        routeName: 'CalendarDemo',
+        showItem: true,
+        authKeys: [],
+        notice: true
       }
     ]
   },

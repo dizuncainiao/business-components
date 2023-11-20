@@ -16,6 +16,7 @@ import 'aplayer/dist/APlayer.min.css'
 // 业务组件
 import BcSideMenu from './components/bc-side-menu'
 import BcLayout from './components/bc-layout'
+import BcCalendar from './components/bc-calendar'
 import BcAudio from './components/bc-audio'
 import BcDownload from './components/bc-download'
 import BcListSearch from './components/bc-list-search'
@@ -45,6 +46,7 @@ export {
   BcOrgSelectModal,
   BcDialBarPopover,
   BcChartConfigModal,
+  BcCalendar,
   BcTableUtil,
   BcOperateComposition,
   BcPageMixinComposition,
@@ -60,7 +62,8 @@ const components = [
   BcDialBar,
   BcDialBarPopover,
   BcChartConfigModal,
-  BcOrgSelectModal
+  BcOrgSelectModal,
+  BcCalendar
 ]
 
 export default function (app: App) {
