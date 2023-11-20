@@ -9,7 +9,8 @@ const matchingList = [
   'import "../../../packages/bdsaas-bc/components/bc-dial-bar/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-download/style/index.less";',
   'import "../../../packages/bdsaas-bc/components/bc-chart-config-modal/style/index.less";',
-  'import "../../../packages/bdsaas-bc/components/bc-org-select-modal/style/index.less";'
+  'import "../../../packages/bdsaas-bc/components/bc-org-select-modal/style/index.less";',
+  'import "../../../packages/bdsaas-bc/components/bc-calendar/style/index.less";'
 ]
 
 const replaceVal = 'import "../style/index.css";'
