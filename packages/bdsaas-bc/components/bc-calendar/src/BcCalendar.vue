@@ -72,7 +72,7 @@
 import dayjs from 'dayjs'
 import '../style/index.less'
 export default {
-  name: 'bc-calendar',
+  name: 'BCCalendar',
   props: {
     decorate: {
       type: Object,
