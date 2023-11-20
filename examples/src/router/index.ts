@@ -47,6 +47,11 @@ export const routes: Array<RouteRecordRaw> = [
     path: '/org-select-modal-demo',
     name: 'OrgSelectModal',
     component: () => import('@/views/org-select-modal-demo/OrgSelectModal.vue')
+  },
+  {
+    path: '/calendar-demo',
+    name: 'CalendarDemo',
+    component: () => import('@/views/calendar-demo/CalendarDemo.vue')
   }
 ]
 

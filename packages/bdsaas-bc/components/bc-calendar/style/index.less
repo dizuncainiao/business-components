@@ -1,0 +1,232 @@
+.bc-calendar {
+  width: 100%;
+  height: 100%;
+  font-size: 14px;
+  background: #fff;
+}
+
+.bc-calendar .calendar__header {
+  position: absolute;
+  top: -65px;
+  right: 6px;
+  padding: 25px 0;
+  line-height: 24px;
+}
+
+.worktask-calendar-rigth-title {
+  height: 24px;
+  line-height: 17px;
+  color: #0056ff;
+  text-align: center;
+  background-color: transparent;
+  border: 1px solid #0056ff;
+}
+
+.bc-calendar .calendar__action {
+  position: absolute;
+  top: 0;
+  right: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100%;
+}
+
+.bc-calendar .calendar__control {
+  display: flex;
+  width: 210px;
+  padding: 0;
+  color: #1e2329;
+}
+
+.bc-calendar .calendar__control.calendar__control_center {
+  margin: 0 auto;
+}
+
+.bc-calendar .calendar__control .calendar__indicator {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  font-weight: 500;
+}
+
+.bc-calendar .calendar__control .calendar__indicator-detail {
+  margin-left: 10px;
+  color: #0056ff;
+}
+
+.bc-calendar .calendar__control .calendar__arrow {
+  width: 44px;
+  text-align: center;
+}
+
+.bc-calendar .calendar__control .calendar__arrow.right::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  content: "";
+  border-top: 5px solid transparent;
+  border-bottom: 5px solid transparent;
+  border-left: 5px solid #c7d2d0;
+}
+
+.bc-calendar .calendar__control .calendar__arrow.left::after {
+  display: inline-block;
+  width: 0;
+  height: 0;
+  content: "";
+  border-top: 5px solid transparent;
+  border-right: 5px solid #c7d2d0;
+  border-bottom: 5px solid transparent;
+}
+
+.bc-calendar .calendar__arrow {
+  position: relative;
+  width: 54px;
+  color: #c7d2d0;
+  text-align: center;
+  cursor: pointer;
+}
+
+.bc-calendar .calendar__arrow.right i::before {
+  position: absolute;
+  top: 12px;
+  right: 26px;
+  font-size: 28px;
+}
+
+.bc-calendar .calendar__arrow.left i::before {
+  position: absolute;
+  top: 10px;
+  font-size: 28px;
+}
+
+.bc-calendar .calendar__arrow:hover,
+.bc-calendar .calendar__arrow:focus {
+  color: #0056ff;
+}
+
+.bc-calendar .calendar__main {
+  display: flex;
+  padding-top: 25px;
+
+  .bn-icon {
+    height: 44px;
+    font-size: 30px;
+  }
+}
+
+.bc-calendar .calendar__today {
+  flex: none;
+  align-self: flex-start;
+  width: 20px;
+  padding: 5px 0;
+  margin-left: 8px;
+  font-size: 11px;
+  color: #0056ff;
+  text-align: center;
+  cursor: pointer;
+  border: 1px solid #0056ff;
+  border-radius: 10px;
+}
+
+.bc-calendar .calendar__date {
+  flex: 1 0 auto;
+  width: 100px;
+}
+
+.bc-calendar .calendar__weekdays {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  margin: 0;
+  font-size: 11px;
+  color: #1e2329;
+}
+
+.bc-calendar .calendar__weekdays .calendar__weekday {
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 14.2%;
+  margin: 0;
+  font-size: 12px;
+  text-align: center;
+}
+
+.bc-calendar .calendar__days {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  padding-bottom: 10px;
+}
+
+.bc-calendar .calendar__days .calendar__day {
+  position: relative;
+  display: inline-block;
+  flex: 0 0 auto;
+  width: 14.2%;
+  margin: 3px 0;
+  font-size: 12px;
+  color: #000;
+  text-align: center;
+}
+
+.bc-calendar .calendar__days .calendar__day .sub {
+  position: absolute;
+  top: -5px;
+  left: 20px;
+  width: 14px;
+  height: 14px;
+  font-size: 10px;
+  font-style: inherit;
+  line-height: 14px;
+  text-align: center;
+  background: #fff;
+  border-radius: 14px;
+}
+
+.bc-calendar .calendar__days .calendar__day span {
+  position: relative;
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  font-family: Gudea, sans-serif;
+  font-size: 18px;
+  line-height: 30px;
+  text-align: center;
+  cursor: pointer;
+}
+
+.bc-calendar .calendar__days .calendar__day.calendar__day_now span {
+  color: #fff !important;
+  background: #f5a781;
+  border-radius: 50%;
+}
+
+.bc-calendar .calendar__days .calendar__day.calendar__day_selected span {
+  color: #fff !important;
+  background: #eb4f04;
+  border-radius: 50%;
+}
+
+.bc-calendar .calendar__days .calendar__day.calendar__day_othermonth span {
+  color: #ccc;
+  border-radius: 50%;
+}
+
+.bc-calendar .calendar__days .calendar__day.calendar__day_decorate {
+  position: relative;
+}
+
+.bc-calendar .calendar__days .calendar__day.calendar__day_decorate::after {
+  position: absolute;
+  right: 0;
+  bottom: 2px;
+  left: 0;
+  width: 4px;
+  height: 4px;
+  margin: auto;
+  content: "";
+  background: #eb4f04;
+  border-radius: 50%;
+}
