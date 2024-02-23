@@ -63,6 +63,22 @@ export default defineComponent({
       // 是否行内展示
       type: Boolean,
       default: false
+    },
+    // 属于播放区域的额外类名
+    unCloseClass: {
+      // 额外类名
+      type: String,
+      default: 'un-close-class'
+    },
+    // 显示关闭按钮
+    showClose: {
+      type: Boolean,
+      default: false
+    },
+    // 点击区域外关闭
+    closeOnClickOutside: {
+      type: Boolean,
+      default: false
     }
   },
   emits: ['afterPlay', 'afterError'],

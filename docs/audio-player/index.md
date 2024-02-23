@@ -15,6 +15,11 @@
 | btnName | String | 非必传 | '播放' | 按钮名称 |
 | showErrorMsg | Boolean | 非必传 | false | 是否显示错误提示 |
 | inline  | Boolean | 非必传 | false | 是否行内块 |
+| showClose | Boolean | 非必传 | false | 是否显示关闭按钮 |
+| closeOnClickOutSide | Boolean | 非必传 | false | 是否允许点击其他区域关闭播放器 |
+| unCloseClass | String | 非必传 | 'un-close-class' | 点击后不关闭播放器的class |
+
+> 说明unCloseClass: 点击后不关闭播放器的class，当点击的元素有此class时，不关闭播放器。处理的是使用ref调用播放器方法时会使用自定义按钮，此按钮并不在播放器或播放器组件范围内，当closeOnClickOutSide为true时，点击此按钮会关闭播放器，此时可以使用此class来阻止关闭播放器。不传的时候直接在元素上添加这个'un-close-class'即可。
 
 ### Methods
 
