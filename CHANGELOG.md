@@ -1,3 +1,9 @@
+## [0.0.42](https://github.com/dizuncainiao/business-components/compare/v0.0.41...v0.0.42) (2024-02-23)
+
+### ✨ Features
+
+- ✨ 播放音频组件增加可配置的关闭功能 ([a460713](https://github.com/dizuncainiao/business-components/commit/a460713))
+
 ## [0.0.41](https://github.com/dizuncainiao/business-components/compare/v0.0.39...v0.0.41) (2023-11-20)
 
 ### ✨ Features
