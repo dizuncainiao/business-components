@@ -1,11 +1,14 @@
 <template>
   <div>
-    <button @click="changeSrcAndName">change</button>
+    <button class="extra-class" @click="changeSrcAndName">播放</button>
     <BcAudio
       ref="BcAudioRef"
       :src="src"
       :name="name"
       :showBtn="false"
+      unCloseClass="extra-class"
+      closeOnClickOutside
+      showClose
     />
   </div>
 </template>
@@ -23,7 +26,7 @@ const name = ref('')
 
 const changeSrcAndName = () => {
   src.value = 'https://demo.bdsaas.cn/call_record/2023/07/06/1564/bf1b017f37d8495d8f824e57949d4fa8..wav'
-  name.value = '金卡跨境电商看见你电脑开机啊苏卡达缴纳卡机奶萨到哪科技'
+  name.value = '测试'
   BcAudioRef.value.play()
 }
 

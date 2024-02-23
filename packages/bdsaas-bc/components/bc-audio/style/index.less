@@ -4,6 +4,23 @@
   right: 10px;
   z-index: 9999;
   width: 320px;
+
+  .audio-player-close {
+    position: absolute;
+    top: 5px;
+    right: 10px;
+    cursor: pointer;
+
+    > svg {
+      width: 20px;
+      height: 20px;
+      font-size: 20px;
+    }
+
+    &.hide {
+      display: none;
+    }
+  }
 }
 
 .bc-audio-btn {
