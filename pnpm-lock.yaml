@@ -203,8 +203,8 @@ importers:
         specifier: ^1.4.0
         version: 1.4.0
       blocks-next:
-        specifier: ^1.0.1-alpha.46
-        version: 1.0.1-alpha.46(vue@3.2.47)
+        specifier: 1.0.1-alpha.45.3
+        version: 1.0.1-alpha.45.3(vue@3.2.47)
       dayjs:
         specifier: ^1.11.10
         version: 1.11.10
@@ -2375,16 +2375,6 @@ packages:
       snabbdom: 3.6.2
     dev: false
 
-  /@wangeditor/editor-for-vue@5.1.12(@wangeditor/editor@5.1.23)(vue@3.2.47):
-    resolution: {integrity: sha512-0Ds3D8I+xnpNWezAeO7HmPRgTfUxHLMd9JKcIw+QzvSmhC5xUHbpCcLU+KLmeBKTR/zffnS5GQo6qi3GhTMJWQ==}
-    peerDependencies:
-      '@wangeditor/editor': '>=5.1.0'
-      vue: ^3.0.5
-    dependencies:
-      '@wangeditor/editor': 5.1.23
-      vue: 3.2.47
-    dev: false
-
   /@wangeditor/editor-for-vue@5.1.12(@wangeditor/editor@5.1.23)(vue@3.3.4):
     resolution: {integrity: sha512-0Ds3D8I+xnpNWezAeO7HmPRgTfUxHLMd9JKcIw+QzvSmhC5xUHbpCcLU+KLmeBKTR/zffnS5GQo6qi3GhTMJWQ==}
     peerDependencies:
@@ -2973,13 +2963,11 @@ packages:
       vue: 3.3.4
     dev: false
 
-  /blocks-next@1.0.1-alpha.46(vue@3.2.47):
-    resolution: {integrity: sha512-gOOXsSGLPd0KPtYSyutXjcyTHb+WEkHocgv23Fz3gkn6DAJeubol+oaoVIw3kMqnm+P/Lwjsv76ZSQbNfm34bQ==}
+  /blocks-next@1.0.1-alpha.45.3(vue@3.2.47):
+    resolution: {integrity: sha512-9tuz46Lu6xMbDLHV3cecl/cm854daM0j0m6s8w52jgoSSbLqKjEv8uvIoHZGFuxKa99xUxZh9awSoNOslk1C3g==}
     peerDependencies:
       vue: ^3.2.0
     dependencies:
-      '@wangeditor/editor': 5.1.23
-      '@wangeditor/editor-for-vue': 5.1.12(@wangeditor/editor@5.1.23)(vue@3.2.47)
       async-validator: 4.2.5
       resize-observer-polyfill: 1.5.1
       vue: 3.2.47
