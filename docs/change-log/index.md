@@ -1,3 +1,9 @@
+## [0.0.44](https://github.com/dizuncainiao/business-components/compare/v0.0.43...v0.0.44) (2024-03-29)
+
+### ✨ Features
+
+- ✨ 引入 el ([5457035](https://github.com/dizuncainiao/business-components/commit/5457035))
+
 ## [0.0.43](https://github.com/dizuncainiao/business-components/compare/v0.0.42...v0.0.43) (2024-03-29)
 
 ### ✨ Features
