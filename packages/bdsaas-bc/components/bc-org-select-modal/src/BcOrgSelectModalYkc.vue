@@ -42,10 +42,23 @@
               class="list-avatar"
               alt=""
             />
-            <span class="person-name">{{ item.name }}</span>
-            <bn-input
+            <span
+              class="person-name"
+              style="
+                flex: initial !important;
+                width: 68px;
+                overflow: hidden;
+                text-overflow: ellipsis;
+                white-space: nowrap;
+"
+              >{{ item.name }}</span
+            >
+            <el-input-number
               v-model="item.value"
               style="width: 116px; margin-right: 23px;"
+              :min="0"
+              controls-position="right"
+              :controls="false"
               placeholder="请输入解锁量"
             />
             <bn-icon-close
@@ -166,7 +179,7 @@ export default defineComponent({
     }
 
     function getCheckedNodesOfKeys(checkedKeys) {
-      state.checkedNodes = tree.value
+      const leftCheckedNodes = tree.value
         .getNodesByValues(checkedKeys)
         .map(item => {
           return {
@@ -175,6 +188,17 @@ export default defineComponent({
             image: item.data.image
           }
         })
+
+      const cacheStateCheckedNodes = cloneDeep(state.checkedNodes)
+
+      state.checkedNodes = leftCheckedNodes.map(item => {
+        return {
+          name: item.name,
+          id: item.id,
+          image: item.image,
+          value: cacheStateCheckedNodes.find(v => v.id === item.id)?.value || 0
+        }
+      })
     }
 
     // 移除选中的节点
@@ -216,7 +240,6 @@ export default defineComponent({
         emit(
           'ok',
           cloneDeep({
-            checkedKeys: state.checkedKeys,
             checkedNodes: state.checkedNodes
           })
         )

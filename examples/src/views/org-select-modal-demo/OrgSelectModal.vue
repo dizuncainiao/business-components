@@ -10,8 +10,8 @@ defineOptions({
   name: 'OrgSelectionDemo'
 })
 
-function okHandler({ checkedKeys, checkedNodes }) {
-  console.log(checkedKeys, checkedNodes)
+function okHandler({ checkedNodes }) {
+  console.log(checkedNodes)
 }
 </script>
 
@@ -34,5 +34,6 @@ function okHandler({ checkedKeys, checkedNodes }) {
     :defaultCheckedKeys="[8, 266, 1702, 42987, 1445, 42755]"
     @ok="okHandler"
     :disabled="disabled"
+    title="添加坐席"
   />
 </template>
