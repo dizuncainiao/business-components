@@ -88,13 +88,21 @@ import {
   Space as BnSpace,
   Button as BnButton
 } from 'blocks-next'
+import { ElInputNumber } from 'element-plus'
 import { getDepAndUserTree } from '../../../_plugins/axios-http/apis'
 import { getTreeData } from './hooks'
 import { cloneDeep } from 'lodash-es'
 
 export default defineComponent({
   name: 'BcOrgSelectModalYkc',
-  components: { BnDialog, BnInput, BnIconClose, BnSpace, BnButton },
+  components: {
+    BnDialog,
+    BnInput,
+    BnIconClose,
+    BnSpace,
+    BnButton,
+    ElInputNumber
+  },
   props: {
     disabled: {
       type: Boolean,
