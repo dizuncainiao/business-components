@@ -1,3 +1,10 @@
+## [0.0.43](https://github.com/dizuncainiao/business-components/compare/v0.0.42...v0.0.43) (2024-03-29)
+
+### ✨ Features
+
+- ✨ 云客查组织架构添加坐席组件 ([118d4e0](https://github.com/dizuncainiao/business-components/commit/118d4e0))
+- ✨ ykc 组织架构树 ([c447866](https://github.com/dizuncainiao/business-components/commit/c447866))
+
 ## [0.0.42](https://github.com/dizuncainiao/business-components/compare/v0.0.41...v0.0.42) (2024-02-23)
 
 ### ✨ Features
