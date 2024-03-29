@@ -1,3 +1,5 @@
+## [0.0.45](https://github.com/dizuncainiao/business-components/compare/v0.0.44...v0.0.45) (2024-03-29)
+
 ## [0.0.44](https://github.com/dizuncainiao/business-components/compare/v0.0.43...v0.0.44) (2024-03-29)
 
 ### ✨ Features
