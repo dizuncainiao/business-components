@@ -8,7 +8,7 @@ export function useToken() {
 }
 
 export function useCompanyId() {
-  return localStorage.getItem('_BDSAAS_COMPANY_ID') || '9'
+  return localStorage.getItem('_BDSAAS_COMPANY_ID') || '242'
 }
 
 export function useUserInfo() {
@@ -16,7 +16,7 @@ export function useUserInfo() {
 }
 
 export function useCompanyName() {
-  return useUserInfo().companyName || '八度云'
+  return useUserInfo().companyName || '深圳八度云计算有限公s犀利'
 }
 
 export function useUploadUrl() {

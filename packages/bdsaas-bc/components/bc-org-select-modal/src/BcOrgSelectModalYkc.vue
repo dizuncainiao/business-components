@@ -43,6 +43,11 @@
               alt=""
             />
             <span class="person-name">{{ item.name }}</span>
+            <bn-input
+              v-model="item.value"
+              style="width: 116px; margin-right: 23px;"
+              placeholder="请输入解锁量"
+            />
             <bn-icon-close
               v-if="!$props.disabled"
               @click="remove(index)"
@@ -75,7 +80,7 @@ import { getTreeData } from './hooks'
 import { cloneDeep } from 'lodash-es'
 
 export default defineComponent({
-  name: 'BcOrgSelectModal',
+  name: 'BcOrgSelectModalYkc',
   components: { BnDialog, BnInput, BnIconClose, BnSpace, BnButton },
   props: {
     disabled: {
@@ -150,12 +155,7 @@ export default defineComponent({
 
     // 更新树数据
     async function updateTreeData() {
-      // todo: token 参数怎么传优雅
-      const params = {
-        // token:
-        //   'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiI2NzA5OCIsImV4cCI6MTY5NTA0NjcxNH0.icahzgzq3inxIbid8NgNFfa5dAqD24Orq-IkmlU3yiRwhiUxH7AD0117KtmLrG1TSZE8nwb3Ux17pZPAYpWcGw',
-        // COMPANYID: '2'
-      }
+      const params = {}
 
       getDepAndUserTree(params).then(res => {
         const list = res?.data?.innerDep || []
