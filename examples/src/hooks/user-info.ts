@@ -3,7 +3,7 @@ import md5 from 'md5'
 export function useToken() {
   return (
     localStorage.getItem('_BDSAAS_TOKEN') ||
-    'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiI2NzA5OCIsImV4cCI6MTY5NTExNjI2OH0.9JUr8uTeTWTAjrJsxLbp8AkZz6jlZj9MLq-l46LzWWnekkvf4QWl0T-3SSeGjcEs-n1ZZHuU6Ucry8amxl0zEQ'
+    'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiIyNzk3IiwiZXhwIjoxNzEyNjg0NDUzfQ.40LPJLfgJBDwAPwHtR4AKiqEA8BSk0cU6aDHAhHbvkHq8PX9x0Q5rlqNAgissS04qN5TxDlfGHRzSOS_jLOjpw'
   )
 }
 

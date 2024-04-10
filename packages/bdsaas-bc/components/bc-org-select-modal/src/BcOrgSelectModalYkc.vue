@@ -36,12 +36,7 @@
         </div>
         <ul class="selected-list-box">
           <li v-for="(item, index) of state.checkedNodes" :key="item.id">
-            <img
-              v-if="item.image"
-              :src="item.image"
-              class="list-avatar"
-              alt=""
-            />
+            <img :src="item.defaultImgUrl" class="list-avatar" alt="" />
             <span
               class="person-name"
               style="
@@ -51,10 +46,10 @@
                 text-overflow: ellipsis;
                 white-space: nowrap;
 "
-              >{{ item.name }}</span
+              >{{ item.label }}</span
             >
             <el-input-number
-              v-model="item.value"
+              v-model="item.number"
               style="width: 116px; margin-right: 23px;"
               :min="0"
               controls-position="right"
@@ -89,8 +84,11 @@ import {
   Button as BnButton
 } from 'blocks-next'
 import { ElInputNumber } from 'element-plus'
-import { getDepAndUserTree } from '../../../_plugins/axios-http/apis'
-import { getTreeData } from './hooks'
+import {
+  getDepAndUserTree,
+  QueryInitDep
+} from '../../../_plugins/axios-http/apis'
+import { getTreeData, initTreeData } from './hooks'
 import { cloneDeep } from 'lodash-es'
 
 export default defineComponent({
@@ -176,35 +174,39 @@ export default defineComponent({
 
     // 更新树数据
     async function updateTreeData() {
-      const params = {}
+      const params = {
+        withPeople: true,
+        withUserNum: true,
+        withDepLeafNum: true,
+        COMPANYID: localStorage.getItem('_BDSAAS_COMPANY_ID') || 242
+      }
 
-      getDepAndUserTree(params).then(res => {
-        const list = res?.data?.innerDep || []
-        state.treeData = getTreeData(list)
-
+      QueryInitDep(params).then(res => {
+        state.treeData = initTreeData(res.data)
         nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
       })
+      // const params = {}
+      //
+      // getDepAndUserTree(params).then(res => {
+      //   const list = res?.data?.innerDep || []
+      //   state.treeData = getTreeData(list)
+      //
+      //   nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
+      // })
     }
 
     function getCheckedNodesOfKeys(checkedKeys) {
       const leftCheckedNodes = tree.value
         .getNodesByValues(checkedKeys)
-        .map(item => {
-          return {
-            name: item.data.label,
-            id: item.data.value,
-            image: item.data.image
-          }
-        })
+        .map(item => item.data)
 
       const cacheStateCheckedNodes = cloneDeep(state.checkedNodes)
 
       state.checkedNodes = leftCheckedNodes.map(item => {
         return {
-          name: item.name,
-          id: item.id,
-          image: item.image,
-          value: cacheStateCheckedNodes.find(v => v.id === item.id)?.value || 0
+          ...item,
+          number:
+            cacheStateCheckedNodes.find(v => v.id === item.id)?.number || 0
         }
       })
     }
@@ -248,7 +250,15 @@ export default defineComponent({
         emit(
           'ok',
           cloneDeep({
-            checkedNodes: state.checkedNodes
+            checkedNodes: state.checkedNodes.map(item => {
+              return {
+                attendant: item.name,
+                dailyUnlockAmount: item.number,
+                depId: item.parentId,
+                depName: item.depName,
+                profileId: item.id
+              }
+            })
           })
         )
 

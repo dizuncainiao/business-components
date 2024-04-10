@@ -30,3 +30,33 @@ function groupBy(arr: any[], key: string) {
     return prevValue
   }, new Map())
 }
+
+export function initTreeData(treeData: any[]) {
+  const idMap = new Map()
+
+  function addIdMap(arr: any[]) {
+    arr.forEach((item: any) => {
+      idMap.set(item.id, item)
+      if (item.children) {
+        addIdMap(item.children)
+      }
+    })
+  }
+
+  addIdMap(treeData)
+
+  function addLabelValue(arr: any[]) {
+    arr.forEach((item: any) => {
+      item.label = item.name
+      item.value = item.id
+      item.depName = idMap.get(item.parentId)?.name
+      if (item.children) {
+        addLabelValue(item.children)
+      }
+    })
+  }
+
+  addLabelValue(treeData)
+
+  return treeData
+}
