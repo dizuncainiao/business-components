@@ -1,3 +1,9 @@
+## [0.0.47](https://github.com/dizuncainiao/business-components/compare/v0.0.46...v0.0.47) (2024-04-10)
+
+### ✨ Features
+
+- ✨ 禁用部门 ([93d87d1](https://github.com/dizuncainiao/business-components/commit/93d87d1))
+
 ## [0.0.46](https://github.com/dizuncainiao/business-components/compare/v0.0.45...v0.0.46) (2024-04-10)
 
 ### ✨ Features
