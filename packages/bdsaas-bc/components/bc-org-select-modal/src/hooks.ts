@@ -50,8 +50,11 @@ export function initTreeData(treeData: any[]) {
       item.label = item.name
       item.value = item.id
       item.depName = idMap.get(item.parentId)?.name
-      if (item.children) {
+      if (item.children?.length) {
         addLabelValue(item.children)
+      } else if (item.type === 'dep') {
+        // 部门禁用
+        item.disabled = item.type === 'dep'
       }
     })
   }
