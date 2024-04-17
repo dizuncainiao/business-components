@@ -1,3 +1,9 @@
+## [0.0.48](https://github.com/dizuncainiao/business-components/compare/v0.0.47...v0.0.48) (2024-04-17)
+
+### ✨ Features
+
+- ✨ ykc 组织架构框优化 ([61215ce](https://github.com/dizuncainiao/business-components/commit/61215ce))
+
 ## [0.0.47](https://github.com/dizuncainiao/business-components/compare/v0.0.46...v0.0.47) (2024-04-10)
 
 ### ✨ Features
