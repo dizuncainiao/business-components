@@ -17,6 +17,8 @@
         ></bn-input>
 
         <bn-tree
+          v-bn-loading="loading"
+          bn-loading-text="数据加载中…"
           ref="tree"
           class="tree-box"
           :class="$props.disabled && 'disabled'"
@@ -147,6 +149,7 @@ export default defineComponent({
   },
   setup(props, { expose, emit }) {
     const visible = ref(false)
+    const loading = ref(false)
     const tree = ref()
     const query = ref('')
 
@@ -180,10 +183,12 @@ export default defineComponent({
         withDepLeafNum: true,
         COMPANYID: localStorage.getItem('_BDSAAS_COMPANY_ID') || 242
       }
+      loading.value = true
 
       QueryInitDep(params).then(res => {
         state.treeData = initTreeData(res.data)
         nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
+        loading.value = false
       })
       // const params = {}
       //
@@ -223,6 +228,7 @@ export default defineComponent({
       // 关闭，重置数据
       if (!val) {
         Object.assign(state, initState)
+        query.value = ''
       } else {
         updateTreeData()
       }
@@ -265,6 +271,7 @@ export default defineComponent({
         toggle(false)
       },
       visible,
+      loading,
       tree,
       query,
       state
