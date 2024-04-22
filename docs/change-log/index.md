@@ -1,3 +1,9 @@
+## [0.0.49](https://github.com/dizuncainiao/business-components/compare/v0.0.48...v0.0.49) (2024-04-22)
+
+### ✨ Features
+
+- ✨ 加入上限 ([a0f87f7](https://github.com/dizuncainiao/business-components/commit/a0f87f7))
+
 ## [0.0.48](https://github.com/dizuncainiao/business-components/compare/v0.0.47...v0.0.48) (2024-04-17)
 
 ### ✨ Features
