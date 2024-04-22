@@ -54,6 +54,7 @@
               v-model="item.number"
               style="width: 116px; margin-right: 23px;"
               :min="0"
+              :max="10000"
               controls-position="right"
               :controls="false"
               placeholder="请输入解锁量"
