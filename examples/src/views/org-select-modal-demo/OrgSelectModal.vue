@@ -31,7 +31,7 @@ function okHandler({ checkedNodes }) {
 
   <BcOrgSelectModalYkc
     ref="bcOrgSelectModalYkc"
-    :defaultCheckedKeys="[8, 266, 1702]"
+    :defaultCheckedKeys="[1660, 9]"
     @ok="okHandler"
     :disabled="disabled"
     title="添加坐席"

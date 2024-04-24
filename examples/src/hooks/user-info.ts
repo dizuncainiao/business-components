@@ -8,7 +8,7 @@ export function useToken() {
 }
 
 export function useCompanyId() {
-  return localStorage.getItem('_BDSAAS_COMPANY_ID') || '242'
+  return localStorage.getItem('_BDSAAS_COMPANY_ID') || '1564'
 }
 
 export function useUserInfo() {

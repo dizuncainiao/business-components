@@ -38,7 +38,7 @@
         </div>
         <ul class="selected-list-box">
           <li v-for="(item, index) of state.checkedNodes" :key="item.id">
-            <img :src="item.defaultImgUrl" class="list-avatar" alt="" />
+            <img :src="item.image" class="list-avatar" alt="" />
             <span
               class="person-name"
               style="
@@ -178,33 +178,36 @@ export default defineComponent({
 
     // 更新树数据
     async function updateTreeData() {
-      const params = {
-        withPeople: true,
-        withUserNum: true,
-        withDepLeafNum: true,
-        COMPANYID: localStorage.getItem('_BDSAAS_COMPANY_ID') || 242
-      }
+      // const params = {
+      //   withPeople: true,
+      //   withUserNum: true,
+      //   withDepLeafNum: true,
+      //   COMPANYID: localStorage.getItem('_BDSAAS_COMPANY_ID') || 1564
+      // }
+      // loading.value = true
+      //
+      // QueryInitDep(params).then(res => {
+      //   state.treeData = initTreeData(res.data)
+      //   nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
+      //   loading.value = false
+      // })
+      const params = {}
       loading.value = true
-
-      QueryInitDep(params).then(res => {
-        state.treeData = initTreeData(res.data)
+      getDepAndUserTree(params).then(res => {
+        const list = res?.data?.innerDep || []
+        state.treeData = getTreeData(list)
         nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
         loading.value = false
       })
-      // const params = {}
-      //
-      // getDepAndUserTree(params).then(res => {
-      //   const list = res?.data?.innerDep || []
-      //   state.treeData = getTreeData(list)
-      //
-      //   nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
-      // })
     }
 
     function getCheckedNodesOfKeys(checkedKeys) {
       const leftCheckedNodes = tree.value
         .getNodesByValues(checkedKeys)
-        .map(item => item.data)
+        .map(item => ({
+          ...item.data,
+          depName: item.parent.label
+        }))
 
       const cacheStateCheckedNodes = cloneDeep(state.checkedNodes)
 
@@ -261,9 +264,9 @@ export default defineComponent({
               return {
                 attendant: item.name,
                 dailyUnlockAmount: item.number,
-                depId: item.parentId,
+                depId: Math.abs(item.pId),
                 depName: item.depName,
-                profileId: item.id
+                profileId: Math.abs(item.id)
               }
             })
           })
