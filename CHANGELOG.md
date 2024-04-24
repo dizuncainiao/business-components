@@ -1,3 +1,9 @@
+## [0.0.51](https://github.com/dizuncainiao/business-components/compare/v0.0.50...v0.0.51) (2024-04-24)
+
+### ✨ Features
+
+- ✨ 优化空数据部门 ([36b9635](https://github.com/dizuncainiao/business-components/commit/36b9635))
+
 ## [0.0.50](https://github.com/dizuncainiao/business-components/compare/v0.0.49...v0.0.50) (2024-04-24)
 
 ### ✨ Features
