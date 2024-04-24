@@ -1,3 +1,9 @@
+## [0.0.50](https://github.com/dizuncainiao/business-components/compare/v0.0.49...v0.0.50) (2024-04-24)
+
+### ✨ Features
+
+- ✨ 组织架构接口替换 ([35f4bc0](https://github.com/dizuncainiao/business-components/commit/35f4bc0))
+
 ## [0.0.49](https://github.com/dizuncainiao/business-components/compare/v0.0.48...v0.0.49) (2024-04-22)
 
 ### ✨ Features
