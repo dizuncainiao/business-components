@@ -11,6 +11,19 @@ export function getTreeData(arr: any[]) {
   return pIdMap.get(0) || []
 }
 
+// 将 children.length 为 0 的部门节点设为 disabled
+export function setDisabled(arr: any[]) {
+  arr.forEach((item: any) => {
+    if (item.type === 'dep' && item.children?.length === 0) {
+      item.disabled = true
+    }
+    if (item.children?.length) {
+      setDisabled(item.children)
+    }
+  })
+  return arr
+}
+
 // 收集 pId 下的所有子集
 function groupBy(arr: any[], key: string) {
   return arr.reduce((prevValue, currentValue) => {

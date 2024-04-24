@@ -91,7 +91,7 @@ import {
   getDepAndUserTree,
   QueryInitDep
 } from '../../../_plugins/axios-http/apis'
-import { getTreeData, initTreeData } from './hooks'
+import { getTreeData, initTreeData, setDisabled } from './hooks'
 import { cloneDeep } from 'lodash-es'
 
 export default defineComponent({
@@ -195,7 +195,8 @@ export default defineComponent({
       loading.value = true
       getDepAndUserTree(params).then(res => {
         const list = res?.data?.innerDep || []
-        state.treeData = getTreeData(list)
+        state.treeData = setDisabled(getTreeData(list))
+        console.log(getTreeData(list), 'getTreeData(list)')
         nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
         loading.value = false
       })
