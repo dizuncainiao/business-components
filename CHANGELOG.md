@@ -1,3 +1,9 @@
+## [0.0.53](https://github.com/dizuncainiao/business-components/compare/v0.0.52...v0.0.53) (2024-05-07)
+
+### ✨ Features
+
+- ✨ 样式优化 ([fb32e7c](https://github.com/dizuncainiao/business-components/commit/fb32e7c))
+
 ## [0.0.52](https://github.com/dizuncainiao/business-components/compare/v0.0.51...v0.0.52) (2024-05-07)
 
 ### ✨ Features
