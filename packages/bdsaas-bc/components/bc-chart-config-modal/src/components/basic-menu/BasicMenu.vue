@@ -1,10 +1,14 @@
 <template>
   <div class="basic-menu">
     <div v-for="item of $props.menuData" :key="item.title" class="menu-item">
-      <h3 class="title" @click="item.open = !item.open">
+      <h3
+        class="title"
+        @click="item.open = !item.open"
+        :class="item.open && 'open'"
+      >
         {{ item.title }}
-        <el-icon v-if="item?.children?.length">
-          <ArrowDown />
+        <el-icon class="arrow-icon" v-if="item?.children?.length">
+          <ArrowRight />
         </el-icon>
       </h3>
       <CollapseTransition>
@@ -40,16 +44,16 @@
                   <span class="w125">
                     {{ `${index + 1}.${subItem.title}` }}
                   </span>
-                  <el-tooltip
-                    v-if="subItem.desc"
-                    :content="subItem.desc"
-                    placement="bottom"
-                    effect="light"
-                  >
-                    <el-icon class="tips-question">
-                      <QuestionFilled />
-                    </el-icon>
-                  </el-tooltip>
+                  <!--                  <el-tooltip-->
+                  <!--                    v-if="subItem.desc"-->
+                  <!--                    :content="subItem.desc"-->
+                  <!--                    placement="bottom"-->
+                  <!--                    effect="light"-->
+                  <!--                  >-->
+                  <!--                    <el-icon v-if="subItem.desc" class="tips-question">-->
+                  <!--                      <QuestionFilled />-->
+                  <!--                    </el-icon>-->
+                  <!--                  </el-tooltip>-->
                 </li>
               </ol>
             </CollapseTransition>
@@ -61,8 +65,8 @@
 </template>
 
 <script lang="ts">
-import { ElIcon, ElTooltip } from 'element-plus'
-import { ArrowDown, QuestionFilled } from '@element-plus/icons-vue'
+import { ElIcon } from 'element-plus'
+import { ArrowRight } from '@element-plus/icons-vue'
 import CollapseTransition from '../collapse-transition/CollapseTransition.vue'
 import { computed, unref, defineComponent } from 'vue'
 import { groupBy } from './hooks'
@@ -73,9 +77,7 @@ export default defineComponent({
   name: 'BasicMenu',
   components: {
     ElIcon,
-    ElTooltip,
-    ArrowDown,
-    QuestionFilled,
+    ArrowRight,
     CollapseTransition
   },
   props: {
