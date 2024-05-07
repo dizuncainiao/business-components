@@ -1,3 +1,10 @@
+## [0.0.52](https://github.com/dizuncainiao/business-components/compare/v0.0.51...v0.0.52) (2024-05-07)
+
+### ✨ Features
+
+- ✨ 图标更换、样式优化 ([7c40d30](https://github.com/dizuncainiao/business-components/commit/7c40d30))
+- ✨ 移除 tooltip、加入箭头动效 ([faa81ef](https://github.com/dizuncainiao/business-components/commit/faa81ef))
+
 ## [0.0.51](https://github.com/dizuncainiao/business-components/compare/v0.0.50...v0.0.51) (2024-04-24)
 
 ### ✨ Features
