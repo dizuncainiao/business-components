@@ -2,7 +2,7 @@
   <el-dialog
     v-model="state.visible"
     class="bc-chart-config-modal"
-    width="1060px"
+    width="960px"
     :show-close="false"
     destroy-on-close
   >
