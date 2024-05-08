@@ -1,7 +1,7 @@
 <template>
   <div class="data-report-selected-content-small data-report-selected-content">
     <div class="tips-box">
-      <div>
+      <div style="font-weight: bold;">
         已添加小报表
         <span class="gray">（{{ state.selectedList.length }}）</span>
       </div>
