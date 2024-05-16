@@ -16,6 +16,9 @@ function okHandler({ checkedNodes }) {
 </script>
 
 <template>
+  <button @click="bcOrgSelectModal.toggle(true)">打开 BcOrgSelectModal</button>
+  <br />
+  <br />
   <button @click="bcOrgSelectModalYkc.toggle(true)">
     打开 BcOrgSelectModalYkc
   </button>
@@ -24,7 +27,7 @@ function okHandler({ checkedNodes }) {
   <button @click="disabled = !disabled">禁用状态：{{ disabled }}</button>
   <BcOrgSelectModal
     ref="bcOrgSelectModal"
-    :defaultCheckedKeys="[383026, 552928, 104180, 556560]"
+    :defaultCheckedKeys="[3049, 3342]"
     @ok="okHandler"
     :disabled="disabled"
   />

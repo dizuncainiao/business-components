@@ -17,6 +17,8 @@
         ></bn-input>
 
         <bn-tree
+          v-bn-loading="loading"
+          bn-loading-text="数据加载中…"
           ref="tree"
           class="tree-box"
           :class="$props.disabled && 'disabled'"
@@ -71,7 +73,7 @@ import {
   Button as BnButton
 } from 'blocks-next'
 import { getDepAndUserTree } from '../../../_plugins/axios-http/apis'
-import { getTreeData } from './hooks'
+import { getTreeData, setDisabled } from './hooks'
 import { cloneDeep } from 'lodash-es'
 
 export default defineComponent({
@@ -123,6 +125,7 @@ export default defineComponent({
   },
   setup(props, { expose, emit }) {
     const visible = ref(false)
+    const loading = ref(false)
     const tree = ref()
     const query = ref('')
 
@@ -150,18 +153,19 @@ export default defineComponent({
 
     // 更新树数据
     async function updateTreeData() {
-      // todo: token 参数怎么传优雅
-      const params = {
-        // token:
-        //   'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiI2NzA5OCIsImV4cCI6MTY5NTA0NjcxNH0.icahzgzq3inxIbid8NgNFfa5dAqD24Orq-IkmlU3yiRwhiUxH7AD0117KtmLrG1TSZE8nwb3Ux17pZPAYpWcGw',
-        // COMPANYID: '2'
-      }
+      const params = {}
+      loading.value = true
 
       getDepAndUserTree(params).then(res => {
         const list = res?.data?.innerDep || []
-        state.treeData = getTreeData(list)
+        state.treeData = setDisabled(getTreeData(list))
 
-        nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
+        nextTick(() => {
+          if (props.defaultCheckedKeys?.length) {
+            getCheckedNodesOfKeys(props.defaultCheckedKeys)
+          }
+        })
+        loading.value = false
       })
     }
 
@@ -170,9 +174,11 @@ export default defineComponent({
         .getNodesByValues(checkedKeys)
         .map(item => {
           return {
+            ...item.data,
             name: item.data.label,
             id: item.data.value,
-            image: item.data.image
+            image: item.data.image,
+            depName: item.parent.label
           }
         })
     }
@@ -189,6 +195,8 @@ export default defineComponent({
       // 关闭，重置数据
       if (!val) {
         Object.assign(state, initState)
+        loading.value = false
+        query.value = ''
       } else {
         updateTreeData()
       }
@@ -224,6 +232,7 @@ export default defineComponent({
         toggle(false)
       },
       visible,
+      loading,
       tree,
       query,
       state
