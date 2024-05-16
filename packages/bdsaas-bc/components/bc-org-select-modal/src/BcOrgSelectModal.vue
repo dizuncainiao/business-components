@@ -12,7 +12,7 @@
         <bn-input
           v-model="query"
           class="w344"
-          placeholder="输入姓名/部门进行搜索"
+          :placeholder="placeholder"
           suffix-icon="bn-icon-search"
         ></bn-input>
 
@@ -34,7 +34,8 @@
       </div>
       <div class="bc-org-select-content-right">
         <div class="selected-person">
-          已选择 {{ state.checkedNodes.length }} 人
+          已选择 {{ state.checkedNodes.length }}
+          {{ $props.mode === 'personnel' ? '人' : '部门' }}
         </div>
         <ul class="selected-list-box">
           <li v-for="(item, index) of state.checkedNodes" :key="item.id">
@@ -64,7 +65,15 @@
 <script lang="ts">
 import '../style/index.less'
 
-import { defineComponent, nextTick, reactive, ref, watch } from 'vue'
+import {
+  computed,
+  defineComponent,
+  nextTick,
+  PropType,
+  reactive,
+  ref,
+  watch
+} from 'vue'
 import {
   Dialog as BnDialog,
   Input as BnInput,
@@ -80,6 +89,10 @@ export default defineComponent({
   name: 'BcOrgSelectModal',
   components: { BnDialog, BnInput, BnIconClose, BnSpace, BnButton },
   props: {
+    mode: {
+      type: String as PropType<'personnel' | 'department'>,
+      default: 'personnel'
+    },
     disabled: {
       type: Boolean,
       default: false
@@ -129,6 +142,16 @@ export default defineComponent({
     const tree = ref()
     const query = ref('')
 
+    const placeholder = computed(() => {
+      if (props.mode === 'personnel') {
+        return '输入姓名/部门进行搜索'
+      } else if (props.mode === 'department') {
+        return '输入部门进行搜索'
+      } else {
+        return '输入姓名/部门进行搜索'
+      }
+    })
+
     watch(query, text => {
       tree.value?.filter(text)
     })
@@ -158,7 +181,15 @@ export default defineComponent({
 
       getDepAndUserTree(params).then(res => {
         const list = res?.data?.innerDep || []
-        state.treeData = setDisabled(getTreeData(list))
+        if (props.mode === 'personnel') {
+          state.treeData = setDisabled(getTreeData(list))
+        } else if (props.mode === 'department') {
+          state.treeData = getTreeData(
+            list.filter((item: any) => item.type === 'dep')
+          )
+        } else {
+          state.treeData = setDisabled(getTreeData(list))
+        }
 
         nextTick(() => {
           if (props.defaultCheckedKeys?.length) {
@@ -169,10 +200,10 @@ export default defineComponent({
       })
     }
 
-    function getCheckedNodesOfKeys(checkedKeys) {
+    function getCheckedNodesOfKeys(checkedKeys: any[]) {
       state.checkedNodes = tree.value
         .getNodesByValues(checkedKeys)
-        .map(item => {
+        .map((item: any) => {
           return {
             ...item.data,
             name: item.data.label,
@@ -232,6 +263,7 @@ export default defineComponent({
         toggle(false)
       },
       visible,
+      placeholder,
       loading,
       tree,
       query,

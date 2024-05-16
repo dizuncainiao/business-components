@@ -12,7 +12,7 @@ export function getTreeData(arr: any[]) {
 }
 
 // 将 children.length 为 0 的部门节点设为 disabled
-export function setDisabled(arr: any[]) {
+export function setDisabled(arr: any[]): any {
   arr.forEach((item: any) => {
     if (item.type === 'dep' && item.children?.length === 0) {
       item.disabled = true
