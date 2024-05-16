@@ -1,3 +1,9 @@
+## [0.0.56](https://github.com/dizuncainiao/business-components/compare/v0.0.55...v0.0.56) (2024-05-16)
+
+### ✨ Features
+
+- ✨ 组织架构选部门框 ([11533a9](https://github.com/dizuncainiao/business-components/commit/11533a9))
+
 ## [0.0.55](https://github.com/dizuncainiao/business-components/compare/v0.0.54...v0.0.55) (2024-05-16)
 
 ### ✨ Features
