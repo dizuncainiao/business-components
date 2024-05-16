@@ -1,3 +1,9 @@
+## [0.0.55](https://github.com/dizuncainiao/business-components/compare/v0.0.54...v0.0.55) (2024-05-16)
+
+### ✨ Features
+
+- ✨ 组织人员选择框优化（加 loading、部门禁选） ([1d11aea](https://github.com/dizuncainiao/business-components/commit/1d11aea))
+
 ## [0.0.54](https://github.com/dizuncainiao/business-components/compare/v0.0.53...v0.0.54) (2024-05-08)
 
 ### ✨ Features
