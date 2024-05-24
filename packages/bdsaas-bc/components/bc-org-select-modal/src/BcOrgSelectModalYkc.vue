@@ -161,7 +161,7 @@ export default defineComponent({
     const initState = {
       loading: false,
       filterText: '',
-      checkedKeys: props.defaultCheckedKeys,
+      checkedKeys: [],
       treeData: [],
       defaultExpandedKeys: [],
       checkedNodes: []
@@ -170,11 +170,22 @@ export default defineComponent({
     const state = reactive({
       loading: false,
       filterText: '',
-      checkedKeys: props.defaultCheckedKeys,
+      checkedKeys: [],
       treeData: [],
       defaultExpandedKeys: [],
       checkedNodes: []
     })
+
+    watch(
+      () => props.defaultCheckedKeys,
+      newVal => {
+        initState.checkedKeys = newVal as any
+        state.checkedKeys = newVal as any
+      },
+      {
+        immediate: true
+      }
+    )
 
     // 更新树数据
     async function updateTreeData() {
