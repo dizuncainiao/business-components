@@ -1,3 +1,9 @@
+## [0.0.57](https://github.com/dizuncainiao/business-components/compare/v0.0.56...v0.0.57) (2024-05-24)
+
+### ✨ Features
+
+- ✨ 组织架构选择框默认选择功能优化 ([54e5537](https://github.com/dizuncainiao/business-components/commit/54e5537))
+
 ## [0.0.56](https://github.com/dizuncainiao/business-components/compare/v0.0.55...v0.0.56) (2024-05-16)
 
 ### ✨ Features
