@@ -24,6 +24,7 @@
           :class="$props.disabled && 'disabled'"
           v-model:checked="state.checkedKeys"
           show-checkbox
+          :check-strictly="$props.single"
           checked-on-click-node
           :default-unfold-all="$props.defaultUnfoldAll"
           :data="state.treeData"
@@ -72,6 +73,7 @@ import {
   PropType,
   reactive,
   ref,
+  toRaw,
   watch
 } from 'vue'
 import {
@@ -82,16 +84,29 @@ import {
   Button as BnButton
 } from 'blocks-next'
 import { getDepAndUserTree } from '../../../_plugins/axios-http/apis'
-import { getTreeData, setDisabled } from './hooks'
-import { cloneDeep } from 'lodash-es'
+import { getTreeData, setDisabled, setDisabledSingle } from './hooks'
+import { cloneDeep, last } from 'lodash-es'
 
 export default defineComponent({
   name: 'BcOrgSelectModal',
   components: { BnDialog, BnInput, BnIconClose, BnSpace, BnButton },
   props: {
+    /**
+     * personnel: 人员模式，department: 部门模式
+     */
     mode: {
       type: String as PropType<'personnel' | 'department'>,
       default: 'personnel'
+    },
+    /**
+     * 单选模式
+     * personnel 模式下部门禁用，只有人员可选，单选；
+     * department 模式下部门可选，人员禁用，单选；
+     * 为true时开启check-strictly：父子不互相关联,父级状态不会影响子级状态）
+     */
+    single: {
+      type: Boolean,
+      default: false
     },
     disabled: {
       type: Boolean,
@@ -192,14 +207,26 @@ export default defineComponent({
 
       getDepAndUserTree(params).then(res => {
         const list = res?.data?.innerDep || []
-        if (props.mode === 'personnel') {
-          state.treeData = setDisabled(getTreeData(list))
-        } else if (props.mode === 'department') {
-          state.treeData = getTreeData(
-            list.filter((item: any) => item.type === 'dep')
-          )
+        if (props.single) {
+          if (props.mode === 'personnel') {
+            state.treeData = setDisabledSingle(getTreeData(list))
+          } else if (props.mode === 'department') {
+            state.treeData = getTreeData(
+              list.filter((item: any) => item.type === 'dep')
+            )
+          } else {
+            state.treeData = setDisabled(getTreeData(list))
+          }
         } else {
-          state.treeData = setDisabled(getTreeData(list))
+          if (props.mode === 'personnel') {
+            state.treeData = setDisabled(getTreeData(list))
+          } else if (props.mode === 'department') {
+            state.treeData = getTreeData(
+              list.filter((item: any) => item.type === 'dep')
+            )
+          } else {
+            state.treeData = setDisabled(getTreeData(list))
+          }
         }
 
         nextTick(() => {
@@ -212,17 +239,23 @@ export default defineComponent({
     }
 
     function getCheckedNodesOfKeys(checkedKeys: any[]) {
-      state.checkedNodes = tree.value
-        .getNodesByValues(checkedKeys)
-        .map((item: any) => {
-          return {
-            ...item.data,
-            name: item.data.label,
-            id: item.data.value,
-            image: item.data.image,
-            depName: item.parent.label
-          }
-        })
+      if (props.single && checkedKeys.length) {
+        state.checkedKeys = [last(checkedKeys)] as any
+      }
+
+      nextTick(() => {
+        state.checkedNodes = tree.value
+          .getNodesByValues(state.checkedKeys)
+          .map((item: any) => {
+            return {
+              ...item.data,
+              name: item.data.label,
+              id: item.data.value,
+              image: item.data.image,
+              depName: item.parent.label
+            }
+          })
+      })
     }
 
     // 移除选中的节点

@@ -24,6 +24,18 @@ export function setDisabled(arr: any[]): any {
   return arr
 }
 
+export function setDisabledSingle(arr: any[]): any {
+  arr.forEach((item: any) => {
+    if (item.type === 'dep') {
+      item.disabled = true
+    }
+    if (item.children?.length) {
+      setDisabledSingle(item.children)
+    }
+  })
+  return arr
+}
+
 // 收集 pId 下的所有子集
 function groupBy(arr: any[], key: string) {
   return arr.reduce((prevValue, currentValue) => {
