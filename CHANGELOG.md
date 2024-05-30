@@ -1,3 +1,9 @@
+## [0.0.58](https://github.com/dizuncainiao/business-components/compare/v0.0.57...v0.0.58) (2024-05-30)
+
+### ✨ Features
+
+- ✨ 组织架构选择框单选模式（单选人员、部门） ([fb28e6a](https://github.com/dizuncainiao/business-components/commit/fb28e6a))
+
 ## [0.0.57](https://github.com/dizuncainiao/business-components/compare/v0.0.56...v0.0.57) (2024-05-24)
 
 ### ✨ Features
