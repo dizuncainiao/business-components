@@ -1,3 +1,9 @@
+## [0.0.59](https://github.com/dizuncainiao/business-components/compare/v0.0.58...v0.0.59) (2024-06-04)
+
+### ✨ Features
+
+- ✨ id 和 pId 转正数、增加 checkStrictly 模式 ([84b71c9](https://github.com/dizuncainiao/business-components/commit/84b71c9))
+
 ## [0.0.58](https://github.com/dizuncainiao/business-components/compare/v0.0.57...v0.0.58) (2024-05-30)
 
 ### ✨ Features
