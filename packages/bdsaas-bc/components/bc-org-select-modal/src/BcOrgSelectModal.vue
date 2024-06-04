@@ -24,7 +24,7 @@
           :class="$props.disabled && 'disabled'"
           v-model:checked="state.checkedKeys"
           show-checkbox
-          :check-strictly="$props.single"
+          :check-strictly="$props.single || $props.checkStrictly"
           checked-on-click-node
           :default-unfold-all="$props.defaultUnfoldAll"
           :data="state.treeData"
@@ -85,7 +85,7 @@ import {
 } from 'blocks-next'
 import { getDepAndUserTree } from '../../../_plugins/axios-http/apis'
 import { getTreeData, setDisabled, setDisabledSingle } from './hooks'
-import { cloneDeep, last } from 'lodash-es'
+import { cloneDeep, isNumber, last } from 'lodash-es'
 
 export default defineComponent({
   name: 'BcOrgSelectModal',
@@ -105,6 +105,11 @@ export default defineComponent({
      * 为true时开启check-strictly：父子不互相关联,父级状态不会影响子级状态）
      */
     single: {
+      type: Boolean,
+      default: false
+    },
+    /*父子不互相关联,父级状态不会影响子级状态*/
+    checkStrictly: {
       type: Boolean,
       default: false
     },
@@ -206,7 +211,13 @@ export default defineComponent({
       loading.value = true
 
       getDepAndUserTree(params).then(res => {
-        const list = res?.data?.innerDep || []
+        const list = (res?.data?.innerDep || []).map(item => {
+          return {
+            ...item,
+            id: isNumber(item.id) ? Math.abs(item.id) : item.id,
+            pId: isNumber(item.pId) ? Math.abs(item.pId) : item.pId
+          }
+        })
         if (props.single) {
           if (props.mode === 'personnel') {
             state.treeData = setDisabledSingle(getTreeData(list))
@@ -248,11 +259,11 @@ export default defineComponent({
           .getNodesByValues(state.checkedKeys)
           .map((item: any) => {
             return {
-              ...item.data,
-              name: item.data.label,
-              id: item.data.value,
-              image: item.data.image,
-              depName: item.parent.label
+              ...(item.data || {}),
+              name: item?.data?.label || '',
+              id: item?.data?.value || '',
+              image: item?.data?.image || '',
+              depName: item?.parent?.label || ''
             }
           })
       })

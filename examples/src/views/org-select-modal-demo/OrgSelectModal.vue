@@ -27,12 +27,12 @@ function okHandler({ checkedNodes }) {
   <button @click="disabled = !disabled">禁用状态：{{ disabled }}</button>
   <BcOrgSelectModal
     ref="bcOrgSelectModal"
-    mode="personnel"
+    mode="department"
     title="选择人员"
     @ok="okHandler"
-    single
+    checkStrictly
     :disabled="disabled"
-    :defaultCheckedKeys="[2797]"
+    :defaultCheckedKeys="[11578, 11579]"
   />
 
   <BcOrgSelectModalYkc
