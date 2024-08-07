@@ -1,3 +1,9 @@
+## [0.0.60](https://github.com/dizuncainiao/business-components/compare/v0.0.59...v0.0.60) (2024-08-07)
+
+### 🚀 Performance Improvements
+
+- 🚀 Tree algorithm optimization ([c6cce60](https://github.com/dizuncainiao/business-components/commit/c6cce60))
+
 ## [0.0.59](https://github.com/dizuncainiao/business-components/compare/v0.0.58...v0.0.59) (2024-06-04)
 
 ### ✨ Features
