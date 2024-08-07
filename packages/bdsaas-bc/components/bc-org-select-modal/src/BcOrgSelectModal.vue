@@ -27,7 +27,7 @@
           :check-strictly="$props.single || $props.checkStrictly"
           checked-on-click-node
           :default-unfold-all="$props.defaultUnfoldAll"
-          :data="state.treeData"
+          :data="treeData"
           :unfold-on-click-node="false"
           :default-unfold-values="state.checkedKeys"
           @change-checked="onChangeChecked"
@@ -73,6 +73,7 @@ import {
   PropType,
   reactive,
   ref,
+  shallowRef,
   toRaw,
   watch
 } from 'vue'
@@ -194,6 +195,8 @@ export default defineComponent({
       checkedNodes: []
     })
 
+    const treeData = shallowRef([])
+
     watch(
       () => props.defaultCheckedKeys,
       newVal => {
@@ -218,25 +221,32 @@ export default defineComponent({
             pId: isNumber(item.pId) ? Math.abs(item.pId) : item.pId
           }
         })
+        let result = getTreeData(list)
+
         if (props.single) {
           if (props.mode === 'personnel') {
-            state.treeData = setDisabledSingle(getTreeData(list))
+            setDisabledSingle(result)
+            treeData.value = result
           } else if (props.mode === 'department') {
-            state.treeData = getTreeData(
+            treeData.value = getTreeData(
               list.filter((item: any) => item.type === 'dep')
             )
           } else {
-            state.treeData = setDisabled(getTreeData(list))
+            setDisabled(result)
+            treeData.value = result
           }
         } else {
           if (props.mode === 'personnel') {
-            state.treeData = setDisabled(getTreeData(list))
+            console.log('setDisabled', result)
+            setDisabled(result)
+            treeData.value = result
           } else if (props.mode === 'department') {
-            state.treeData = getTreeData(
+            treeData.value = getTreeData(
               list.filter((item: any) => item.type === 'dep')
             )
           } else {
-            state.treeData = setDisabled(getTreeData(list))
+            setDisabled(result)
+            treeData.value = result
           }
         }
 
@@ -322,7 +332,8 @@ export default defineComponent({
       loading,
       tree,
       query,
-      state
+      state,
+      treeData
     }
   }
 })

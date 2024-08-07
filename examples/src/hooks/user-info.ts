@@ -3,12 +3,12 @@ import md5 from 'md5'
 export function useToken() {
   return (
     localStorage.getItem('_BDSAAS_TOKEN') ||
-    'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiIyNzk3IiwiZXhwIjoxNzE1ODU4NDQzfQ.803De7EHZnUoKSbrvKDZsdY8QRJwX6DP6Gu_mOtgDhhSs6noNgY32-9Xmra4bodirdtZw0VwAokadAcspBZ5LA'
+    'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiI2NzA5OCIsImV4cCI6MTcyMzA1ODUyNH0.Y1EYjRbBW6PBaw63giwgKWQCiEmb5cijsRQ0O5JNoVplaXDFyDVV8VZscCPTIQUWuqNwpPu1bzdlfpKITjnBSQ'
   )
 }
 
 export function useCompanyId() {
-  return localStorage.getItem('_BDSAAS_COMPANY_ID') || '1564'
+  return localStorage.getItem('_BDSAAS_COMPANY_ID') || '2'
 }
 
 export function useUserInfo() {
@@ -16,7 +16,7 @@ export function useUserInfo() {
 }
 
 export function useCompanyName() {
-  return useUserInfo().companyName || '深圳八度云计算有限公s犀利'
+  return useUserInfo().companyName || '安徽腾讯云计算有限公司'
 }
 
 export function useUploadUrl() {
@@ -24,7 +24,7 @@ export function useUploadUrl() {
 }
 
 export function useProfileId() {
-  return useUserInfo().profileId || '2797'
+  return useUserInfo().profileId || '67098'
 }
 
 export function useProfileName() {

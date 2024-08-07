@@ -13,27 +13,57 @@ export function getTreeData(arr: any[]) {
 
 // 将 children.length 为 0 的部门节点设为 disabled
 export function setDisabled(arr: any[]): any {
-  arr.forEach((item: any) => {
-    if (item.type === 'dep' && item.children?.length === 0) {
-      item.disabled = true
+  // arr.forEach((item: any) => {
+  //   if (item.type === 'dep' && item.children?.length === 0) {
+  //     item.disabled = true
+  //   }
+  //   if (item.children?.length) {
+  //     setDisabled(item.children)
+  //   }
+  // })
+  // return arr
+
+  const stack = [...arr] // 创建一个栈用于迭代处理
+
+  while (stack.length > 0) {
+    const item = stack.pop()
+    if (
+      item.type === 'dep' &&
+      item.children !== undefined &&
+      Array.isArray(item.children) &&
+      item.children.length >= 0
+    ) {
+      if (item.children.length === 0) {
+        item.disabled = true
+      }
+      if (item.children.length > 0) {
+        stack.push(...item.children) // 将子元素加入到栈中继续处理
+      }
     }
-    if (item.children?.length) {
-      setDisabled(item.children)
-    }
-  })
-  return arr
+  }
 }
 
 export function setDisabledSingle(arr: any[]): any {
-  arr.forEach((item: any) => {
+  // arr.forEach((item: any) => {
+  //   if (item.type === 'dep') {
+  //     item.disabled = true
+  //   }
+  //   if (item.children?.length) {
+  //     setDisabledSingle(item.children)
+  //   }
+  // })
+
+  const stack = [...arr] // 创建一个栈用于迭代处理
+
+  while (stack.length > 0) {
+    const item = stack.pop()
     if (item.type === 'dep') {
       item.disabled = true
+      if (item.children.length > 0) {
+        stack.push(...item.children) // 将子元素加入到栈中继续处理
+      }
     }
-    if (item.children?.length) {
-      setDisabledSingle(item.children)
-    }
-  })
-  return arr
+  }
 }
 
 // 收集 pId 下的所有子集
