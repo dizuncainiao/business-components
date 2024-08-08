@@ -26,7 +26,7 @@
           show-checkbox
           checked-on-click-node
           :default-unfold-all="$props.defaultUnfoldAll"
-          :data="state.treeData"
+          :data="treeData"
           :unfold-on-click-node="false"
           :default-unfold-values="state.checkedKeys"
           @change-checked="onChangeChecked"
@@ -78,7 +78,14 @@
 <script lang="ts">
 import '../style/index.less'
 
-import { defineComponent, nextTick, reactive, ref, watch } from 'vue'
+import {
+  defineComponent,
+  nextTick,
+  reactive,
+  ref,
+  shallowRef,
+  watch
+} from 'vue'
 import {
   Dialog as BnDialog,
   Input as BnInput,
@@ -116,7 +123,7 @@ export default defineComponent({
     // 默认展开所有
     defaultUnfoldAll: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 父级无数据开启禁用
     parentNoDataOpenDisabled: {
@@ -176,6 +183,8 @@ export default defineComponent({
       checkedNodes: []
     })
 
+    const treeData = shallowRef<any[]>([])
+
     watch(
       () => props.defaultCheckedKeys,
       newVal => {
@@ -189,24 +198,20 @@ export default defineComponent({
 
     // 更新树数据
     async function updateTreeData() {
-      // const params = {
-      //   withPeople: true,
-      //   withUserNum: true,
-      //   withDepLeafNum: true,
-      //   COMPANYID: localStorage.getItem('_BDSAAS_COMPANY_ID') || 1564
-      // }
-      // loading.value = true
-      //
-      // QueryInitDep(params).then(res => {
-      //   state.treeData = initTreeData(res.data)
-      //   nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
-      //   loading.value = false
-      // })
       const params = {}
       loading.value = true
       getDepAndUserTree(params).then(res => {
-        const list = res?.data?.innerDep || []
-        state.treeData = setDisabled(getTreeData(list))
+        const list = (res?.data?.innerDep || []).map(item => {
+          return {
+            ...item,
+            label: item.name,
+            value: item.id,
+            id: String(item.id),
+            pId: String(item.pId)
+          }
+        })
+        treeData.value = setDisabled(getTreeData(list))
+        console.log(list, 'getTreeData(list)')
         console.log(getTreeData(list), 'getTreeData(list)')
         nextTick(() => getCheckedNodesOfKeys(props.defaultCheckedKeys))
         loading.value = false
@@ -290,6 +295,7 @@ export default defineComponent({
       loading,
       tree,
       query,
+      treeData,
       state
     }
   }
