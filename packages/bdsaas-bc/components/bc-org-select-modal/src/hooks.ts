@@ -8,21 +8,11 @@ export function getTreeData(arr: any[]) {
   })
 
   // 获取最顶层父级
-  return pIdMap.get(0) || []
+  return pIdMap.get('0') || []
 }
 
 // 将 children.length 为 0 的部门节点设为 disabled
-export function setDisabled(arr: any[]): any {
-  // arr.forEach((item: any) => {
-  //   if (item.type === 'dep' && item.children?.length === 0) {
-  //     item.disabled = true
-  //   }
-  //   if (item.children?.length) {
-  //     setDisabled(item.children)
-  //   }
-  // })
-  // return arr
-
+export function setDisabled(arr: any[]) {
   const stack = [...arr] // 创建一个栈用于迭代处理
 
   while (stack.length > 0) {
@@ -41,18 +31,11 @@ export function setDisabled(arr: any[]): any {
       }
     }
   }
+
+  return arr
 }
 
-export function setDisabledSingle(arr: any[]): any {
-  // arr.forEach((item: any) => {
-  //   if (item.type === 'dep') {
-  //     item.disabled = true
-  //   }
-  //   if (item.children?.length) {
-  //     setDisabledSingle(item.children)
-  //   }
-  // })
-
+export function setDisabledSingle(arr: any[]) {
   const stack = [...arr] // 创建一个栈用于迭代处理
 
   while (stack.length > 0) {
@@ -64,25 +47,24 @@ export function setDisabledSingle(arr: any[]): any {
       }
     }
   }
+
+  return arr
 }
 
 // 收集 pId 下的所有子集
 function groupBy(arr: any[], key: string) {
-  return arr.reduce((prevValue, currentValue) => {
-    if (currentValue) {
-      currentValue.label = currentValue.name
-      currentValue.value = currentValue.id
+  return arr.reduce((prev, current) => {
+    const pId = Reflect.get(current, key)
+
+    const pIdVal = prev.get(pId)
+
+    if (Array.isArray(pIdVal)) {
+      pIdVal.push(current)
+    } else {
+      prev.set(pId, [current])
     }
 
-    const pId = currentValue?.[key]
-    if (prevValue.has(pId) && prevValue.get(pId)?.length) {
-      prevValue.get(pId)?.push(currentValue)
-    } else {
-      const children = []
-      children.push(currentValue)
-      prevValue.set(pId, children)
-    }
-    return prevValue
+    return prev
   }, new Map())
 }
 

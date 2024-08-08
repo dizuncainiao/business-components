@@ -74,7 +74,6 @@ import {
   reactive,
   ref,
   shallowRef,
-  toRaw,
   watch
 } from 'vue'
 import {
@@ -125,7 +124,7 @@ export default defineComponent({
     // 默认展开所有
     defaultUnfoldAll: {
       type: Boolean,
-      default: false
+      default: true
     },
     // 父级无数据开启禁用
     parentNoDataOpenDisabled: {
@@ -195,7 +194,7 @@ export default defineComponent({
       checkedNodes: []
     })
 
-    const treeData = shallowRef([])
+    const treeData = shallowRef<any[]>([])
 
     watch(
       () => props.defaultCheckedKeys,
@@ -210,53 +209,54 @@ export default defineComponent({
 
     // 更新树数据
     async function updateTreeData() {
-      const params = {}
       loading.value = true
 
-      getDepAndUserTree(params).then(res => {
-        const list = (res?.data?.innerDep || []).map(item => {
-          return {
-            ...item,
-            id: isNumber(item.id) ? Math.abs(item.id) : item.id,
-            pId: isNumber(item.pId) ? Math.abs(item.pId) : item.pId
-          }
-        })
-        let result = getTreeData(list)
+      getDepAndUserTree({})
+        .then(res => {
+          const list = (res?.data?.innerDep || []).map(item => {
+            return {
+              ...item,
+              label: item.name,
+              value: item.id,
+              id: String(item.id),
+              pId: String(item.pId)
+            }
+          })
+          let result = getTreeData(list)
 
-        if (props.single) {
-          if (props.mode === 'personnel') {
-            setDisabledSingle(result)
-            treeData.value = result
-          } else if (props.mode === 'department') {
-            treeData.value = getTreeData(
-              list.filter((item: any) => item.type === 'dep')
-            )
-          } else {
-            setDisabled(result)
-            treeData.value = result
-          }
-        } else {
-          if (props.mode === 'personnel') {
-            console.log('setDisabled', result)
-            setDisabled(result)
-            treeData.value = result
-          } else if (props.mode === 'department') {
-            treeData.value = getTreeData(
-              list.filter((item: any) => item.type === 'dep')
-            )
-          } else {
-            setDisabled(result)
-            treeData.value = result
-          }
-        }
+          console.log(JSON.parse(JSON.stringify(result)))
 
-        nextTick(() => {
-          if (props.defaultCheckedKeys?.length) {
-            getCheckedNodesOfKeys(props.defaultCheckedKeys)
+          if (props.single) {
+            if (props.mode === 'personnel') {
+              treeData.value = setDisabledSingle(result)
+            } else if (props.mode === 'department') {
+              treeData.value = getTreeData(
+                list.filter((item: any) => item.type === 'dep')
+              )
+            } else {
+              treeData.value = setDisabled(result)
+            }
+          } else {
+            if (props.mode === 'personnel') {
+              treeData.value = setDisabled(result)
+            } else if (props.mode === 'department') {
+              treeData.value = getTreeData(
+                list.filter((item: any) => item.type === 'dep')
+              )
+            } else {
+              treeData.value = setDisabled(result)
+            }
           }
+
+          nextTick(() => {
+            if (props.defaultCheckedKeys?.length) {
+              getCheckedNodesOfKeys(props.defaultCheckedKeys)
+            }
+          })
         })
-        loading.value = false
-      })
+        .finally(() => {
+          loading.value = false
+        })
     }
 
     function getCheckedNodesOfKeys(checkedKeys: any[]) {
