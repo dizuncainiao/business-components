@@ -1,3 +1,10 @@
+## [0.0.61](https://github.com/dizuncainiao/business-components/compare/v0.0.60...v0.0.61) (2024-08-08)
+
+### ✨ Features
+
+- ✨ BcOrgSelectModalYkc.vue optimization ([fd65dc7](https://github.com/dizuncainiao/business-components/commit/fd65dc7))
+- ✨ Convert id to string ([6f5a4b5](https://github.com/dizuncainiao/business-components/commit/6f5a4b5))
+
 ## [0.0.60](https://github.com/dizuncainiao/business-components/compare/v0.0.59...v0.0.60) (2024-08-07)
 
 ### 🚀 Performance Improvements
