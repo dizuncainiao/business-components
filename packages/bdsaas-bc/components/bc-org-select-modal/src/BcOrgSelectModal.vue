@@ -264,18 +264,26 @@ export default defineComponent({
         state.checkedKeys = [last(checkedKeys)] as any
       }
 
+      console.log(state.checkedKeys, 'state.checkedKeys')
+
       nextTick(() => {
-        state.checkedNodes = tree.value
-          .getNodesByValues(state.checkedKeys)
-          .map((item: any) => {
-            return {
-              ...(item.data || {}),
-              name: item?.data?.label || '',
-              id: item?.data?.value || '',
-              image: item?.data?.image || '',
-              depName: item?.parent?.label || ''
-            }
-          })
+        const treeDataOfSelectedKeys = tree.value.getNodesByValues(
+          state.checkedKeys
+        )
+        const hasDataTree = treeDataOfSelectedKeys.filter(Boolean)
+
+        console.log(treeDataOfSelectedKeys, 'treeDataOfSelectedKeys')
+        console.log(hasDataTree, 'hasDataTree')
+
+        state.checkedNodes = hasDataTree.map((item: any) => {
+          return {
+            ...(item?.data || {}),
+            name: item?.data?.label || '',
+            id: item?.data?.value || '',
+            image: item?.data?.image || '',
+            depName: item?.parent?.label || ''
+          }
+        })
       })
     }
 

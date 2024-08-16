@@ -3,12 +3,12 @@ import md5 from 'md5'
 export function useToken() {
   return (
     localStorage.getItem('_BDSAAS_TOKEN') ||
-    'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiI2NzA5OCIsImV4cCI6MTcyMzEwOTE2OX0.lcdivDrdGo7nSMoWkVnwRvzIi-AwU-ePRN6W9V16gKmm9Mz12ZSHm5PooiBCi_AIgFoQ6T6WUnQo4xRyysZRxw'
+    'eyJhbGciOiJIUzUxMiJ9.eyJqdGkiOiJiZHNhYXMiLCJzdWIiOiIyNzk3IiwiZXhwIjoxNzIzODE1NjUxfQ.ZutdwFtFCfv7Nb4JmS-E0ypK1g_mOorIwMkzCkPBC-Nhpj6Wl5eoikf9Z4ZHOb6iDixvs5dXphLUT6s-lrlN5w'
   )
 }
 
 export function useCompanyId() {
-  return localStorage.getItem('_BDSAAS_COMPANY_ID') || '2'
+  return localStorage.getItem('_BDSAAS_COMPANY_ID') || '242'
 }
 
 export function useUserInfo() {
@@ -24,7 +24,7 @@ export function useUploadUrl() {
 }
 
 export function useProfileId() {
-  return useUserInfo().profileId || '67098'
+  return useUserInfo().profileId || '2797'
 }
 
 export function useProfileName() {

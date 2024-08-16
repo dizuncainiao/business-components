@@ -13,17 +13,20 @@ export default defineConfig(({ command, mode }) => {
     server: {
       proxy: {
         '/bdcloud-call-analytic': {
-          target: 'https://vip.bdsaas.com/',
+          // target: 'https://vip.bdsaas.com/',
+          target: 'https://demo.bdsaas.cn/',
           changeOrigin: true,
           secure: true
         },
         '/associate-web': {
-          target: 'https://vip.bdsaas.com/',
+          // target: 'https://vip.bdsaas.com/',
+          target: 'https://demo.bdsaas.cn/',
           changeOrigin: true,
           secure: true
         },
         '/bdsaas': {
-          target: 'https://vip.bdsaas.com/',
+          // target: 'https://vip.bdsaas.com/',
+          target: 'https://demo.bdsaas.cn/',
           changeOrigin: true,
           secure: true
         }

@@ -219,12 +219,12 @@ export default defineComponent({
     }
 
     function getCheckedNodesOfKeys(checkedKeys) {
-      const leftCheckedNodes = tree.value
-        .getNodesByValues(checkedKeys)
-        .map(item => ({
-          ...item.data,
-          depName: item.parent.label
-        }))
+      const treeDataOfSelectedKeys = tree.value.getNodesByValues(checkedKeys)
+      const hasDataTree = treeDataOfSelectedKeys.filter(Boolean)
+      const leftCheckedNodes = hasDataTree.map(item => ({
+        ...(item?.data || {}),
+        depName: item.parent.label
+      }))
 
       const cacheStateCheckedNodes = cloneDeep(state.checkedNodes)
 
