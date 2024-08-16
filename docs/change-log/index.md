@@ -1,3 +1,9 @@
+## [0.0.62](https://github.com/dizuncainiao/business-components/compare/v0.0.61...v0.0.62) (2024-08-16)
+
+### 🐛 Bug Fixes
+
+- 🐛 data of undefined ([b67b497](https://github.com/dizuncainiao/business-components/commit/b67b497))
+
 ## [0.0.61](https://github.com/dizuncainiao/business-components/compare/v0.0.60...v0.0.61) (2024-08-08)
 
 ### ✨ Features
